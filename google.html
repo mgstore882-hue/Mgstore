@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MG STORE - Connexion Google</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;color:#fff;font-family:system-ui,Arial,sans-serif;text-align:center}
+.b{max-width:340px;padding:24px}img{width:96px;height:96px;border-radius:50%}
+h2{margin:14px 0 6px}p{opacity:.7;font-size:14px;line-height:1.5}
+button,a.btn{display:block;width:100%;box-sizing:border-box;margin-top:18px;padding:14px;border:0;border-radius:14px;background:#fff;color:#111;font-size:16px;font-weight:700;text-decoration:none;cursor:pointer}
+a.btn.g{background:#0A84FF;color:#fff}
+</style></head><body><div class="b">
+<img src="icon-192.png" alt="MG STORE">
+<h2>MG STORE</h2>
+<p id="m">Connectez-vous avec Google pour continuer dans l'application.</p>
+<button id="go">Continuer avec Google</button>
+<a id="back" class="btn g" style="display:none">Retourner à MG STORE</a>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+var FB={apiKey:'AIzaSyAYDg3sVbWa5fP7iKqcdnYTHe-yaRkya30',authDomain:'mg-store-882.firebaseapp.com',projectId:'mg-store-882',appId:'1:832203923001:web:40291eb9e981dd0ec1b7e8'};
+firebase.initializeApp(FB);
+document.getElementById('go').onclick=function(){
+  var m=document.getElementById('m');m.textContent='Connexion en cours…';
+  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(r){return r.user.getIdToken()}).then(function(t){
+    var q=encodeURIComponent(t);
+    var intent='intent://auth?t='+q+'#Intent;scheme=mgstore;package=mg.store.client;end';
+    var b=document.getElementById('back');b.href=intent;b.style.display='block';
+    document.getElementById('go').style.display='none';
+    m.textContent='Connexion réussie ✅ Touchez le bouton pour revenir dans l\'application.';
+    setTimeout(function(){location.href=intent},400);
+  }).catch(function(e){m.textContent=(e&&e.code=='auth/unauthorized-domain')?'Domaine non autorisé dans Firebase (Authentication > Paramètres > Domaines autorisés).':'Connexion impossible. Réessayez.'});
+};
+</script></body></html>
