@@ -1,0 +1,39 @@
+name: Build APK
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dezipper
+        run: |
+          unzip -q android.zip
+          unzip -q STORE.zip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Licences Android
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+      - name: Build
+        working-directory: android
+        run: gradle --no-daemon assembleClientRelease assembleAdminRelease
+      - name: Renommer
+        run: |
+          mkdir out
+          cp android/app/build/outputs/apk/client/release/*.apk out/MG_STORE.apk
+          cp android/app/build/outputs/apk/admin/release/*.apk out/MG_ADMIN.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MG-APK
+          path: out/*.apk
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "v${{ github.run_number }}" out/MG_STORE.apk out/MG_ADMIN.apk --title "MG APK ${{ github.run_number }}" --notes "APK"
