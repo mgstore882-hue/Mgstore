@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>document.documentElement.classList.add("iw");setTimeout(function(){document.documentElement.classList.remove("iw")},10000)</script>
+<title>MG STORE</title>
+<link rel="manifest" href="manifest.json">
+<meta name="application-name" content="MG STORE">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MG STORE">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="https://i.postimg.cc/pTdFhgfL/FB-IMG-17941202917422900.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+.cap{display:none !important;}
+:root{--bg:#F4F6F9;--card:#fff;--text:#0F172A;--sub:#64748B;--border:#E5E9F0;--input:#fff;--box:#F8FAFC;--accent:#E11D2E;--accent-d:#B91C1C;--accent-soft:#FEECEE;--ok:#16A34A;--ok-soft:#E8F7EE;--warn:#D97706;--warn-soft:#FEF3E2;--err:#DC2626;--err-soft:#FDECEC;--sh:0 1px 2px rgba(15,23,42,.05),0 4px 14px rgba(15,23,42,.05)}
+[data-theme="dark"]{--bg:#0A101C;--card:#131C2E;--text:#F1F5F9;--sub:#94A3B8;--border:#223049;--input:#0E1626;--box:#0E1626;--accent:#EF4444;--accent-d:#DC2626;--accent-soft:#2A1519;--ok-soft:#10261A;--warn-soft:#2B2010;--err-soft:#2B1416;--sh:0 1px 2px rgba(0,0,0,.3)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:70px}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);max-width:480px;margin:auto;padding:0 16px calc(86px + env(safe-area-inset-bottom,0px));font-size:14px;line-height:1.45}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.i.s{width:16px;height:16px}.i.l{width:26px;height:26px}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* Header */
+header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px;background:var(--bg)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.3px}
+.logo img{width:38px;height:38px;border-radius:11px;object-fit:cover;border:1px solid var(--border)}
+.logo span{color:var(--accent)}
+.hact{display:flex;gap:8px;align-items:center}
+.ic{width:40px;height:40px;border-radius:12px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);transition:.15s}
+.ic:active{transform:scale(.92)}
+/* Search */
+.search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0 14px;height:48px;color:var(--sub);margin:4px 0 14px}
+.search input{border:none;outline:none;background:transparent;box-shadow:none;padding:0;height:100%;font-size:14px}
+/* Carousel */
+.carouselWrap{overflow:hidden;margin:4px 0 0;border-radius:18px}
+.carouselTrack{display:flex;gap:10px;transition:transform .5s cubic-bezier(.25,.8,.25,1)}
+.carouselSlide{flex:0 0 100%;height:172px;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--border)}
+.carouselSlide img{width:100%;height:100%;object-fit:cover;display:block}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 14px;background:linear-gradient(transparent,rgba(5,10,20,.85));color:#fff;display:flex;align-items:center;gap:10px}
+.cap .ci{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center}
+.cap b{font-size:15px;display:block;line-height:1.2}.cap span{font-size:11.5px;opacity:.85}
+.carouselDots{display:flex;gap:6px;justify-content:center;margin:10px 0 6px}
+.carouselDots span{width:6px;height:6px;border-radius:3px;background:var(--border);transition:.3s;cursor:pointer}
+.carouselDots span.on{background:var(--accent);width:22px}
+/* Titles & cards */
+h2{font-size:17px;font-weight:800;letter-spacing:-.2px;margin:14px 0 2px}
+.sub{color:var(--sub);font-size:12.5px;margin-bottom:12px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.c{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:var(--sh);transition:.15s}
+.c:active{transform:scale(.97)}
+.c .img{height:128px;position:relative;overflow:hidden;background:var(--box)}
+.c .img img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
+.c .tx{padding:12px}.c b{font-size:14.5px;display:block}.c small{color:var(--sub);font-size:11.5px}
+.box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-top:12px;box-shadow:var(--sh)}
+.bh{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.bi{width:38px;height:38px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.bi.gr{background:var(--ok-soft);color:var(--ok)}
+.bh b{font-size:14.5px;display:block;line-height:1.25}.bh p{font-size:12px;color:var(--sub)}
+.ct{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--border);font-size:13px;color:var(--sub)}
+.ct:first-of-type{border-top:none}.ct b{color:var(--text);margin-left:auto;font-weight:700}
+/* Forms */
+label{font-size:12.5px;font-weight:700;display:block;margin:14px 0 6px}
+input,textarea{width:100%;background:var(--input);border:1px solid var(--border);padding:13px 14px;border-radius:12px;outline:none;color:var(--text);font-family:inherit;font-size:14px;transition:.15s}
+input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search input:focus{box-shadow:none}
+textarea{resize:none}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 16px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;border:none;color:#fff;background:var(--accent);transition:.15s;width:100%;margin-top:10px}
+.btn:active{transform:scale(.98);background:var(--accent-d)}
+.btn.gr{background:var(--ok)}.btn.gr:active{background:#15803D}
+.btn.dk{background:#1E293B}[data-theme="dark"] .btn.dk{background:#334155}
+.btn.ol{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn.sm{padding:10px;font-size:12.5px;margin-top:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res{margin-top:10px;font-size:13px;display:none}
+/* Pack cards */
+.cat{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none}
+.cat::-webkit-scrollbar{display:none}
+.cat div{background:var(--card);border:1px solid var(--border);padding:9px 14px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer;flex-shrink:0;color:var(--sub);transition:.15s}
+.cat div.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pk{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:6px}
+.pk .pi{width:36px;height:36px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.pk b{font-size:13.5px;line-height:1.3;flex:1}
+.pk .pr{color:var(--ok);font-weight:800;font-size:15px}
+.pk .btn{margin-top:4px;padding:10px;font-size:12.5px;background:var(--text);color:var(--card)}
+.pk .btn:active{background:var(--accent);color:#fff}
+.gameBar{display:flex;align-items:center;gap:10px;margin:6px 0 10px}
+.gameBar .ic{width:38px;height:38px}.gameBar b{font-size:17px;font-weight:800}
+#bannerBox{border-radius:16px;overflow:hidden;height:130px;margin:10px 0 12px;position:relative;background:var(--box);border:1px solid var(--border)}
+#bannerBox img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
+/* Payment methods */
+.paym{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.paym div{border:1.5px solid var(--border);border-radius:14px;padding:8px;text-align:center;cursor:pointer;background:#fff;height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative;transition:.15s}
+.paym div img{width:100%;max-width:90px;height:32px;object-fit:contain}
+.paym div span{font-size:11px;font-weight:700;color:#334155}
+.paym div.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.paym div.on::after{content:"";position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/10px no-repeat}
+/* Sheets */
+.mo{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(5,10,20,.6);display:none;align-items:flex-end;justify-content:center;z-index:99;backdrop-filter:blur(2px)}
+.mo.open{display:flex}
+.sh{background:var(--card);color:var(--text);width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:10px 18px calc(20px + env(safe-area-inset-bottom,0px));max-height:92vh;overflow:auto;animation:up .25s ease}
+@keyframes up{from{transform:translateY(40px);opacity:.6}to{transform:none;opacity:1}}
+.sh::before{content:"";display:block;width:40px;height:4px;border-radius:2px;background:var(--border);margin:0 auto 12px}
+.sht{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sht b{font-size:17px;font-weight:800}
+.sht .ic{width:34px;height:34px;border-radius:10px}
+.ord{background:var(--box);border:1px solid var(--border);border-radius:14px;padding:14px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:13px;color:var(--sub)}
+.kv b{color:var(--text);text-align:right;word-break:break-all}
+.tot{display:flex;justify-content:space-between;align-items:center;margin:16px 0 4px;font-weight:800}
+.tot span:last-child{color:var(--accent);font-size:19px}
+.note{display:flex;gap:10px;background:var(--warn-soft);color:var(--warn);padding:11px 12px;border-radius:12px;font-size:12.5px;margin-top:10px;font-weight:600}
+.qty{display:flex;align-items:center;justify-content:space-between;margin:14px 0 0;background:var(--box);border:1px solid var(--border);border-radius:14px;padding:6px}
+.qty .ic{width:42px;height:42px;background:var(--card)}
+.qty b{font-size:14px}
+.hero-ic{width:56px;height:56px;border-radius:16px;margin:6px auto 10px;display:flex;align-items:center;justify-content:center}
+.hero-ic.ye{background:var(--warn-soft);color:var(--warn)}.hero-ic.gn{background:var(--ok);color:#fff;border-radius:50%}
+.numbox{display:flex;justify-content:space-between;align-items:center;margin:10px 0;font-weight:800;font-size:16px;background:var(--box);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.numbox span{cursor:pointer;color:var(--accent);display:flex}
+/* Hist */
+.histCard{background:var(--box);border:1px solid var(--border);border-left:4px solid var(--warn);border-radius:12px;padding:12px;margin-bottom:10px}
+.histCard.done{border-left-color:var(--ok)}.histCard.cancelled{border-left-color:var(--err)}
+.hh{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.hh b{font-size:13.5px}
+.bdg{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.bdg.w{background:var(--warn-soft);color:var(--warn)}.bdg.d{background:var(--ok-soft);color:var(--ok)}.bdg.c{background:var(--err-soft);color:var(--err)}
+.hd{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.7}
+.rep{background:var(--ok-soft);color:var(--ok);border-radius:10px;padding:10px;margin-top:8px;font-size:13px}
+.faq{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--card)}
+.faq b{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px;cursor:pointer;font-size:13px}
+.faq b .i{transition:.2s;color:var(--sub)}
+.faq p{display:none;padding:0 13px 13px;font-size:12.5px;color:var(--sub);line-height:1.6}
+.faq.open p{display:block}.faq.open b .i{transform:rotate(90deg)}
+.empty{text-align:center;color:var(--sub);padding:20px 10px;font-size:13px}
+.empty .i{width:34px;height:34px;margin-bottom:6px;opacity:.6}
+/* Nav */
+.bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--card);border-top:1px solid var(--border);padding:8px 14px calc(8px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-around;z-index:90}
+.bar div{cursor:pointer;text-align:center;color:var(--sub);padding:4px 14px;font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px}
+.bar div.on{color:var(--accent)}
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.themes div{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:6px}
+.foot{text-align:center;color:var(--sub);font-size:11.5px;margin-top:18px}
+#toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:#1E293B;color:#fff;padding:12px 16px;border-radius:14px;font-weight:600;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.3s;z-index:999;max-width:92%;display:flex;align-items:center;gap:8px}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.err{background:#DC2626}#toast.ok{background:#16A34A}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ===== MG STORE : endrika vaovao (CSS ihany, tsy misy fonction novaina) ===== */
+:root{--fd:'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif;--sh:0 1px 2px rgba(15,23,42,.04),0 10px 26px -10px rgba(15,23,42,.12)}
+[data-theme="dark"]{--bg:#080A10;--card:#10131C;--box:#0B0E15;--input:#0B0E15;--border:#1F2433;--sh:0 10px 30px -12px rgba(0,0,0,.6)}
+body{background:radial-gradient(120% 38% at 50% -4%,var(--accent-soft),transparent 70%) no-repeat,var(--bg);padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+header{background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.logo{font-family:var(--fd);font-size:20px;font-weight:800;letter-spacing:-.5px}
+.logo img{border-radius:12px;box-shadow:0 0 0 2px var(--accent-soft)}
+.ic{border-radius:14px}
+.search{height:50px;border-radius:16px;box-shadow:var(--sh)}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.carouselWrap{border-radius:24px}
+.carouselSlide{height:190px;border-radius:24px}
+h2{font-family:var(--fd);font-size:22px;font-weight:800;letter-spacing:-.5px;margin:24px 0 2px}
+.sub{font-size:13px}
+.g{gap:14px}
+.c{border-radius:22px}
+.c .img{height:142px}
+.c .img::after{content:"";position:absolute;top:auto;right:0;bottom:0;left:0;height:42%;background:linear-gradient(transparent,rgba(0,0,0,.3))}
+.c .tx{padding:13px 14px 15px}
+.c b{font-family:var(--fd);font-size:16.5px;font-weight:700;letter-spacing:-.2px}
+.box{border-radius:22px;padding:18px}
+.bi{border-radius:13px}
+.btn{background:linear-gradient(180deg,var(--accent),var(--accent-d));border-radius:14px;padding:14px 16px;box-shadow:0 10px 20px -10px var(--accent)}
+.btn.gr{box-shadow:0 10px 20px -10px var(--ok)}
+.btn.dk,.btn.ol{box-shadow:none}
+.cat div{padding:10px 16px;border-radius:14px}
+.cat div.on{box-shadow:0 8px 16px -8px var(--accent)}
+.pk{border-radius:20px;padding:12px;gap:8px}
+.pk b{font-family:var(--fd);font-size:14.5px;font-weight:700}
+.pk .pr{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--text);letter-spacing:-.3px}
+.pk .btn{background:var(--accent);color:#fff;border-radius:12px;box-shadow:none}
+#bannerBox{border-radius:22px;height:140px}
+.paym div{border-radius:16px}
+input,textarea{border-radius:14px;padding:14px 15px}
+.mo{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sh{border-radius:28px 28px 0 0}
+.sht b{font-family:var(--fd);font-size:19px;font-weight:800}
+.histCard{border-radius:16px}
+.bar{bottom:calc(10px + env(safe-area-inset-bottom,0px));width:calc(100% - 24px);padding:6px 8px;border:1px solid var(--border);border-radius:24px;box-shadow:0 14px 32px -10px rgba(0,0,0,.35);background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.bar div{border-radius:16px;padding:7px 18px}
+.bar div.on{background:var(--accent-soft)}
+#toast{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+/* Assistant commande */
+#botLog{flex:1;overflow:auto;padding:12px 0;display:flex;flex-direction:column;gap:8px}
+.bm{max-width:86%;padding:10px 13px;border-radius:16px 16px 16px 4px;background:var(--box);border:1px solid var(--border);font-size:13px;line-height:1.5;white-space:pre-line}
+.bm.me{align-self:flex-end;border-radius:16px 16px 4px 16px;background:var(--accent);color:#fff;border-color:var(--accent)}
+#botOpts{display:flex;flex-wrap:wrap;gap:8px;padding:6px 0}
+#botOpts button{border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 14px;border-radius:14px;font-weight:700;font-size:12.5px;cursor:pointer}
+#botOpts button:active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.bm.frm{max-width:100%;width:100%;white-space:normal}.bm.frm label{margin:10px 0 4px}.bm.frm select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--border);background:var(--input);color:var(--text);font:inherit}
+#botIn{gap:8px;align-items:center;padding-top:8px}
+.pk{position:relative}
+.pk .pct{position:absolute;top:10px;right:10px;background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px}
+.pk .old{display:block;color:var(--sub);font-size:11.5px;font-weight:500;letter-spacing:0}
+#promoBar{display:flex;flex-direction:column;gap:6px;margin:0 0 12px}
+#promoBar div{display:flex;align-items:center;gap:10px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent);border-radius:14px;padding:10px 14px;font-weight:700;font-size:13px}
+#promoBar b{background:var(--accent);color:#fff;border-radius:999px;padding:3px 9px;font-size:12px}
+/* Bara ambany : 5 bokotra mitovy lehibe, tsy mivoaka intsony */
+.bar{display:flex;align-items:stretch;justify-content:space-between;gap:2px;padding:6px;box-sizing:border-box;width:calc(100% - 24px);max-width:456px;overflow:hidden}
+.bar div{flex:1 1 0;min-width:0;padding:8px 2px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:10.5px;font-weight:700;white-space:nowrap;transition:background .2s,color .2s}
+.bar div .i,.bar div svg{width:22px;height:22px;flex:none}
+.bar div.on{background:var(--accent-soft);color:var(--accent)}
+@media(max-width:380px){.bar div{font-size:9.5px}}
+.bm .bt{display:block;white-space:normal;text-align:right;font-size:10.5px;font-weight:600;opacity:.6;margin-top:6px}
+.bm.me .bt{opacity:.8}
+.cd{display:block;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums;margin-top:2px}
+.cd::before{content:"Fin dans ";font-weight:600;opacity:.8}
+#promoBar div .cd{display:inline-block;margin:0 0 0 auto;white-space:nowrap}
+#promoBar div span{flex:1}
+.lgrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lg{padding:13px 8px;text-align:center;border:1px solid var(--border);border-radius:14px;background:var(--card);color:var(--text);font-weight:700;font-size:13.5px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.lg:active{transform:scale(.97)}
+.lg.on{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 8px 16px -8px var(--accent)}
+
+#authGate{position:fixed;top:0;right:0;bottom:0;left:0;z-index:99999;background:#000;color:#fff;overflow-y:auto;display:none;font-family:inherit}
+#authGate .aw{max-width:440px;margin:0 auto;padding:28px 22px 40px;text-align:center}
+#authGate img.al{width:84px;height:84px;border-radius:22px;object-fit:cover;margin:18px 0 14px}
+#authGate h1{font-size:32px;margin:6px 0 8px;font-weight:800}
+#authGate p.as{color:#9aa0a6;font-size:15px;margin:0 0 22px;line-height:1.4}
+#authGate .af{display:flex;align-items:center;gap:12px;background:#1c1c1e;border-radius:18px;padding:0 16px;height:54px;margin-bottom:12px;text-align:left}
+#authGate .af svg{width:20px;height:20px;stroke:#9aa0a6;fill:none;stroke-width:2;flex:none}
+#authGate .af input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-size:16px;min-width:0;height:100%}
+#authGate .ab{display:block;width:100%;height:54px;border-radius:27px;border:0;background:#0a84ff;color:#fff;font-size:17px;font-weight:700;margin-top:8px}
+#authGate .ab:disabled{opacity:.6}
+#authGate .ao{display:flex;align-items:center;gap:12px;color:#9aa0a6;margin:18px 0;font-size:15px}
+#authGate .ao:before,#authGate .ao:after{content:"";flex:1;height:1px;background:#333}
+#authGate .al2{color:#9aa0a6;font-size:15px;margin-top:20px}
+#authGate .al2 b{color:#0a84ff;cursor:pointer}
+#authGate .aerr{color:#ff6b6b;font-size:14px;min-height:18px;margin:4px 0}
+</style><style>
+.accTop{display:flex;align-items:center;gap:14px;margin:6px 0 16px}
+.accAv{width:54px;height:54px;flex:0 0 54px;border-radius:18px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+.accTop b{display:block;font-size:17px;font-weight:800}.accTop small{display:block;color:var(--sub);font-size:12.5px;word-break:break-all}
+.accStats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.accStats>div{background:var(--box);border:1px solid var(--border);border-radius:22px;padding:22px 8px;text-align:center}
+.accStats b{display:block;font-size:26px;font-weight:800}
+.accStats span{display:block;margin-top:6px;font-size:12.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--sub)}
+.langRow{display:flex;gap:8px}
+.langRow div{flex:1;text-align:center;padding:12px 8px;border-radius:14px;border:1px solid var(--border);background:var(--card);font-weight:700;font-size:13.5px;cursor:pointer;color:var(--text)}
+.langRow div.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.alang{text-align:center;margin:18px 0 6px;font-size:13px;opacity:.9}.alang span{cursor:pointer;padding:4px 8px;font-weight:600}.alang span.on{color:#E11D2E;font-weight:800}
+</style>
+<style>
+.hBal{display:flex;align-items:center;gap:6px;height:38px;padding:3px 12px 3px 3px;border-radius:999px;background:var(--card);border:1px solid var(--border);cursor:pointer;color:var(--text);white-space:nowrap}
+.hBal .pl{width:30px;height:30px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(22,163,74,.45)}
+.hBal .pl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round}
+.hBal b{font-size:14px;font-weight:800}
+.hBal small{font-size:12px;font-weight:600;color:var(--sub)}
+.hBal .pl:active{transform:scale(.92)}
+.wCard{position:relative;overflow:hidden;border-radius:32px;padding:22px 22px 20px;color:#fff;background:linear-gradient(145deg,#1c1c20 0%,#09090b 60%,#000 100%);border:1px solid #26262c;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.wCard::before{content:"";position:absolute;top:-110px;right:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,#3a3a42 0%,#25252b 60%,transparent 70%);opacity:.7;filter:blur(14px);pointer-events:none}
+.wCard>*{position:relative}
+.wTop{display:flex;justify-content:space-between;align-items:center}
+.wTop span{font-size:17px;color:#c4c4cc}
+.wAv{min-width:48px;height:48px;padding:0 6px;border-radius:24px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px}
+.wAmt{margin:14px 0 4px;display:flex;align-items:baseline;gap:10px}.wAmt b{font-size:44px;font-weight:800;line-height:1}.wAmt small{font-size:24px;color:#9a9aa6;font-weight:600}
+.wPend{font-size:12.5px;color:#fcd34d;margin-bottom:4px}
+.wBtns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.wb{border-radius:22px;padding:16px 4px 14px;text-align:center;font-weight:700;font-size:14.5px;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px}
+.wb.w1{background:#fff;color:#0f172a}.wb:active{transform:scale(.97)}
+.wb svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chRow{display:flex;gap:8px;margin-bottom:4px}
+.chRow div{flex:1;text-align:center;padding:12px 8px;border-radius:14px;border:1px solid var(--border);background:var(--card);font-weight:700;font-size:13px;cursor:pointer;color:var(--text)}
+.chRow div.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+</style>
+</head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/></symbol>
+<symbol id="fb" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 17 22 12c0-5.52-4.48-10-10-10z"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+<symbol id="back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+<symbol id="flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-7-1 2-2 3-3 3 0-3-1-6-4-9 0 4-4 6-4 12 0 4 3 8 7 8z"/></symbol>
+<symbol id="target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
+<symbol id="gem" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9zM2 9h20M9 3l-2 6 5 12 5-12-2-6"/></symbol>
+<symbol id="dl" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+<symbol id="send" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="inbox" viewBox="0 0 24 24"><path d="M3 13l3-8h12l3 8v6H3zM3 13h5l1 3h6l1-3h5"/></symbol>
+<symbol id="pkg" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+<symbol id="store" viewBox="0 0 24 24"><path d="M4 9l1-5h14l1 5M4 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 6 0 2.5 2.5 0 0 0 5 0M5 12v8h14v-8"/></symbol>
+</defs></svg>
+<div id="authGate"><div class="aw">
+<div id="aLogin"><img class="al" src="https://i.postimg.cc/pTdFhgfL/FB-IMG-17941202917422900.jpg" alt="MG STORE"><h1>Bon retour</h1><p class="as">Connectez-vous avec votre email pour accéder à votre boutique MG STORE.</p>
+<div class="af"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><input id="lEmail" type="email" placeholder="Adresse email" autocomplete="email"></div>
+<div class="af"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="lPass" type="password" placeholder="Mot de passe" autocomplete="current-password"></div>
+<div class="aerr" id="lErr"></div><button class="ab" id="lBtn" onclick="authLogin()">Se connecter</button>
+<div class="ao">ou</div><button class="ab" style="background:#1c1c1e;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:0" onclick="authGoogle()"><svg viewBox="0 0 48 48" style="width:22px;height:22px;stroke:none;fill:none"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.6 5.9c4.4-4.1 7-10.1 7-17.6z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>Continuer avec Google</button><div class="al2">Pas encore de compte ? <b onclick="authShow('reg')">S'inscrire</b></div>
+<div class="al2" style="margin-top:12px"><b onclick="authSkip()" style="color:#9aa0a6;font-weight:500">Continuer sans compte</b></div></div>
+<div id="aReg" style="display:none"><h1 style="margin-top:20px">Créer un compte</h1><p class="as">Inscrivez-vous pour suivre vos commandes et vos avantages MG STORE.</p>
+<div class="af"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><input id="rNom" placeholder="Nom" autocomplete="family-name"></div>
+<div class="af"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><input id="rPre" placeholder="Prénom" autocomplete="given-name"></div>
+<div class="af"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><input id="rEmail" type="email" placeholder="Adresse email" autocomplete="email"></div>
+<div class="af"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><input id="rTel" type="tel" inputmode="tel" placeholder="Téléphone (0341234567)" autocomplete="tel"></div>
+<div class="af"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="rPass" type="password" placeholder="6 caractères minimum" autocomplete="new-password"></div>
+<div class="aerr" id="rErr"></div><button class="ab" id="rBtn" onclick="authRegister()">Créer le compte</button>
+<div class="ao">ou</div><button class="ab" style="background:#1c1c1e;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:0" onclick="authGoogle()"><svg viewBox="0 0 48 48" style="width:22px;height:22px;stroke:none;fill:none"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.6 5.9c4.4-4.1 7-10.1 7-17.6z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>Continuer avec Google</button><div class="al2">Déjà un compte ? <b onclick="authShow('log')">Se connecter</b></div></div>
+<div class="alang"><span data-l="mg" onclick="setLang('mg')">Malagasy</span> · <span data-l="fr" onclick="setLang('fr')">Français</span></div></div></div>
+<header><div class="logo"><img id="logoImg" src="https://i.postimg.cc/pTdFhgfL/FB-IMG-17941202917422900.jpg" alt="MG STORE"><div class="lt"><div class="nm">MG <span>STORE</span></div><small class="adm on" id="admSt"><i></i><em>Admin en ligne</em></small></div></div>
+<div class="hact"><div class="hBal" onclick="hdrBalClick()"><span class="pl" role="button" aria-label="Recharger" onclick="event.stopPropagation();hdrPlus()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><b id="hBalN">0</b><small>Ar</small></div><div class="ic av" id="hdrAv" role="button" aria-label="Compte" onclick="authMenu()"><svg class="i"><use href="#user"/></svg></div><div class="ic" role="button" aria-label="Historique" onclick="showHist()"><svg class="i"><use href="#clock"/></svg></div><div class="ic" id="instBtn" role="button" aria-label="Installer l'application" onclick="installApp()"><svg class="i"><use href="#dl"/></svg></div><div class="ic" id="cartBtn" role="button" aria-label="Votre panier" onclick="openCart()"><b class="cbd" id="cartBd"></b><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div></div></header>
+
+<div id="pageHome">
+<div class="search"><svg class="i"><use href="#search"/></svg><input placeholder="Rechercher un jeu" oninput="fil(this.value)"></div>
+<div class="carouselWrap" id="carouselHome"><div class="carouselTrack" id="trackHome">
+<div class="carouselSlide" onclick="go('FREE FIRE')"><img src="https://i.postimg.cc/X75kRgTC/file-0000000091f08208b715763fd46ef1b3.png" alt="Free Fire"><div class="cap"><div class="ci"><svg class="i"><use href="#flame"/></svg></div><div><b>Free Fire</b><span>Diamants, abonnements et plus</span></div></div></div>
+<div class="carouselSlide" onclick="go('PUBG Mobile')"><img src="https://i.postimg.cc/pLGrkwq2/file-000000007cbc8211bd6ff2c1eb83bc3b.png" alt="PUBG Mobile"><div class="cap"><div class="ci"><svg class="i"><use href="#target"/></svg></div><div><b>PUBG Mobile</b><span>UC, Prime, Pass et packs</span></div></div></div>
+</div></div>
+<div class="carouselDots" id="dotsHome"><span class="on" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+<h2>Jeux populaires</h2><p class="sub">Tarifs MG STORE. Rechargez en quelques secondes.</p>
+<div class="g">
+<div class="c" onclick="go('Free Fire')"><div class="img"><img id="imgFFHome" src="https://i.postimg.cc/hj7DfByP/FB-IMG-17944707606484175.jpg" alt=""></div><div class="tx"><b>Free Fire</b><small>Top-up, Level Up, Abonnement</small></div></div>
+<div class="c" onclick="go('PUBG Mobile')"><div class="img"><img id="imgPUBGHome" src="https://i.postimg.cc/VvCJQMQR/FB-IMG-17944710143334718.jpg" alt=""></div><div class="tx"><b>PUBG Mobile</b><small>UC, Prime, Pass, Pack</small></div></div>
+</div>
+
+<div class="box"><div class="bh"><div class="bi"><svg class="i"><use href="#bolt"/></svg></div><div><b>Livraison rapide</b><p>Paiement Yas ou Orange Money</p></div></div>
+<div class="ct"><svg class="i s"><use href="#phone"/></svg>Yas<b>038 95 971 78</b></div><div class="ct"><svg class="i s"><use href="#phone"/></svg>Orange Money<b>032 52 431 25</b></div></div>
+
+<div class="themes"><div onclick="setTheme('light')"><svg class="i"><use href="#sun"/></svg>Clair</div><div onclick="setTheme('dark')"><svg class="i"><use href="#moon"/></svg>Sombre</div><div onclick="setTheme('auto')"><svg class="i"><use href="#auto"/></svg>Auto</div></div>
+<div class="help"><h3>Besoin d'aide ?</h3><p>Contactez-nous directement pour obtenir de l'aide</p>
+<div class="row2"><a class="hb fbk" href="https://www.facebook.com/mgstore882" target="_blank" rel="noopener"><svg class="i f"><use href="#fb"/></svg>MG STORE</a><a class="hb wak" href="https://wa.me/261349749171" target="_blank" rel="noopener"><svg class="i"><use href="#chat"/></svg>034 97 49 171</a></div></div>
+<p class="foot">MG STORE - 034 97 49 171<br>© 2026 MG STORE</p></div>
+
+<div id="pageGame" style="display:none">
+<div class="gameBar"><div class="ic" role="button" aria-label="Retour" onclick="back()"><svg class="i"><use href="#back"/></svg></div><b id="gameTitle">Free Fire</b></div>
+<div id="bannerBox"></div>
+<div id="cats" class="cat"></div>
+<div id="packs" class="g" style="margin-top:6px"></div>
+</div>
+
+<div class="mo" id="supportModal"><div class="sh">
+<div class="sht"><b>Support MG STORE</b><div class="ic" onclick="closeModal('supportModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<p class="sub" id="supSub" style="margin-top:4px">Nous répondons de 7h à 22h, 7j/7, en général en moins de 10 minutes.</p>
+<div class="row2"><div class="btn gr sm" onclick="openWhatsApp()"><svg class="i s"><use href="#chat"/></svg>WhatsApp</div><div class="btn sm" onclick="callSupport()"><svg class="i s"><use href="#phone"/></svg>Appeler</div></div>
+<h2 class="supH">Messages avec MG STORE</h2>
+<div class="thr" id="supThread"><div class="empty">Chargement...</div></div>
+<div class="cmp"><textarea id="supMsg" rows="1" placeholder="Écrivez votre message" oninput="supGrow(this)"></textarea><div class="snd" id="supSend" role="button" aria-label="Envoyer" onclick="sendSupportMsg()"><svg class="i"><use href="#send"/></svg></div></div>
+<h2 class="supH">Questions fréquentes</h2>
+<div class="faq" onclick="this.classList.toggle('open')"><b>Ma commande est en attente, que faire ?<svg class="i s"><use href="#chev"/></svg></b><p>Ouvrez Commandes : le statut de votre commande s'affiche dans l'Historique.</p></div>
+<div class="faq" onclick="this.classList.toggle('open')"><b>Combien de temps pour recevoir mes diamants ?<svg class="i s"><use href="#chev"/></svg></b><p>Une fois le paiement vérifié, l'admin envoie les diamants en 5 à 10 minutes.</p></div>
+<div class="faq" onclick="this.classList.toggle('open')"><b>Je n'ai pas reçu mes diamants ou UC<svg class="i s"><use href="#chev"/></svg></b><p>Vérifiez que votre UID et votre pseudo sont exacts.</p></div>
+<div class="faq" onclick="this.classList.toggle('open')"><b>Où trouver ma référence ?<svg class="i s"><use href="#chev"/></svg></b><p>Dans le SMS Yas ou Orange Money reçu après le paiement.</p></div>
+<div class="faq" onclick="this.classList.toggle('open')"><b>Comment payer ?<svg class="i s"><use href="#chev"/></svg></b><p>1. Choisissez votre pack. 2. Payez par Yas ou Orange Money. 3. Copiez la référence. 4. Confirmez.</p></div>
+<div class="ord" style="margin-top:12px"><div class="kv">WhatsApp<b>034 97 49 171</b></div><div class="kv">Appel / Yas<b>038 95 971 78</b></div><div class="kv">Orange Money<b>032 52 431 25</b></div></div>
+</div></div>
+
+<div class="mo" id="accModal"><div class="sh">
+<div class="sht"><b>Mon compte</b><div class="ic" onclick="closeModal('accModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<div class="accTop"><div class="accAv" id="accAv">M</div><div style="min-width:0"><b id="accNm">-</b><small id="accEm"></small></div></div>
+<div class="wCard"><div class="wTop"><span>Mon solde</span></div>
+<div class="wAmt"><b id="wBal">…</b><small>Ar</small></div>
+<div class="wPend" id="wPend" style="display:none"><span>⏳ </span><b id="wPendN"></b><span> Ar · en attente de validation</span></div>
+<div class="wBtns"><div class="wb w1" onclick="openRech()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Recharger</div><div class="wb" onclick="openRetrait()"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="2"/><path d="M7 12h.01M17 12h.01"/></svg>Retrait</div><div class="wb" onclick="openActivity()"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2"/></svg>Activité</div></div></div>
+<div class="accStats" style="margin-top:12px"><div><b id="accCmd">0</b><span>Commandes</span></div><div><b id="accTot">0 Ar</b><span>Total livré</span></div></div>
+<h2 class="supH">Paramètres</h2>
+<div class="ord"><div class="kv" style="padding-top:0">Langue</div><div class="langRow"><div data-l="mg" onclick="setLang('mg')">Malagasy</div><div data-l="fr" onclick="setLang('fr')">Français</div></div></div>
+<div class="btn ol" style="margin-top:14px" onclick="accLogout()">Se déconnecter</div>
+</div></div>
+
+<div class="mo" id="rechModal"><div class="sh">
+<div class="sht"><b>Recharger mon solde</b><div class="ic" onclick="closeModal('rechModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<label>Montant (Ar)</label><input id="rechAmt" inputmode="numeric" placeholder="Ex : 5000" oninput="rechAmtChg()">
+<div id="rechRest" style="display:none">
+<label>Mode de paiement</label>
+<div class="chRow" id="rechM"><div data-m="MVOLA" onclick="rechSet('MVOLA')">YAS</div><div data-m="ORANGE" onclick="rechSet('ORANGE')">ORANGE MONEY</div></div>
+<div class="ord" style="margin-top:12px"><div class="kv" style="padding-top:0">Numéro de paiement<b id="rechNum">-</b></div><div class="kv" style="padding-bottom:0">Bénéficiaire<b id="rechNm">-</b></div></div>
+<div class="btn gr" style="margin-top:10px" onclick="rechUssd()"><svg class="i s"><use href="#bolt"/></svg>Envoyer le code USSD</div>
+<p class="sub" style="margin-top:10px">Envoyez le montant au numéro ci-dessus (ou via le code USSD), puis saisissez la référence reçue par SMS.</p>
+<label>Référence de transaction</label><input id="rechRef" placeholder="Ex : 5443017XX">
+<div class="btn" onclick="sendRech()">Envoyer la demande</div>
+</div>
+</div></div>
+
+<div class="mo" id="retModal"><div class="sh">
+<div class="sht"><b>Retrait</b><div class="ic" onclick="closeModal('retModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<div class="ord"><div class="kv" style="padding:0">Solde disponible<b id="retAvail">0 Ar</b></div></div>
+<label>Montant (Ar)</label><input id="retAmt" inputmode="numeric" placeholder="Ex : 5000" oninput="retAmtChg()">
+<label>Mode de paiement</label>
+<div class="chRow" id="retM"><div data-m="MVOLA" onclick="retSet('MVOLA')">YAS</div><div data-m="ORANGE" onclick="retSet('ORANGE')">ORANGE MONEY</div></div>
+<label>Numéro pour recevoir l'argent</label><input id="retTel" inputmode="tel" placeholder="Ex : 034 XX XX XX">
+<label>Nom du titulaire du numéro</label><input id="retNom" placeholder="Ex : RAKOTO Jean">
+<div class="ord" style="margin-top:12px"><div class="kv" style="padding-top:0">Frais de transfert<b id="retFee">0 Ar</b></div><div class="kv" style="padding-bottom:0">Vous recevrez<b id="retNet">0 Ar</b></div></div>
+<p class="sub" style="margin-top:8px">Les frais de transfert sont déduits du montant retiré.</p>
+<div class="btn" onclick="sendRetrait()">Envoyer la demande</div>
+</div></div>
+
+<div class="mo" id="actModal"><div class="sh">
+<div class="sht"><b>Activité</b><div class="ic" onclick="closeModal('actModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<div id="actList"></div>
+</div></div>
+
+<div class="mo" id="panierModal"><div class="sh">
+<div class="sht"><b>Votre panier</b><div class="ic" onclick="closeModal('panierModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<label>1. Identifiant du jeu (UID)</label><input id="pid" placeholder="Ex : 123456789" inputmode="numeric">
+<label>Pseudo dans le jeu</label><input id="pseudo" placeholder="Ex : NTSOA">
+<div class="note"><svg class="i s"><use href="#info"/></svg>Vérifiez bien l'orthographe exacte de votre pseudo.</div>
+<label>2. Votre commande</label>
+<div id="cartList"></div>
+<div class="sub" style="text-align:center;margin:2px 0 6px"><span style="color:var(--accent);font-weight:700;cursor:pointer" onclick="closeModal('panierModal')">+ Ajouter un autre pack</span></div>
+<label>3. Paiement</label><input id="tel" placeholder="Numéro de téléphone, ex : 034 XX XX XX" inputmode="tel">
+<div style="font-size:12px;color:var(--sub);margin:10px 0 8px">Mode de paiement</div>
+<div class="paym"><div id="pMVOLA" class="on" onclick="setPay('MVOLA')"><img src="https://i.postimg.cc/P5gpy2gH/FB-IMG-17944664593454604.jpg" alt="Yas"><span>YAS</span></div><div id="pORANGE" onclick="setPay('ORANGE')"><img src="https://i.postimg.cc/sD1MRkyD/FB-IMG-17944664844108804.jpg" alt="Orange Money"><span>ORANGE MONEY</span></div><div id="pSOLDE" style="grid-column:1/-1;height:58px" onclick="setPay('SOLDE')"><span style="font-size:13px">💰 SOLDE</span><small id="pSoldeBal" style="color:#64748B;font-size:11px"></small></div></div>
+<div class="tot"><span>Total à payer</span><span id="totalPay">4 900 Ar</span></div>
+<div class="btn" onclick="continuer()">Continuer le paiement<svg class="i s"><use href="#arrow"/></svg></div>
+</div></div>
+
+<div class="mo" id="recapModal"><div class="sh">
+<div class="sht"><b>Récapitulatif</b><div class="ic" onclick="closeModal('recapModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<p class="sub" style="margin-top:4px">Vérifiez vos informations avant de payer.</p>
+<div class="ord"><div class="kv">ID joueur (UID)<b id="rId">-</b></div><div class="kv">Pseudo<b id="rPseudo">-</b></div><div class="kv">Téléphone<b id="rTel">-</b></div><div class="kv">Paiement<b id="rPay">YAS</b></div></div>
+<div class="tot"><span>Total à payer</span><span id="rTotal">4 900 Ar</span></div>
+<div class="row2" style="margin-top:12px"><div class="btn ol" style="margin:0" onclick="closeModal('recapModal')">Annuler</div><div class="btn gr" style="margin:0" onclick="goPay()"><svg class="i s"><use href="#check"/></svg>Confirmer</div></div>
+</div></div>
+
+<div class="mo" id="payModal"><div class="sh" style="text-align:center">
+<div class="hero-ic ye"><svg class="i l"><use href="#bolt"/></svg></div>
+<h2 style="margin-top:0">Paiement requis</h2><p class="sub">Commande en attente de paiement</p>
+<div class="ord" style="text-align:left"><small style="color:var(--sub)">Bénéficiaire</small><br><b id="payName">NOMENJANAHARY Jules Romain</b>
+<div class="kv" style="margin-top:6px">Montant à payer<b id="payMontant">4 900 Ar</b></div><div class="kv">Via<b id="payVia">YAS</b></div><div class="kv">Joueur<b id="payJoueur">-</b></div></div>
+<div style="margin:10px 0;border-radius:12px;border:1px solid var(--border);background:#fff;padding:8px"><img id="payImg" src="https://i.postimg.cc/P5gpy2gH/FB-IMG-17944664593454604.jpg" style="width:100%;max-width:160px;height:44px;object-fit:contain;display:block;margin:auto" alt=""></div>
+<label style="text-align:left">1. Effectuer le paiement</label>
+<div class="btn gr" style="margin-top:0" onclick="ussd()"><svg class="i s"><use href="#bolt"/></svg>Envoyer le code USSD</div>
+<div class="numbox" id="payNum">038 95 971 78<span onclick="copyNum()"><svg class="i"><use href="#copy"/></svg></span></div>
+<label style="text-align:left">2. Référence de transaction</label><input id="ref" placeholder="Ex : 5443017XX">
+<label style="text-align:left">3. Message pour MG STORE (optionnel)</label><textarea id="orderMsg" placeholder="Ex : Merci de livrer rapidement" rows="2"></textarea>
+<div class="btn" onclick="confirmPay()"><svg class="i s"><use href="#check"/></svg>Confirmer le paiement</div>
+<div class="btn ol" onclick="closeModal('payModal')">Retour</div>
+</div></div>
+
+<div class="mo" id="okModal"><div class="sh" style="text-align:center;padding-top:20px">
+<div class="hero-ic gn"><svg class="i l"><use href="#check"/></svg></div>
+<h2>Commande reçue</h2><p style="color:var(--sub);font-size:13px">Suivez votre commande avec votre référence.<br><b id="okRef"></b><br><span id="okJoueur"></span></p>
+<div class="btn" onclick="closeModal('okModal');back();autoSuivi()">Voir le statut de ma commande<svg class="i s"><use href="#arrow"/></svg></div></div></div>
+
+<div class="mo" id="histModal"><div class="sh">
+<div class="sht"><b>Mes commandes</b><div class="ic" onclick="closeModal('histModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<p class="sub" style="margin-top:4px">Vos commandes s'affichent automatiquement sur cet appareil.</p>
+<h2 style="margin-top:18px">Historique</h2>
+<div style="display:flex;gap:8px"><input id="histSearch" placeholder="Filtrer par référence ou pseudo" style="flex:1"><div class="ic" style="width:48px;height:auto;background:var(--accent);color:#fff;border-color:var(--accent)" onclick="loadHistory()"><svg class="i"><use href="#search"/></svg></div></div>
+<div id="histList" style="margin-top:12px;color:var(--sub);font-size:13px">Chargement...</div>
+<div class="btn gr" onclick="loadHistory()">Actualiser le statut</div></div></div>
+
+<div id="toast"></div>
+<nav class="bar"><div class="on" onclick="back()"><svg class="i"><use href="#home"/></svg>Accueil</div><div onclick="showHist()"><svg class="i"><use href="#box"/></svg>Commandes</div><div onclick="openModal('supportModal')"><svg class="i"><use href="#chat"/></svg>Support<i class="nb" id="supBadge"></i></div><div onclick="toggleTheme()"><svg class="i"><use href="#moon"/></svg>Thème</div></nav>
+
+<script>
+var DB='https://mg-store-882-default-rtdb.firebaseio.com';
+var sel='Free Fire',cat='TOP-UP',pk={n:'100 + 10',pr:4900},qty=1,payMeth='MVOLA',lastRef='',suiviTimer=null,histTimer=null,deferredPrompt=null,curList=[];
+var D={'MVOLA':{n:'038 95 971 78',nm:'NOMENJANAHARY Jules Romain',c:'0389597178',label:'YAS',img:'https://i.postimg.cc/P5gpy2gH/FB-IMG-17944664593454604.jpg'},'ORANGE':{n:'032 52 431 25',nm:'LYDIE AIMEE RAKOTONIRINA',c:'0325243125',label:'ORANGE MONEY',img:'https://i.postimg.cc/sD1MRkyD/FB-IMG-17944664844108804.jpg'}};
+var IMG={'Free Fire':'https://i.postimg.cc/hj7DfByP/FB-IMG-17944707606484175.jpg','PUBG Mobile':'https://i.postimg.cc/VvCJQMQR/FB-IMG-17944710143334718.jpg'};
+var IMAGES={logo:'https://i.postimg.cc/pTdFhgfL/FB-IMG-17941202917422900.jpg',ff:IMG['Free Fire'],pubg:IMG['PUBG Mobile'],yas:D.MVOLA.img,orange:D.ORANGE.img};
+function ic(n,c){if(n=='gem'){if(window.GAME=='FF'){return '<img src="https://i.postimg.cc/QtGr8m0R/received-996028922978198.jpg" style="width:28px;height:28px;object-fit:contain;border-radius:6px">'}else{return '<img src="https://i.postimg.cc/QdJgcFjF/received-1729562692022173.jpg" style="width:28px;height:28px;object-fit:contain;border-radius:6px">'}}return '<svg class="i"><use href="#'+n+'"/></svg>'}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+var TOFF=0;function NOW(){return Date.now()+TOFF}
+function fmtCd(end){var r=end-NOW();if(r<=0)return'';var h=Math.floor(r/3600000),m=Math.floor(r%3600000/60000),s=Math.floor(r%60000/1000),d=Math.floor(h/24),p=function(n){return('0'+n).slice(-2)};return d>0?d+'j '+p(h%24)+'h '+p(m)+'m':p(h)+':'+p(m)+':'+p(s)}
+var TSIG='',PSIG='';
+function $(i){return document.getElementById(i)}
+function setSrc(el,u,direct){if(!el||!u||el.getAttribute('src')===u)return;if(direct){el.src=u;return}var p=new Image();p.onload=function(){el.src=u};p.src=u}
+function applyImages(direct){
+setSrc($('logoImg'),IMAGES.logo,direct);setSrc($('imgFFHome'),IMAGES.ff,direct);setSrc($('imgPUBGHome'),IMAGES.pubg,direct);
+setSrc($('payImg'),payMeth=='MVOLA'?IMAGES.yas:IMAGES.orange,direct);
+setSrc(document.querySelector('#pMVOLA img'),IMAGES.yas,direct);setSrc(document.querySelector('#pORANGE img'),IMAGES.orange,direct);
+IMG['Free Fire']=IMAGES.ff;IMG['PUBG Mobile']=IMAGES.pubg;D.MVOLA.img=IMAGES.yas;D.ORANGE.img=IMAGES.orange;
+var l=document.querySelector('link[rel="icon"]');if(l&&l.getAttribute('href')!==IMAGES.logo)l.href=IMAGES.logo;var bb=$('bannerBox'),bi=window.sel&&IMG[window.sel];if(bb&&bi&&$('pageGame').style.display=='block'){var cu=bb.querySelector('img');if(!cu||cu.getAttribute('src')!==bi)bb.innerHTML='<img src="'+esc(bi)+'" alt="">'}}
+try{var _c=JSON.parse(localStorage.getItem('mgImgs')||'null');if(_c){Object.keys(_c).forEach(function(k){if(_c[k])IMAGES[k]=_c[k]});applyImages(true)}}catch(e){}
+function iwDone(){var n=0,t=setInterval(function(){var ok=['logoImg','imgFFHome','imgPUBGHome'].every(function(i){var e=$(i);return !e||(e.complete&&e.naturalWidth>0)});if(ok||++n>30){clearInterval(t);document.documentElement.classList.remove('iw')}},150)}
+function loadImages(){fetch(DB+'/images.json').then(function(r){return r.json()}).then(function(v){if(v){var c={};Object.keys(v).forEach(function(k){if(v[k])c[k]=v[k]});IMAGES=Object.assign(IMAGES,c);try{localStorage.setItem('mgImgs',JSON.stringify(IMAGES))}catch(e){}applyImages(window._fi!==1);window._fi=1}setTimeout(iwDone,120)}).catch(function(){iwDone()})}
+loadImages();setInterval(loadImages,5000);avPaint();setTimeout(refreshOrder,0);
+/* Carousel */
+var slideIdx=0,slideN=2,slideTimer=null,touchX=null;
+function updateCarousel(){var t=$('trackHome');if(!t)return;var w=t.children[0].offsetWidth+10;t.style.transform='translateX('+(-slideIdx*w)+'px)';Array.from($('dotsHome').children).forEach(function(d,i){d.classList.toggle('on',i==slideIdx)})}
+function goSlide(i){slideIdx=i;updateCarousel();restartAuto()}
+function restartAuto(){if(slideTimer)clearInterval(slideTimer);slideTimer=setInterval(function(){slideIdx=(slideIdx+1)%slideN;updateCarousel()},3500)}
+restartAuto();
+(function(){var el=$('carouselHome');
+el.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX;clearInterval(slideTimer)},{passive:true});
+el.addEventListener('touchend',function(e){if(touchX===null)return;var dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>40)slideIdx=(slideIdx+1)%slideN;touchX=null;updateCarousel();restartAuto()},{passive:true})})();
+window.addEventListener('resize',updateCarousel);setTimeout(updateCarousel,300);
+/* Catalogue */
+var ORDER={'Free Fire':['TOP-UP','LEVEL UP','ABONNEMENT','BOOYAH PASS','LARGAGE'],'PUBG Mobile':['STANDARD UC','PRIME','PASS','PACK']};
+var DATA={'Free Fire':{
+'TOP-UP':[['100 + 10',4900],['210 + 21',9800],['310 + 31',14700],['530 + 53',25500],['1080 + 108',48000],['2200 + 220',94000]],
+'LEVEL UP':[['Level Up Niv 6 - 120',3500],['Level Up Niv 10 - 200',4500],['Level Up Niv 15 - 200',4500],['Level Up Niv 20 - 200',4500],['Level Up Niv 25 - 200',4500],['Level Up Niv 30 - 350',6500],['Total Level Up - 1270',28000]],
+'ABONNEMENT':[['WEEKLY',11500],['WEEKLY (Par compte)',10500],['MONTHLY',50000],['MONTHLY (Par compte)',43000]],
+'BOOYAH PASS':[['Gifte BOOYAH PASS',7000]],
+'LARGAGE':[['Largage 0,99$',6500],['Largage 1,99$',12000]]},
+'PUBG Mobile':{
+'STANDARD UC':[['30 UC',3000],['60 UC',5000],['180 UC',14000],['240 UC',18000],['325 UC',21500],['445 UC',31500],['505 UC',35000],['660 UC',45000],['840 UC',55000],['1320 UC',85000],['1800 UC',110000],['40500 UC',2070000]],
+'PRIME':[['Prime (1 Month)',5000],['Prime (3 Month)',15000],['Prime (6 Month)',28500],['Prime Plus (1 Month)',45000],['Prime (12 Month)',55000],['Prime Plus (3 Month)',125000],['Prime Plus (6 Month)',250000],['Prime Plus (12 Month)',530000]],
+'PASS':[['Elite Pass Lv 1-50',28500],['Elite Pass Lv 1-100',55500],['Elite Pass Plus Lv 1-100',130000]],
+'PACK':[['First Purchase Pack',5000],['Weekly Deal Pack 1',5100],['Upgradable Firearm',15000],['Weekly Mythic Emblem',18000],['Mythic Emblem Pack',23800]]}};
+function norm(s){return (s||'').toString().toUpperCase().replace(/[^A-Z0-9]/g,'')}
+function fmt(n){return n.toLocaleString()+' Ar'}
+var pkImg='';
+var CART=[];try{CART=JSON.parse(localStorage.getItem('mg_cart')||'[]')||[]}catch(e){CART=[]}
+function cartSave(){try{localStorage.setItem('mg_cart',JSON.stringify(CART))}catch(e){}}
+function cartTotal(){return CART.reduce(function(a,x){return a+x.pr*x.q},0)}
+function cartQty(){return CART.reduce(function(a,x){return a+x.q},0)}
+function cartPackStr(){return CART.map(function(x){return x.n+' x'+x.q}).join(' + ')}
+function cartUniq(k){var r=[];CART.forEach(function(x){if(r.indexOf(x[k])<0)r.push(x[k])});return r.join(' + ')}
+function cartClear(){CART=[];cartSave();refreshOrder()}
+function cartQ(i,d){var x=CART[i];if(!x)return;x.q+=d;if(x.q<1)CART.splice(i,1);cartSave();refreshOrder();if(!CART.length)closeModal('panierModal')}
+function cartDel(i){CART.splice(i,1);cartSave();refreshOrder();if(!CART.length)closeModal('panierModal')}
+function refreshOrder(){window.pkChosen=CART.length?1:0;cartBadge();var L=$('cartList');if(L){L.innerHTML=CART.map(function(x,i){return '<div class="ord ci">'+(x.img?'<img src="'+esc(x.img)+'" alt="">':'')+'<div class="cm"><b>'+esc(x.n)+'</b><small>'+esc(x.g+' - '+x.c)+'</small><div class="cp">'+fmt(x.pr*x.q)+'</div></div><div class="cq"><div class="ic" role="button" onclick="cartQ('+i+',-1)"><svg class="i"><use href="#minus"/></svg></div><b>'+x.q+'</b><div class="ic" role="button" onclick="cartQ('+i+',1)"><svg class="i"><use href="#plus"/></svg></div><div class="ic" role="button" aria-label="Retirer" onclick="cartDel('+i+')"><svg class="i"><use href="#x"/></svg></div></div></div>'}).join('')}
+var t=fmt(cartTotal());$('totalPay').textContent=t;$('rTotal').textContent=t;$('payMontant').textContent=t;try{$('pSoldeBal').textContent='Disponible : '+Math.max(0,wCalc(wTx).avail).toLocaleString()+' Ar'}catch(e){}}
+function avImg(el,src){var im=new Image();im.alt='';im.referrerPolicy='no-referrer';im.onload=function(){el.textContent='';el.appendChild(im)};im.src=src}
+function savePhoto(u,url){if(!u||!u.id||!url)return;var key='mg_ph_'+u.id;try{if(sessionStorage.getItem(key)===url)return;sessionStorage.setItem(key,url)}catch(e){}fetch(DB+'/users/'+u.id+'.json',{method:'PATCH',body:JSON.stringify({photo:url})}).catch(function(){})}
+function avSet(el,u,ini){el.textContent=ini;if(u.photo){avImg(el,u.photo);return}if(u.id)fetch(DB+'/users/'+u.id+'.json').then(function(r){return r.json()}).then(function(d){if(d&&d.photo&&authSession()&&authSession().id===u.id){avImg(el,d.photo)}}).catch(function(){})}
+function avPaint(){var el=$('hdrAv');if(!el)return;var u=authSession();if(!u){el.innerHTML='<svg class="i"><use href="#user"/></svg>';return}
+var ini=((u.prenom||u.email||'M').trim().charAt(0)||'M').toUpperCase(),got=false;var show=function(src,strong){if(got&&!strong)return;var im=new Image();im.alt='';im.referrerPolicy='no-referrer';im.onload=function(){if(got&&!strong)return;if(strong)got=true;el.innerHTML='';el.appendChild(im)};im.src=src};
+el.innerHTML='<b>'+esc(ini)+'</b>';if(u.photo){show(u.photo,true);savePhoto(u,u.photo);return}
+var hasFb=false;try{for(var i=0;i<localStorage.length;i++){if(/^firebase:authUser/.test(localStorage.key(i)))hasFb=true}}catch(e){}
+if(hasFb&&u.email){var ld=(window.firebase&&firebase.auth)?Promise.resolve():authLoadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js').then(function(){return authLoadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js')});
+ld.then(function(){if(!firebase.apps.length)firebase.initializeApp(FB_CFG);firebase.auth().onAuthStateChanged(function(g){var cu=authSession();if(g&&g.photoURL&&cu&&g.email&&g.email.toLowerCase()==String(cu.email).toLowerCase()){cu.photo=g.photoURL;try{localStorage.setItem('mg_user',JSON.stringify(cu))}catch(e){}savePhoto(cu,g.photoURL);show(g.photoURL,true)}})}).catch(function(){})}
+if(u.email)authHash(String(u.email).trim().toLowerCase()).then(function(h){if(/^[0-9a-f]{64}$/.test(h)&&authSession()&&authSession().email===u.email)show('https://www.gravatar.com/avatar/'+h+'?s=96&d=404',false)})}
+function cartBadge(){var b=$('cartBd');if(!b)return;if(CART.length){b.textContent=cartQty();b.classList.add('on')}else b.classList.remove('on')}
+function openCart(){if(!CART.length){toast('Votre panier est vide','err');return}refreshOrder();openModal('panierModal')}
+function isStandalone(){try{return /MGStoreApp/.test(navigator.userAgent)||matchMedia('(display-mode: standalone)').matches||navigator.standalone===true}catch(e){return false}}
+function instBox(show,txt,pct){var b=$('instBox');if(!b){b=document.createElement('div');b.id='instBox';b.innerHTML='<b></b><div class="pb"><i></i></div>';document.body.appendChild(b)}b.style.display=show?'block':'none';if(txt)b.querySelector('b').textContent=txt;if(pct!=null)b.querySelector('i').style.width=pct+'%'}
+var instTimer=null;
+function instStart(){var p=8;instBox(true,'Téléchargement de MG STORE…',p);clearInterval(instTimer);instTimer=setInterval(function(){p=Math.min(92,p+Math.random()*9);instBox(true,'Téléchargement de MG STORE…',p)},600);setTimeout(function(){if(instTimer){clearInterval(instTimer);instTimer=null;instBox(false)}},30000)}
+function installPWA(){if(isStandalone()){toast('MG STORE est déjà installée','ok');return}
+if(!deferredPrompt){toast('Chrome : menu ⋮ puis Installer l\'application. iPhone : Partager, Sur l\'écran d\'accueil.','ok');return}
+var dp=deferredPrompt;deferredPrompt=null;dp.prompt();dp.userChoice.then(function(c){if(c&&c.outcome==='accepted')instStart()}).catch(function(){})}
+
+/* ===== Installation APK + suivi des installations (visible dans Admin > Installs) ===== */
+function mgDev(){var id=null;try{id=localStorage.getItem('mg_dev');if(!id){id='d'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);localStorage.setItem('mg_dev',id)}}catch(e){id='d'+Math.random().toString(36).slice(2,9)}return id}
+function mgMode(){return /MGStoreApp/.test(navigator.userAgent)?'apk':(isStandalone()?'pwa':'web')}
+function mgModel(){var m=navigator.userAgent.match(/Android[^;)]*;\s*([^)]*?)(\sBuild|\))/);return m?m[1]:(/iPhone|iPad/.test(navigator.userAgent)?'iOS':'?')}
+function mgTrack(extra){try{var d={mode:mgMode(),model:mgModel(),last:Date.now()};if(extra)for(var k in extra)d[k]=extra[k];var first=false;try{first=!localStorage.getItem('mg_dev_ts');if(first)localStorage.setItem('mg_dev_ts','1')}catch(e){}if(first)d.ts=Date.now();fetch(DB+'/installs/'+mgDev()+'.json',{method:'PATCH',body:JSON.stringify(d)}).catch(function(){})}catch(e){}}
+function mgLinkDev(u){if(!u)return;mgTrack({uid:u.id||'',nom:((u.prenom||'')+' '+(u.nom||'')).trim(),email:u.email||'',tel:u.tel||''})}
+setTimeout(function(){if(mgMode()!=='web'){var u=authSession();mgTrack(u?{uid:u.id||'',nom:((u.prenom||'')+' '+(u.nom||'')).trim(),email:u.email||'',tel:u.tel||''}:null)}},1500);
+function installApp(){if(isStandalone()){toast('MG STORE est déjà installée','ok');return}
+if(/Android/i.test(navigator.userAgent)){fetch('MG_STORE.apk',{method:'HEAD',cache:'no-store'}).then(function(r){if(!r.ok)throw 0;mgTrack({mode:'download'});toast('Téléchargement de MG STORE… ouvrez ensuite le fichier dans Téléchargements pour installer','ok');var a=document.createElement('a');a.href='MG_STORE.apk';a.download='MG_STORE.apk';document.body.appendChild(a);a.click();a.remove()}).catch(function(){installPWA()})}
+else installPWA()}
+window.addEventListener('appinstalled',function(){clearInterval(instTimer);instTimer=null;instBox(true,'MG STORE installée ✅',100);setTimeout(function(){instBox(false)},2500);deferredPrompt=null;var b=$('instBtn');if(b)b.classList.add('hid')});
+setTimeout(function(){if(isStandalone()){var b=$('instBtn');if(b)b.classList.add('hid')}},0);
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e});
+function toast(msg,type){var t=$('toast');t.innerHTML=ic(type=='err'?'info':'check')+'<span>'+esc(msg)+'</span>';t.className=type||'';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+function loadTarifs(){fetch(DB+'/tarifs.json').then(function(r){return r.json()}).then(function(val){if(val&&Object.keys(val).length){var sg=JSON.stringify(val),ch=sg!==TSIG;TSIG=sg;DATA=val;applyPromo();if(ch&&$('pageGame').style.display=='block'){renderCats();renderPacks()}}}).catch(function(){})}
+loadTarifs();setInterval(loadTarifs,5000);
+/* Thème */
+function applyTheme(t){if(t=='auto'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t);var tb=$('themeBtn');if(tb)tb.innerHTML=ic(t=='dark'?'sun':'moon','');try{localStorage.setItem('mg_theme',t)}catch(e){}}
+function toggleTheme(){applyTheme((document.documentElement.getAttribute('data-theme')||'light')=='dark'?'light':'dark')}
+function setTheme(t){if(t=='auto'){try{localStorage.removeItem('mg_theme')}catch(e){}var h=new Date().getHours();applyTheme(h>=18||h<6?'dark':'light')}else applyTheme(t)}
+(function(){var s=null;try{s=localStorage.getItem('mg_theme')}catch(e){}if(s)applyTheme(s);else{var h=new Date().getHours();if(h>=18||h<6)applyTheme('dark')}})();
+/* Navigation */
+function fil(v){v=v.toLowerCase();document.querySelectorAll('#pageHome .c').forEach(function(x){x.style.display=x.textContent.toLowerCase().includes(v)?'block':'none'})}
+function back(){$('pageHome').style.display='block';$('pageGame').style.display='none';setTimeout(updateCarousel,100);scrollTo(0,0)}
+function go(g){sel=g;if(!DATA[g]){toast('Jeu introuvable','err');return}cat=(ORDER[g]||Object.keys(DATA[g]))[0];$('pageHome').style.display='none';$('pageGame').style.display='block';$('gameTitle').textContent=g;var img=IMG[g]||'';$('bannerBox').innerHTML=img?'<img src="'+esc(img)+'" alt="">':'';renderCats();renderPacks();scrollTo(0,0)}
+function renderCats(){var h='';var list=ORDER[sel]||Object.keys(DATA[sel]);list.forEach(function(c,i){if(!DATA[sel][c])return;h+='<div class="'+(c==cat?'on':'')+'" data-i="'+i+'">'+esc(c)+'</div>'});var box=$('cats');box.innerHTML=h;Array.from(box.children).forEach(function(d){d.onclick=function(){cat=list[d.getAttribute('data-i')];renderCats();renderPacks()}})}
+function renderPacks(){var box=$('packs');if(!DATA[sel]||!DATA[sel][cat]){box.innerHTML='<div class="empty" style="grid-column:1/-1">'+ic('box','l')+'<br>Aucun pack disponible.</div>';return}curList=DATA[sel][cat];var h='';curList.forEach(function(a,i){h+='<div class="pk">'+(a[2]?'<span class="pct">-'+(a[4]||Math.round((1-a[1]/a[2])*100))+'%</span>':'')+'<div class="pi">'+ic('gem','')+'</div><b>'+esc(a[0])+'</b><div class="pr">'+a[1].toLocaleString()+' Ar'+(a[2]?'<s class="old">'+a[2].toLocaleString()+' Ar</s>':'')+'</div>'+(a[3]?'<div class="cd" data-end="'+a[3]+'">'+fmtCd(a[3])+'</div>':'')+'<div class="btn" onclick="addIdx('+i+',this)">Ajouter</div></div>'});box.innerHTML=h}
+function addIdx(i,el){var a=curList[i],c=el&&el.closest?el.closest('.pk'):null,im=c&&c.querySelector('img');pkImg=im?im.src:'';add(a[0],a[1])}
+function add(n,pr){n=String(n).replace(/💎/g,'').trim();var go=function(){var x=null;CART.forEach(function(y){if(y.g===sel&&y.c===cat&&y.n===n&&y.pr===pr)x=y});if(x){x.q++;toast('Quantité : x'+x.q,'ok')}else CART.push({g:sel,c:cat,n:n,pr:pr,q:1,img:pkImg||''});pkImg='';cartSave();refreshOrder();openModal('panierModal')};
+if(CART.length&&CART[0].g!==sel){mgConfirm('!','Autre jeu','Le panier est pour un seul jeu. Vider le panier et commencer avec '+sel+' ?','Oui','Non',function(){CART=[];go()});return}go()}
+function setPay(m){payMeth=m;['MVOLA','ORANGE','SOLDE'].forEach(function(x){var e=$('p'+x);if(e)e.classList.toggle('on',x==m)});if(m==='SOLDE'){$('rPay').textContent='SOLDE';return}var d=D[m];$('payName').textContent=d.nm;$('payNum').innerHTML=esc(d.n)+'<span onclick="copyNum()">'+ic('copy','')+'</span>';$('payVia').textContent=d.label;$('rPay').textContent=d.label;$('payImg').src=d.img}
+function continuer(){if(!CART.length){toast('Votre panier est vide','err');return}var id=$('pid').value.trim(),tel=$('tel').value.trim(),pseudo=$('pseudo').value.trim();if(id.length<5){toast('Entrez votre ID joueur (UID)','err');return}if(pseudo.length<2){toast('Entrez votre pseudo exact dans le jeu','err');return}if(tel.length<9){toast('Entrez votre numéro de téléphone','err');return}$('rId').textContent=id;$('rPseudo').textContent=pseudo;$('rTel').textContent=tel;$('rPay').textContent=payMeth==='SOLDE'?'SOLDE':D[payMeth].label;$('payJoueur').textContent=pseudo+' ('+id+')';try{localStorage.setItem('mg_last_tel',tel);localStorage.setItem('mg_last_pseudo',pseudo);localStorage.setItem('mg_last_id',id)}catch(e){}closeModal('panierModal');openModal('recapModal')}
+function goPay(){closeModal('recapModal');if(payMeth==='SOLDE'){paySolde();return}setPay(payMeth);openModal('payModal')}
+function paySolde(){var u=authSession();if(!u){toast('Connectez-vous','err');return}var total=cartTotal();
+wFetch(function(l){if(!l){toast('Erreur de connexion','err');return}wTx=l;hdrBal(l);var c=wCalc(l);
+if(c.avail<total){toast('Solde insuffisant : '+Math.max(0,c.avail).toLocaleString()+' Ar. Rechargez votre solde.','err');return}
+var id=$('pid').value.trim(),tel=$('tel').value.trim(),pseudo=$('pseudo').value.trim(),r='SLD'+Date.now().toString(36).toUpperCase();
+var tx={type:'achat',amt:total,meth:'SOLDE',ref:r,uid:u.id,nom:((u.prenom||'')+' '+(u.nom||'')).trim(),email:u.email||'',status:'ok',ts:Date.now(),d:new Date().toLocaleString()};
+fetch(DB+'/wallet_tx.json',{method:'POST',body:JSON.stringify(tx)}).then(function(x){if(!x.ok)throw 0;return x.json()}).then(function(j){
+var order={uid:u.id,jeu:cartUniq('g'),cat:cartUniq('c'),pack:cartPackStr(),pr:total,qty:cartQty(),id:id,pseudo:pseudo,tel:tel,meth:'SOLDE',r:r,message:'',d:new Date().toLocaleString(),done:false,annule:false,ts:Date.now()};cartClear();
+return fetch(DB+'/commandes.json',{method:'POST',body:JSON.stringify(order)}).then(function(x){if(!x.ok)throw 0;
+try{var m=JSON.parse(localStorage.getItem('mg_wst')||'{}');if(j&&j.name)m[j.name]='ok';localStorage.setItem('mg_wst',JSON.stringify(m));var refs=JSON.parse(localStorage.getItem('mg_my_refs')||'[]');if(refs.indexOf(r)==-1)refs.push(r);localStorage.setItem('mg_my_refs',JSON.stringify(refs));localStorage.setItem('mg_last_tel',tel);localStorage.setItem('mg_last_ref',r)}catch(e){}
+lastRef=r;$('okRef').textContent='Réf : '+r;$('okJoueur').textContent='Joueur : '+pseudo+' ('+id+')';openModal('okModal');wWatch()})}).catch(function(){toast('Erreur de connexion','err')})})}
+function ussd(){var d=D[payMeth],total=cartTotal();var code=payMeth=='MVOLA'?'*111*1*2*'+d.c+'*'+total+'*2*auto#':'*144*2*'+d.c+'*'+total+'#';location.href='tel:'+encodeURIComponent(code)}
+function copyNum(){var t=D[payMeth].n;try{navigator.clipboard.writeText(t)}catch(e){}toast('Numéro copié : '+t,'ok')}
+function confirmPay(){var r=$('ref').value.trim(),id=$('pid').value.trim(),tel=$('tel').value.trim(),pseudo=$('pseudo').value.trim(),msgClient=$('orderMsg').value.trim();if(r.length<5){toast('Entrez la référence du SMS','err');return}if(!pseudo){toast('Entrez votre pseudo','err');return}lastRef=r;
+var us0=authSession(),order={uid:us0?us0.id:'',jeu:cartUniq('g'),cat:cartUniq('c'),pack:cartPackStr(),pr:cartTotal(),qty:cartQty(),id:id,pseudo:pseudo,tel:tel,meth:D[payMeth].label,r:r,message:msgClient,d:new Date().toLocaleString(),done:false,annule:false,ts:Date.now()};cartClear();
+fetch(DB+'/commandes.json',{method:'POST',body:JSON.stringify(order)}).catch(function(){toast('Erreur de connexion','err')});
+try{var refs=JSON.parse(localStorage.getItem('mg_my_refs')||'[]');if(refs.indexOf(r)==-1)refs.push(r);localStorage.setItem('mg_my_refs',JSON.stringify(refs));localStorage.setItem('mg_last_tel',tel);localStorage.setItem('mg_last_ref',r)}catch(e){}
+closeModal('payModal');$('okRef').textContent='Réf : '+r;$('okJoueur').textContent='Joueur : '+pseudo+' ('+id+')';openModal('okModal');$('ref').value='';$('orderMsg').value=''}
+/* Suivi */
+function badge(x){return x.annule?'<span class="bdg c">'+ic('x')+'Annulée</span>':x.done?'<span class="bdg d">'+ic('check')+'Validée</span>':'<span class="bdg w">'+ic('clock')+'En attente</span>'}
+function showSuivi(x){var box=$('suiviResult');box.style.display='block';if(!x){box.innerHTML='<div class="note" style="background:var(--err-soft);color:var(--err)">'+ic('info')+'Référence introuvable.</div>';return}
+var cls=x.annule?'cancelled':x.done?'done':'';var extra=x.annule?'Raison : '+esc(x.annuleRaison||'Contactez le support')+'<br>':'';
+box.innerHTML='<div class="histCard '+cls+'" style="margin:0"><div class="hh"><b>'+esc(x.jeu)+' - '+esc(x.pack)+'</b>'+badge(x)+'</div><div class="hd">'+extra+'Montant : '+Number(x.pr).toLocaleString()+' Ar<br>Joueur : '+esc(x.pseudo||'')+' ('+esc(x.id||'')+')</div></div>'}
+function fetchSuivi(){if(!lastRef||!$('suiviResult'))return;fetch(DB+'/commandes.json').then(function(r){return r.json()}).then(function(val){if(!val){showSuivi(null);return}var arr=Object.values(val).filter(function(o){return norm(o.r)==norm(lastRef)});showSuivi(arr.length?arr[arr.length-1]:null)}).catch(function(){})}
+function checkSuivi(){if(!$('suiviRef'))return;var r=$('suiviRef').value.trim();if(r.length<4){toast('Entrez votre référence','err');return}lastRef=r;try{localStorage.setItem('mg_last_ref',r)}catch(e){}fetchSuivi();if(suiviTimer)clearInterval(suiviTimer);suiviTimer=setInterval(fetchSuivi,3000)}
+function autoSuivi(){showHist()}
+/* Historique */
+function showHist(){openModal('histModal');$('histSearch').value='';loadHistory();if(histTimer)clearInterval(histTimer);histTimer=setInterval(loadHistory,3000)}
+function loadHistory(){var q=($('histSearch').value||'').trim().toLowerCase(),box=$('histList'),myRefs=[],myTel='';
+try{myRefs=JSON.parse(localStorage.getItem('mg_my_refs')||'[]');myTel=localStorage.getItem('mg_last_tel')||''}catch(e){}
+fetch(DB+'/commandes.json').then(function(r){return r.json()}).then(function(val){
+var emp=function(t,s){box.innerHTML='<div class="empty">'+ic('box','l')+'<br><b style="color:var(--text)">'+t+'</b><br><small>'+s+'</small></div>'};
+if(!val){emp('Aucune commande pour le moment','Passez votre première commande.');return}
+var all=Object.values(val),list=[];
+if(q){list=all.filter(function(o){return norm(o.tel).includes(norm(q))||norm(o.r).includes(norm(q))||(o.pseudo||'').toLowerCase().includes(q)||(o.id||'').toLowerCase().includes(q)})}
+else if(myRefs.length||authSession()){var uu=authSession();list=all.filter(function(o){return (uu&&o.uid==uu.id)||myRefs.some(function(r){return norm(r)==norm(o.r)})})}
+else if(myTel){list=all.filter(function(o){return norm(o.tel)==norm(myTel)})}
+if(!list.length){if(!myRefs.length&&!myTel){emp('Aucune commande sur cet appareil','Elle s\'affichera ici automatiquement après votre commande.')}else{emp('Aucune commande trouvée','Vos références : '+esc(myRefs.join(', ')||'aucune'))}return}
+var h='';list.reverse().forEach(function(x){var cls=x.annule?'cancelled':x.done?'done':'';
+h+='<div class="histCard '+cls+'"><div class="hh"><b>'+esc(x.jeu)+' - '+esc(x.pack)+'</b>'+badge(x)+'</div><div class="hd">'+(x.annule?'Raison : '+esc(x.annuleRaison||'Contactez le support')+'<br>':'')+'Joueur : '+esc(x.pseudo||'')+' ('+esc(x.id||'')+')<br>Prix : '+Number(x.pr).toLocaleString()+' Ar - '+esc(x.meth)+'<br>Réf : '+esc(x.r)+'<br>'+esc(x.d||'')+'</div></div>'});
+box.innerHTML=h}).catch(function(){box.innerHTML='<div class="empty">Erreur de connexion.</div>'})}
+/* Support & messages */
+function openWhatsApp(){location.href='https://wa.me/261349749171?text='+encodeURIComponent('Bonjour MG STORE, j\'ai besoin d\'aide !')}
+function callSupport(){location.href='tel:0389597178'}
+function okMsg(el){el.style.display='block';el.innerHTML='<span class="bdg d">'+ic('check')+'Message envoyé</span>'}
+
+/* Compte client (email + mot de passe) */
+function authSession(){try{return JSON.parse(localStorage.getItem('mg_user')||'null')}catch(e){return null}}
+function authHash(t){try{var b=new TextEncoder().encode(t);return crypto.subtle.digest('SHA-256',b).then(function(d){return Array.from(new Uint8Array(d)).map(function(x){return ('0'+x.toString(16)).slice(-2)}).join('')})}catch(e){var h=5381;for(var i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return Promise.resolve('x'+(h>>>0).toString(16))}}
+function authShow(w){$('aLogin').style.display=w=='log'?'block':'none';$('aReg').style.display=w=='reg'?'block':'none';$('lErr').textContent='';$('rErr').textContent=''}
+function authOpen(){$('authGate').style.display='block'}
+function authClose(){$('authGate').style.display='none'}
+function authSkip(){try{sessionStorage.setItem('mg_skip','1')}catch(e){}authClose()}
+function authApply(u){try{localStorage.setItem('mg_user',JSON.stringify(u));sessionStorage.removeItem('mg_skip')}catch(e){}try{mgLinkDev(u)}catch(e){}authClose();avPaint();if(u.tel&&$('tel')&&!$('tel').value)$('tel').value=u.tel;toast('Bienvenue '+(u.prenom||''),'ok')}
+function authKey(email){return authHash('mg:'+email)}
+function authErr(id,m){$(id).textContent=m}
+function authLogin(){var email=$('lEmail').value.trim().toLowerCase(),pw=$('lPass').value;if(!/^\S+@\S+\.\S+$/.test(email)){authErr('lErr','Adresse email invalide');return}if(!pw){authErr('lErr','Entrez votre mot de passe');return}
+$('lBtn').disabled=true;authErr('lErr','');
+Promise.all([authKey(email),authHash(email+':'+pw)]).then(function(r){return fetch(DB+'/users/'+r[0]+'.json').then(function(x){return x.json()}).then(function(u){$('lBtn').disabled=false;if(!u||u.pw!=r[1]){authErr('lErr','Email ou mot de passe incorrect');return}authApply({id:r[0],nom:u.nom,prenom:u.prenom,email:u.email,tel:u.tel,photo:u.photo||''})})}).catch(function(){$('lBtn').disabled=false;authErr('lErr','Erreur de connexion')})}
+function authRegister(){var nom=$('rNom').value.trim(),pre=$('rPre').value.trim(),email=$('rEmail').value.trim().toLowerCase(),tel=$('rTel').value.trim(),pw=$('rPass').value;
+if(!nom||!pre){authErr('rErr','Entrez votre nom et prénom');return}if(!/^\S+@\S+\.\S+$/.test(email)){authErr('rErr','Adresse email invalide');return}if(tel.replace(/\D/g,'').length<9){authErr('rErr','Numéro de téléphone invalide');return}if(pw.length<6){authErr('rErr','6 caractères minimum');return}
+$('rBtn').disabled=true;authErr('rErr','');
+Promise.all([authKey(email),authHash(email+':'+pw)]).then(function(r){return fetch(DB+'/users/'+r[0]+'.json').then(function(x){return x.json()}).then(function(ex){if(ex){$('rBtn').disabled=false;authErr('rErr','Cet email a déjà un compte');return}
+var u={nom:nom,prenom:pre,email:email,tel:tel,pw:r[1],ts:Date.now()};return fetch(DB+'/users/'+r[0]+'.json',{method:'PUT',body:JSON.stringify(u)}).then(function(){$('rBtn').disabled=false;authApply({id:r[0],nom:nom,prenom:pre,email:email,tel:tel})})})}).catch(function(){$('rBtn').disabled=false;authErr('rErr','Erreur de connexion')})}
+
+/* Google (Firebase Auth) : renseignez apiKey ci-dessous */
+var FB_CFG={apiKey:'AIzaSyAYDg3sVbWa5fP7iKqcdnYTHe-yaRkya30',authDomain:'mg-store-882.firebaseapp.com',databaseURL:'https://mg-store-882-default-rtdb.firebaseio.com',projectId:'mg-store-882',storageBucket:'mg-store-882.firebasestorage.app',messagingSenderId:'832203923001',appId:'1:832203923001:web:40291eb9e981dd0ec1b7e8'};
+function authLoadScript(u){return new Promise(function(ok,ko){var e=document.createElement('script');e.src=u;e.onload=ok;e.onerror=ko;document.head.appendChild(e)})}
+function authGoogle(){if(!FB_CFG.apiKey){toast('Google non configuré : ajoutez apiKey dans FB_CFG','err');return}
+var go=function(){if(!firebase.apps.length)firebase.initializeApp(FB_CFG);var p=new firebase.auth.GoogleAuthProvider();return firebase.auth().signInWithPopup(p)};
+(window.firebase&&firebase.auth?Promise.resolve():authLoadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js').then(function(){return authLoadScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js')})).then(go).then(function(r){var g=r.user,email=(g.email||'').toLowerCase(),parts=(g.displayName||'').trim().split(' '),pre=parts[0]||'',nom=parts.slice(1).join(' ');
+return authKey(email).then(function(k){return fetch(DB+'/users/'+k+'.json').then(function(x){return x.json()}).then(function(u){if(u){savePhoto({id:k},g.photoURL);return authApply({id:k,nom:u.nom,prenom:u.prenom,email:email,tel:u.tel||'',photo:g.photoURL||u.photo||''})}
+var nu={nom:nom,prenom:pre,email:email,tel:'',pw:'',google:true,photo:g.photoURL||'',ts:Date.now()};return fetch(DB+'/users/'+k+'.json',{method:'PUT',body:JSON.stringify(nu)}).then(function(){authApply({id:k,nom:nom,prenom:pre,email:email,tel:'',photo:g.photoURL||''})})})})}).catch(function(e){if(e&&e.code=='auth/popup-closed-by-user')return;toast('Connexion Google impossible','err')})}
+function authMenu(){var u=authSession();if(!u){authShow('log');authOpen();return}openModal('accModal');accLoad();accStop();wWatch();accTimer=setInterval(wWatch,4000)}
+function accLoad(){var u=authSession();if(!u)return;var nm=((u.prenom||'')+' '+(u.nom||'')).trim()||'Mon compte';
+avSet($('accAv'),u,(nm.charAt(0)||'M').toUpperCase());$('accNm').textContent=nm;$('accEm').textContent=u.email||'';
+var c=$('accCmd'),t=$('accTot');c.textContent='…';t.textContent='…';
+fetch(DB+'/commandes.json').then(function(r){return r.json()}).then(function(val){var all=val?Object.values(val):[];
+var mine=all.filter(function(o){return o&&!o.annule&&(o.uid?o.uid===u.id:(u.tel&&norm(o.tel)&&norm(o.tel)===norm(u.tel)))});
+var tot=mine.filter(function(o){return o.done}).reduce(function(a,o){return a+(Number(o.pr)||0)},0);
+c.textContent=String(mine.length);t.textContent=tot.toLocaleString()+' Ar'}).catch(function(){c.textContent='0';t.textContent='0 Ar'})}
+function accLogout(){var u=authSession(),nm=u?(((u.prenom||'')+' '+(u.nom||'')).trim()||'Mon compte'):'';
+mgConfirm((nm.charAt(0)||'M').toUpperCase(),nm,'Voulez-vous vous déconnecter ?','Se déconnecter','Annuler',function(){try{localStorage.removeItem('mg_user')}catch(e){}avPaint();wTx=[];hdrBal(null);closeModal('accModal');authShow('log');authOpen()})}
+/* ===== Solde (wallet) ===== */
+var wTx=[],accTimer=null,rechMeth='MVOLA',retMeth='MVOLA',WMIN=1000;
+function accStop(){if(accTimer){clearInterval(accTimer);accTimer=null}}
+function wUid(){var u=authSession();return u?u.id:''}
+function wList(v,uid){if(!v||v.error)return[];return Object.keys(v).map(function(k){var t=v[k];if(!t||typeof t!=='object')return null;t.k=k;return t}).filter(function(t){return t&&t.uid===uid}).sort(function(a,b){return(b.ts||0)-(a.ts||0)})}
+function wFetch(cb){var uid=wUid();if(!uid){cb(null);return}
+fetch(DB+'/wallet_tx.json?orderBy=%22uid%22&equalTo=%22'+encodeURIComponent(uid)+'%22').then(function(r){return r.json()}).then(function(v){if(v&&v.error)throw 0;cb(wList(v,uid))}).catch(function(){fetch(DB+'/wallet_tx.json').then(function(r){return r.json()}).then(function(v){cb(wList(v,uid))}).catch(function(){cb(null)})})}
+function wCalc(l){var b=0,pd=0,pr=0;l.forEach(function(t){var a=Number(t.amt)||0;if(t.status==='ok'){b+=(t.type==='retrait'||t.type==='achat')?-a:a}else if(t.status==='pending'){if(t.type==='retrait')pr+=a;else pd+=a}});return{bal:b,avail:b-pr,pend:pd}}
+function hdrBal(l){var e=$('hBalN');if(!e)return;try{e.textContent=(authSession()&&l?wCalc(l).bal:0).toLocaleString()}catch(x){e.textContent='0'}}
+function hdrBalClick(){authMenu()}
+function hdrPlus(){if(!authSession()){authMenu();return}openRech()}
+function wPaint(l){var c=wCalc(l);$('wBal').textContent=c.bal.toLocaleString();var p=$('wPend');if(c.pend>0){$('wPendN').textContent=c.pend.toLocaleString();p.style.display='block'}else p.style.display='none'}
+function wWatch(){if(!wUid())return;wFetch(function(l){if(!l)return;var m={};try{m=JSON.parse(localStorage.getItem('mg_wst')||'{}')}catch(e){}var ev=null;
+l.forEach(function(t){var old=m[t.k];if(old==='pending'&&t.status!=='pending')ev=t;m[t.k]=t.status});
+try{localStorage.setItem('mg_wst',JSON.stringify(m))}catch(e){}
+wTx=l;hdrBal(l);if($('accModal').classList.contains('open'))wPaint(l);
+if(ev){mgChime();toast(ev.status==='ok'?(ev.type==='retrait'?'Retrait validé':'Solde ajouté : '+(Number(ev.amt)||0).toLocaleString()+' Ar'):'Demande refusée','ok')}})}
+setTimeout(wWatch,3500);setInterval(wWatch,8000);
+function chipMark(id,m){document.querySelectorAll('#'+id+' div').forEach(function(d){d.classList.toggle('on',d.getAttribute('data-m')===m)})}
+function rechSet(m){rechMeth=m;chipMark('rechM',m);$('rechNum').textContent=D[m].n;$('rechNm').textContent=D[m].nm}
+function rechAmt(){return parseInt(String($('rechAmt').value).replace(/\D/g,''),10)||0}
+function rechAmtChg(){$('rechRest').style.display=rechAmt()>=WMIN?'block':'none'}
+function ussdCode(m,amt){var c=D[m].c;return m=='MVOLA'?'*111*1*2*'+c+'*'+amt+'*2*auto#':'*144*2*'+c+'*'+amt+'#'}
+function rechUssd(){var a=rechAmt();if(a<WMIN){toast('Montant minimum : '+WMIN.toLocaleString()+' Ar','err');return}location.href='tel:'+encodeURIComponent(ussdCode(rechMeth,a))}
+/* Frais de transfert (retrait) - modifiez ce tableau : [montant max, frais] */
+var WFEES=[[10000,300],[25000,500],[50000,800],[100000,1500],[250000,2500],[500000,4000],[1e12,6000]];
+function wFee(a){for(var i=0;i<WFEES.length;i++)if(a<=WFEES[i][0])return WFEES[i][1];return 0}
+function retAmtChg(){var a=parseInt(String($('retAmt').value).replace(/\D/g,''),10)||0,f=a>0?wFee(a):0;$('retFee').textContent=f.toLocaleString()+' Ar';$('retNet').textContent=Math.max(0,a-f).toLocaleString()+' Ar'}
+function retSet(m){retMeth=m;chipMark('retM',m)}
+function openRech(){$('rechAmt').value='';$('rechRef').value='';$('rechRest').style.display='none';rechSet(rechMeth);openModal('rechModal')}
+function wPost(t,okMsg,modal){var u=authSession();if(!u)return;t.uid=u.id;t.nom=((u.prenom||'')+' '+(u.nom||'')).trim();t.email=u.email||'';t.status='pending';t.ts=Date.now();t.d=new Date().toLocaleString();
+fetch(DB+'/wallet_tx.json',{method:'POST',body:JSON.stringify(t)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){try{var m=JSON.parse(localStorage.getItem('mg_wst')||'{}');if(j&&j.name)m[j.name]='pending';localStorage.setItem('mg_wst',JSON.stringify(m))}catch(e){}
+closeModal(modal);toast(okMsg,'ok');wWatch()}).catch(function(){toast('Erreur de connexion','err')})}
+function sendRech(){var a=parseInt(String($('rechAmt').value).replace(/\D/g,''),10)||0,r=$('rechRef').value.trim();
+if(a<WMIN){toast('Montant minimum : '+WMIN.toLocaleString()+' Ar','err');return}
+if(r.length<5){toast('Entrez la référence du SMS','err');return}
+if(wTx.some(function(t){return t.type==='recharge'&&norm(t.ref)==norm(r)&&t.status!=='refus'})){toast('Référence déjà utilisée','err');return}
+wPost({type:'recharge',amt:a,meth:D[rechMeth].label,ref:r},'Demande envoyée. Votre solde sera mis à jour dès que MG STORE aura vérifié le paiement.','rechModal')}
+function openRetrait(){var c=wCalc(wTx),u=authSession();$('retAvail').textContent=Math.max(0,c.avail).toLocaleString()+' Ar';$('retAmt').value='';$('retTel').value=(u&&u.tel)||'';$('retNom').value='';retAmtChg();retSet(retMeth);openModal('retModal')}
+function sendRetrait(){var c=wCalc(wTx),a=parseInt(String($('retAmt').value).replace(/\D/g,''),10)||0,tel=$('retTel').value.trim();
+if(a<WMIN){toast('Montant minimum : '+WMIN.toLocaleString()+' Ar','err');return}
+if(a>c.avail){toast('Montant supérieur au solde disponible','err');return}
+if(tel.replace(/\D/g,'').length<9){toast('Entrez votre numéro de téléphone','err');return}
+var nom=$('retNom').value.trim(),fee=wFee(a);if(nom.length<3){toast('Entrez le nom du titulaire du numéro','err');return}
+if(a<=fee){toast('Montant trop petit pour couvrir les frais','err');return}
+wPost({type:'retrait',amt:a,fee:fee,net:a-fee,meth:D[retMeth].label,tel:tel,nomRecu:nom},'Demande de retrait envoyée','retModal')}
+function openActivity(){var box=$('actList');
+if(!wTx.length){box.innerHTML='<div class="empty">'+ic('box','l')+'<br><b style="color:var(--text)">Aucune activité</b></div>'}
+else{box.innerHTML=wTx.map(function(t){var cls=t.status==='ok'?'done':t.status==='refus'?'cancelled':'',bd=t.status==='ok'?'<span class="bdg d">'+ic('check')+'Validée</span>':t.status==='refus'?'<span class="bdg c">'+ic('x')+'Refusée</span>':'<span class="bdg w">'+ic('clock')+'En attente</span>';
+return'<div class="histCard '+cls+'"><div class="hh"><b><span>'+(t.type==='retrait'?'Retrait':t.type==='achat'?'Achat':t.type==='remb'?'Remboursement':'Recharge')+'</span> '+((t.type==='retrait'||t.type==='achat')?'-':'+')+(Number(t.amt)||0).toLocaleString()+' Ar</b>'+bd+'</div><div class="hd">'+esc(t.meth||'')+'<br>'+(t.type==='retrait'?esc(t.tel||'')+(t.nomRecu?' · '+esc(t.nomRecu):'')+'<br>Frais : '+(Number(t.fee)||0).toLocaleString()+' Ar · Reçu : '+(t.net!=null?Number(t.net)||0:Number(t.amt)||0).toLocaleString()+' Ar':'Réf : '+esc(t.ref||''))+'<br>'+esc(t.d||'')+'</div></div>'}).join('')}
+openModal('actModal')}
+
+(function(){var skip='';try{skip=sessionStorage.getItem('mg_skip')||''}catch(e){}var u=authSession();if(u){if(u.tel&&$('tel')&&!$('tel').value)$('tel').value=u.tel}else if(!skip){authShow('log');authOpen()}})();
+function devId(){var d='';var us=authSession();if(us)return 'u_'+us.id;try{d=localStorage.getItem('mg_dev')||'';if(!d){d='d'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);localStorage.setItem('mg_dev',d)}}catch(e){d='dtmp'}return d}
+function devLabel(){var us=authSession();return us?(us.prenom+' '+us.nom+' ('+us.email+')'):'App-'+devId().slice(-5).toUpperCase()}
+var supTimer=null,supBg=null,supLast='',supRc=-1;
+function supUser(){var u=authSession();return u&&u.prenom?u.prenom:'Client'}
+function supTime(ts){if(!ts)return'';var d=new Date(ts),n=new Date(),p=function(x){return('0'+x).slice(-2)},t=p(d.getHours())+':'+p(d.getMinutes());return d.toDateString()==n.toDateString()?t:p(d.getDate())+'/'+p(d.getMonth()+1)+' '+t}
+function supGrow(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,110)+'px'}
+function supFetch(cb){var dev=devId();
+fetch(DB+'/messages.json?orderBy=%22dev%22&equalTo=%22'+encodeURIComponent(dev)+'%22').then(function(r){return r.json()}).then(function(v){if(v&&v.error)throw 0;cb(v)}).catch(function(){fetch(DB+'/messages.json').then(function(r){return r.json()}).then(cb).catch(function(){cb(undefined)})})}
+function supList(val){var dev=devId();if(!val)return[];return Object.keys(val).map(function(k){return val[k]}).filter(function(m){return m&&m.dev==dev}).sort(function(a,b){return(a.ts||0)-(b.ts||0)})}
+function supRender(list){var box=$('supThread');
+if(!list.length){box.innerHTML='<div class="empty">'+ic('chat','l')+'<br>Aucun message pour le moment.<br>Écrivez-nous, la réponse apparaîtra ici.</div>';return}
+var h='';list.forEach(function(m,i){var t=String(m.message||'').replace(/^\[SUPPORT\]\s*/,'');
+if(t)h+='<div class="sb me"><span>'+esc(t)+'</span><span class="st">'+esc(supTime(m.ts))+'</span></div>';
+if(m.reply){h+='<div class="sb ad"><b>MG STORE</b><span>'+esc(m.reply)+'</span><span class="st">'+esc(supTime(m.replyAt))+'</span></div>'}
+else if(t&&i==list.length-1){h+='<div class="sw">'+ic('clock')+'En attente de réponse</div>'}});
+var sig=h;if(sig===supLast)return;supLast=sig;var atEnd=box.scrollHeight-box.scrollTop-box.clientHeight<80||!box.dataset.k;box.innerHTML=h;box.dataset.k=1;if(atEnd)box.scrollTop=box.scrollHeight}
+function supSeen(){try{return parseInt(localStorage.getItem('mg_sup_seen')||'-1',10)}catch(e){return-1}}
+function supSetSeen(n){try{localStorage.setItem('mg_sup_seen',String(n))}catch(e){}}
+function supBadge(n){var b=$('supBadge');if(!b)return;b.textContent=n>9?'9+':String(n);b.style.display=n>0?'flex':'none'}
+function supPoll(open){supFetch(function(val){if(val===undefined)return;var list=supList(val),rc=list.filter(function(m){return m.reply}).length,prevRc=supRc;supRc=rc;
+if(open){if(prevRc>=0&&rc>prevRc)mgChime();supRender(list);supSetSeen(rc);supBadge(0);return}
+var sn=supSeen();if(sn<0){supSetSeen(rc);return}
+if(rc>sn){supBadge(rc-sn);if(supBg!==rc){supBg=rc;mgChime();toast('Nouvelle réponse de MG STORE','ok')}}else supBadge(0)})}
+function supOpen(){supLast='';var b=$('supThread');if(b)delete b.dataset.k;supPoll(true);if(supTimer)clearInterval(supTimer);supTimer=setInterval(function(){supPoll(true)},4000)}
+function supStop(){if(supTimer){clearInterval(supTimer);supTimer=null}}
+function sendSupportMsg(){var txt=$('supMsg').value.trim();if(txt.length<2){toast('Écrivez votre message','err');return}
+var btn=$('supSend');if(btn.classList.contains('busy'))return;btn.classList.add('busy');
+var msg={tel:devLabel(),dev:devId(),pseudo:supUser(),id:'',jeu:'SUPPORT',message:'[SUPPORT] '+txt,d:new Date().toLocaleString(),replied:false,ts:Date.now()};
+fetch(DB+'/messages.json',{method:'POST',body:JSON.stringify(msg)}).then(function(r){if(!r.ok)throw 0;$('supMsg').value='';supGrow($('supMsg'));btn.classList.remove('busy');supPoll(true)}).catch(function(){btn.classList.remove('busy');toast('Erreur de connexion','err')})}
+
+var ADM=true;
+function admPaint(on){ADM=on;var e=$('admSt');if(e){e.classList.toggle('on',on);e.querySelector('em').textContent=on?'Admin en ligne':'Admin hors ligne'}
+var n=$('supSub');if(n)n.textContent=on?'Nous répondons de 7h à 22h, 7j/7, en général en moins de 10 minutes.':"MG STORE est hors ligne. Laissez votre message : la réponse apparaîtra ici dès son retour."}
+function admAuto(){var h=(new Date().getUTCHours()+3)%24;return h>=7&&h<23}
+function admLoad(){fetch(DB+'/status.json').then(function(r){return r.json()}).then(function(v){admPaint(!v||v.mode=='auto'||!v.mode&&v.auto?admAuto():v.online!==false)}).catch(function(){})}
+admLoad();setInterval(admLoad,10000);
+setTimeout(function(){supPoll(false)},2500);setInterval(function(){if(!$('supportModal').classList.contains('open'))supPoll(false)},8000);
+(function(){try{var lr=localStorage.getItem('mg_last_ref')||'';if(lr){lastRef=lr}}catch(e){}})();
+function openModal(i){$(i).classList.add('open');if(i=='supportModal')supOpen()}
+function closeModal(i){$(i).classList.remove('open');if(i=='supportModal')supStop();if(i=='accModal')accStop();if(i=='histModal'&&histTimer){clearInterval(histTimer);histTimer=null}}
+  </script>
+<style>
+a[href*="netlify.com"]{display:none!important}
+</style>
+<script>
+function hideBadge(){
+  document.querySelectorAll('a,div,span,iframe').forEach(function(el){
+    if(el.textContent && el.textContent.includes('Powered by Netlify')){
+      var p=el;
+      for(var i=0;i<4 && p;i++){p.style.setProperty('display','none','important');p=p.parentElement;}
+    }
+  });
+}
+setInterval(hideBadge,300);
+new MutationObserver(hideBadge).observe(document.documentElement,{childList:true,subtree:true});
+function fixIcon(){document.querySelectorAll('.pi img').forEach(im=>{let card=im.parentElement?im.parentElement.parentElement:null;if(!card)return;let t=(card.textContent||'').toUpperCase();let pi=im.parentElement;function fill(url,code,fit){if(url && !im.src.includes(code))im.src=url;im.style.width='100%';im.style.height='100%';im.style.objectFit=fit;im.style.objectPosition='center';im.style.borderRadius='12px';im.style.display='block';im.style.background='#0f1626';im.style.maxWidth='none';im.style.maxHeight='none';if(pi){pi.style.width='100%';pi.style.height='110px';pi.style.minHeight='110px';pi.style.overflow='hidden';pi.style.borderRadius='12px';pi.style.display='block';pi.style.marginBottom='10px';pi.style.background='#0f1626';pi.style.flex='none'}}
+card.querySelectorAll('*').forEach(el=>{if(el.childNodes.length==1 && el.childNodes[0].nodeType==3 && el.textContent.includes('💎')){el.textContent=el.textContent.split('💎').join('').trim()}});
+let page=(document.body.innerText||'').toUpperCase();
+let isFFPage = page.includes('FREE FIRE');
+let activeAbon = [...document.querySelectorAll('button,div,span')].some(el=>el.textContent.trim().toUpperCase()==='ABONNEMENT' && el.offsetParent!==null && (el.className.toLowerCase().includes('active') || el.className.toLowerCase().includes('selected') || getComputedStyle(el).backgroundColor.includes('239')));
+let isPUBGWord = t.includes('PRIME')||t.includes('PACK')||t.includes('DEAL')||t.includes('PURCHASE')||t.includes('MYTHIC')||t.includes('EMBLEM')||t.includes('FIREARM')||t.includes('UPGRADABLE')||t.includes('ROYALE')||t.includes('PASS')||t.includes('ELITE')||t.includes('PLUS');
+let isFFWeekly = (t.includes('WEEK')||t.includes('HEBDO')) && !isPUBGWord && (isFFPage || activeAbon);
+let isFFMonthly = (t.includes('MONTH')||t.includes('MENSUEL')||t.includes('MENS')) && !isPUBGWord && (isFFPage || activeAbon);
+let isTopUp = t.includes('TOP') || t.includes('DIAM') || t.includes('💎') || (t.includes('+') && !t.includes(' UC') && !t.includes('WEEK') && !t.includes('MONTH') && !t.includes('LEVEL') && !t.includes('BOOYAH'));
+let isPrimePassPack = t.includes('PRIME')||t.includes('PASS')||t.includes('ELITE')||t.includes('PACK')||t.includes('DEAL')||t.includes('PURCHASE')||t.includes('MYTHIC')||t.includes('EMBLEM')||t.includes('FIREARM')||t.includes('UPGRADABLE')||t.includes('ROYALE')||t.includes('PLUS');
+let isStandardUC = (t.includes(' UC')||t.includes('UC')) && !isPrimePassPack;
+if(t.includes('LEVEL'))fill('https://i.postimg.cc/zvyxv1Mg/file-000000002b1082118184ec8072ea1381.jpg','zvyxv1Mg','cover');
+else if(isFFWeekly)fill('https://i.postimg.cc/fySvZftH/IMG-20261114-192235.jpg','fySvZftH','cover');
+else if(isFFMonthly)fill('https://i.postimg.cc/kgmL1Bzw/IMG-20261114-192410.jpg','kgmL1Bzw','cover');
+else if(t.includes('BOOYAH'))fill('https://i.postimg.cc/W1TfmxJ3/file-00000000007882089c482a6064a142e6.jpg','W1TfmxJ3','cover');
+else if(isTopUp)fill('https://i.postimg.cc/3whfBVyf/file-00000000f3a08208abff63ac71b3e16d.jpg','3whfBVyf','cover');
+else if(isPrimePassPack)fill('https://i.postimg.cc/ZRdczLyQ/file-00000000b41c8208b65b76aaf8f8fe6b.jpg','ZRdczLyQ','cover');
+else if(isStandardUC)fill('https://i.postimg.cc/PJ12YMXn/file-000000006de88208a16374225db5cc9f.jpg','PJ12YMXn','cover');
+})}fixIcon();new MutationObserver(fixIcon).observe(document.body,{childList:true,subtree:true});
+ </script>
+<div class="mo" id="botModal"><div class="sh" style="height:88vh;display:flex;flex-direction:column"><div class="sht"><b>Assistant MG STORE</b><div style="display:flex;gap:8px;align-items:center"><div class="ic" role="button" aria-label="Recommencer" onclick="botRestart()" style="font-size:22px;font-weight:800">↺</div><div class="ic" role="button" aria-label="Fermer" onclick="closeModal('botModal')"><svg class="i"><use href="#x"/></svg></div></div></div><div id="botLog"></div><div id="botOpts"></div><input type="file" id="botFile" accept="image/*" style="display:none"><div id="botIn" style="display:none"><input id="botTxt" placeholder="Soraty eto..."><div class="ic" role="button" aria-label="Envoyer" onclick="botSend()" style="flex:0 0 46px;height:46px;background:var(--accent);color:#fff;border-color:var(--accent)"><svg class="i"><use href="#send"/></svg></div></div></div></div>
+<script>
+(function(){
+var S={},log=$('botLog'),opts=$('botOpts'),inp=$('botIn'),txt=$('botTxt'),want=null;
+function hm(ts){var d=ts?new Date(ts):new Date(),n=new Date(),t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);return d.toDateString()==n.toDateString()?t:('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+' '+t}
+function say(t,me,ts){var d=document.createElement('div');d.className='bm'+(me?' me':'');var x=document.createElement('span');x.textContent=t;var b=document.createElement('span');b.className='bt';b.textContent=hm(ts);d.appendChild(x);d.appendChild(b);log.appendChild(d);log.scrollTop=log.scrollHeight}
+var hist=[];
+function go(fn){hist.push({fn:fn,n:log.children.length});fn()}
+function backBtn(){if(hist.length<2)return;var b=document.createElement('button');b.textContent='⬅ Miverina';b.style.opacity='.85';b.onclick=botBack;opts.appendChild(b)}
+window.botBack=function(){if(hist.length<2)return;hist.pop();var p=hist[hist.length-1];want=null;while(log.children.length>p.n)log.removeChild(log.lastChild);opts.innerHTML='';inp.style.display='none';p.fn()};
+function choose(list,fn){opts.innerHTML='';inp.style.display='none';list.forEach(function(o){var b=document.createElement('button');b.textContent=o[0];b.onclick=function(){say(o[0],1);opts.innerHTML='';fn(o[1])};opts.appendChild(b)});backBtn()}
+function ask(q,key,min,next,type){say(q);opts.innerHTML="";backBtn();inp.style.display="flex";txt.type=type||"text";txt.value="";txt.focus();want={key:key,min:min,next:next}}
+window.botSend=function(){if(!want)return;var v=txt.value.trim();if(v.length<want.min){toast("Valeur trop courte","err");return}say(want.key==="pw"?"••••••••":v,1);S[want.key]=v;var n=want.next;want=null;opts.innerHTML="";inp.style.display="none";txt.type="text";n()};
+txt.addEventListener("keydown",function(e){if(e.key==="Enter")botSend()});
+var OFF={"ABONNEMENT":[["WEEKLY",10000],["MONTHLY",40000]],"LARGAGE":[["0,99$",6500],["1,99$",12000]]};
+function stepGame(){hist=[];go(gameStep)}
+function gameStep(){S={jeu:"Free Fire"};say("Salama ! Achat par compte Free Fire. Safidio ny sokajy :");choose(Object.keys(OFF).map(function(c){return[c,c]}),function(c){S.cat=c;go(stepPack)})}
+function stepPack(){say("Safidio ny offre :");choose(OFF[S.cat].map(function(p){return[p[0]+" - "+p[1].toLocaleString()+" Ar",p]}),function(p){S.pack=p[0];S.base=p[1];S.pr=p[1];S.qty=1;if(S.cat=="ABONNEMENT"){go(stepQty)}else{go(stepCond)}})}
+function stepQty(){say("Firy ny "+S.pack+" tianao ?");choose([1,2,3,4,5].map(function(n){return["×"+n+" - "+(S.base*n).toLocaleString()+" Ar",n]}),function(n){S.qty=n;S.pr=S.base*n;go(stepCond)})}
+function stepCond(){say("Fepetra amin'ny achat par compte :\n- Hiditra amin'ny compte Free Fire-nao ny équipe mba hanao ny recharge.\n- Tsy maintsy marina ny mailaka sy ny mot de passe.\n- Aza mampiasa ny compte mandritra ny fanodinana.\n- Azonao ovaina ny mot de passe aorian'ny commande.");choose([["J'ai lu et j'accepte",1]],function(){go(stepPay)})}
+function stepPay(){say("Paiement amin'ny fomba inona ?");choose([["Yas / Mvola","MVOLA"],["Orange Money","ORANGE"]],function(m){S.m=m;var d=D[m];say("Alefaso ny "+Number(S.pr).toLocaleString()+" Ar amin'ny :\n"+d.label+"\n"+d.n+"\nAnarana : "+d.nm+"\n\nRehefa vita ny fandoavana dia tohizo.");choose([["Efa naloako",1]],function(){go(function(){ask("Ny laharana finday-nao ?","tel",9,function(){go(stepProof)})})})})}
+function stepProof(){say("Alefaso ny porofon'ny fandoavana: référence an'ny SMS na capture d'écran. Hojerena ny admin aloha, ary hiseho ny cadre fidirana rehefa ekeny.");choose([["Soraty ny référence","ref"],["Alefa capture d'écran","shot"]],function(v){if(v=="ref"){go(function(){ask("Ny référence an'ny SMS ?","ref",5,sendOrder)})}else{$("botFile").value="";$("botFile").click();choose([["Safidio ny sary","again"],["Soraty ny référence kosa","ref"]],function(w){if(w=="again"){$("botFile").click()}else{go(function(){ask("Ny référence an'ny SMS ?","ref",5,sendOrder)})}})}})}
+$("botFile").onchange=function(){var f=this.files[0];if(!f)return;compress(f,function(d){if(!d){toast("Sary tsy mety","err");return}S.shot=d;S.ref="CAP"+Date.now().toString(36).toUpperCase();say("Capture d'écran voaray.",1);sendOrder()})};
+function compress(f,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.6))};im.onerror=function(){cb(null)};im.src=r.result};r.onerror=function(){cb(null)};r.readAsDataURL(f)}
+function sendOrder(){hist=[];opts.innerHTML="";inp.style.display="none";var o={jeu:S.jeu,cat:S.cat,pack:S.pack+" x"+(S.qty||1),pr:S.pr,qty:S.qty||1,id:"",pseudo:"En attente",tel:S.tel,meth:D[S.m].label,r:S.ref,message:"Achat par compte - paiement à vérifier",d:new Date().toLocaleString(),done:false,annule:false,ts:Date.now(),achat:true,shot:!!S.shot};
+say("Mandefa ny commande...");
+var st=S.key?Promise.resolve({name:S.key}):fetch(DB+"/commandes.json",{method:"POST",body:JSON.stringify(o)}).then(function(r){return r.json()});
+st.then(function(j){S.key=j.name;return S.shot?fetch(DB+"/preuves/"+S.key+".json",{method:"PUT",body:JSON.stringify({shot:S.shot})}):0}).then(function(){
+try{var refs=JSON.parse(localStorage.getItem("mg_my_refs")||"[]");if(refs.indexOf(S.ref)==-1)refs.push(S.ref);localStorage.setItem("mg_my_refs",JSON.stringify(refs));localStorage.setItem("mg_last_tel",S.tel);localStorage.setItem("mg_last_ref",S.ref);localStorage.setItem("mg_bot_key",S.key)}catch(e){}
+say("Voarakitra ny commande. Miandry ny fanamarinan'ny admin ny fandoavana...\nHiseho ho azy eto ny cadre rehefa ekeny.");waitOk()}).catch(function(){say("Tsy nandeha ny fandefasana. Hamarino ny aterineto dia andramo indray.");choose([["Andramo indray",1]],sendOrder)})}
+var poll=null;
+function waitOk(){if(poll)clearInterval(poll);var chk=function(){fetch(DB+"/commandes/"+S.key+".json").then(function(r){return r.json()}).then(function(o){if(!o)return;if(o.paiement=="ok"){clearInterval(poll);poll=null;say("✅ Ekena ny fandoavana-nao.",0,o.payAt);stepLogin()}else if(o.paiement=="refus"){clearInterval(poll);poll=null;try{localStorage.removeItem("mg_bot_key")}catch(e){}say("❌ Tsy ekena ny fandoavana. Hamarino ny référence/capture na mifandraisa amin'ny support.",0,o.payAt);choose([["Commande vaovao",1],["Support",2]],function(v){if(v==1){stepGame()}else{closeModal("botModal");openModal("supportModal")}})}}).catch(function(){})};chk();poll=setInterval(chk,3000)}
+var PUB=null;
+function b64(buf){var a=new Uint8Array(buf),t="";for(var i=0;i<a.length;i++)t+=String.fromCharCode(a[i]);return btoa(t)}
+function enc(t){return crypto.subtle.encrypt({name:"RSA-OAEP"},PUB,new TextEncoder().encode(t)).then(b64)}
+function stepLogin(){opts.innerHTML="";inp.style.display="none";
+if(!window.crypto||!crypto.subtle){say("Tsy manohana ny fiarovana ny navigateur-nao. Ampiasao Chrome na Safari vaovao.");return}
+fetch(DB+"/config/pub.json").then(function(r){return r.json()}).then(function(j){if(!j)throw 0;return crypto.subtle.importKey("jwk",j,{name:"RSA-OAEP",hash:"SHA-256"},false,["encrypt"])}).then(function(k){PUB=k;showForm()}).catch(function(){say("Tsy vonona ny rafitra fiarovana ny identifiants. Mifandraisa amin'ny support, azafady.");choose([["Support",1]],function(){closeModal("botModal");openModal("supportModal")})})}
+function showForm(){say("Fenoy ny cadre eto ambany. Voafina (chiffré) ny mailaka sy ny mot de passe alohan'ny handefasana azy: ny admin ihany no mahay mamaky azy.");var f=document.createElement("div");f.className="bm frm";
+f.innerHTML='<label>Fomba fidirana</label><div class="lgrow" id="fLogRow"><div class="lg on" data-v="Google">Google</div><div class="lg" data-v="Facebook">Facebook</div><div class="lg" data-v="VK">VK</div><div class="lg" data-v="Twitter / X">Twitter / X</div></div><label>Mailaka / identifiant du compte</label><input id="fAcc" type="text" autocomplete="off" placeholder="exemple@gmail.com"><label>Mot de passe</label><input id="fPw" type="password" autocomplete="off" placeholder="Mot de passe"><label>Pseudo Free Fire</label><input id="fPseudo" type="text" placeholder="Pseudo ao amin\'ny lalao"><div class="btn" role="button" id="fGo">Alefa ny identifiants</div>';
+log.appendChild(f);log.scrollTop=log.scrollHeight;
+document.getElementById("fLogRow").onclick=function(e){var t=e.target.closest(".lg");if(!t)return;this.querySelectorAll(".lg").forEach(function(x){x.classList.remove("on")});t.classList.add("on")};
+document.getElementById("fGo").onclick=function(){var g=function(i){return document.getElementById(i).value.trim()};
+var v={log:((document.querySelector("#fLogRow .on")||{}).dataset||{}).v||"Google",acc:g("fAcc"),pw:g("fPw"),pseudo:g("fPseudo")},L=function(x){return new TextEncoder().encode(x).length};
+if(v.acc.length<4){toast("Entrez le mail du compte","err");return}if(v.pw.length<4){toast("Entrez le mot de passe","err");return}if(L(v.acc)>180||L(v.pw)>180){toast("Texte trop long","err");return}if(v.pseudo.length<2){toast("Entrez votre pseudo Free Fire","err");return}
+for(var k in v)S[k]=v[k];f.remove();say("Cadre voasoratra ("+v.log+" - "+v.pseudo+")",1);finish()}}
+function finish(){Promise.all([enc(S.acc),enc(S.pw)]).then(function(e){return fetch(DB+"/commandes/"+S.key+".json",{method:"PATCH",body:JSON.stringify({pseudo:S.pseudo,cadre:true,log:S.log,enc:{acc:e[0],pw:e[1]},message:"Achat par compte - connexion "+S.log+" - identifiants chiffrés"})})}).then(function(){S.acc="";S.pw="";
+say("Voarakitra ny commande-nao. Hojerena ny equipe ny compte-nao, ary hiseho eto ny hafatra rehefa vita ny commande.");
+choose([["Jerena ny commande",1]],function(v){closeModal("botModal");showHist()});watchDone()}).catch(function(){say("Tsy nandeha ny fandefasana. Andramo indray.");choose([["Andramo indray",1]],finish)})}
+function finishMsg(o){try{localStorage.removeItem("mg_bot_key")}catch(e){}if(poll){clearInterval(poll);poll=null}
+if(o.done){say("🎉 Commande terminée !\n\nVotre commande "+o.jeu+" — "+o.pack+" a été traitée avec succès. Merci d'avoir choisi MG STORE ! 💙",0,o.doneAt)}else{say("❌ Commande annulée.\n\nVotre commande "+o.jeu+" — "+o.pack+" a été annulée. Contactez le support pour plus d'informations.",0,o.doneAt)}
+if(!$('botModal').classList.contains('open')&&!$('botModal').classList.contains('show')){try{toast(o.done?'🎉 Commande terminée !':'❌ Commande annulée')}catch(e){}}
+choose([["Commande vaovao",1],["Jerena ny commande",2]],function(v){if(v==1){stepGame()}else{closeModal("botModal");showHist()}})}
+function watchDone(){if(poll)clearInterval(poll);var chk=function(){fetch(DB+"/commandes/"+S.key+".json").then(function(r){return r.json()}).then(function(o){if(!o)return;if(o.done||o.annule)finishMsg(o)}).catch(function(){})};chk();poll=setInterval(chk,4000)}
+function doRestart(){if(poll){clearInterval(poll);poll=null}want=null;try{localStorage.removeItem("mg_bot_key")}catch(e){}log.innerHTML="";opts.innerHTML="";inp.style.display="none";S={};stepGame()}
+window.botRestart=function(){if(!S.key){doRestart();return}mgConfirm("↺","Hamerina hatrany am-boalohany ?","Hiverina amin'ny dingana voalohany ny assistant. Tsy ho very ny commande efa nalefa : mbola hita ao amin'ny « Jerena ny commande » izy.","Eny, averina","Tsia",doRestart)};
+window.openBot=function(){openModal("botModal");if(log.children.length)return;var k="";try{k=localStorage.getItem("mg_bot_key")||""}catch(e){}if(!k){stepGame();return}
+fetch(DB+"/commandes/"+k+".json").then(function(r){return r.json()}).then(function(o){if(!o||o.paiement=="refus"){try{localStorage.removeItem("mg_bot_key")}catch(e){}stepGame();return}
+S={jeu:o.jeu,cat:o.cat,pack:String(o.pack).replace(/ x\d+$/,""),pr:o.pr,qty:o.qty||1,tel:o.tel,ref:o.r,key:k};
+if(o.done||o.annule){finishMsg(o);return}
+if(o.cadre){say("Efa voaray ny identifiants-nao. Hojerena ny equipe ny compte-nao, ary hiseho eto ny hafatra rehefa vita ny commande.");watchDone();return}
+say("Miverina ny commande-nao ("+o.jeu+" - "+o.pack+"). Miandry ny fanamarinan'ny admin...");waitOk()}).catch(stepGame)};
+(function(){var k="";try{k=localStorage.getItem("mg_bot_key")||""}catch(e){}if(!k)return;fetch(DB+"/commandes/"+k+".json").then(function(r){return r.json()}).then(function(o){if(o&&o.cadre&&!log.children.length){S={jeu:o.jeu,cat:o.cat,pack:String(o.pack).replace(/ x\d+$/,""),pr:o.pr,qty:o.qty||1,tel:o.tel,ref:o.r,key:k};watchDone()}}).catch(function(){})})();
+var bar=document.querySelector('.bar');if(bar)bar.insertAdjacentHTML('beforeend','<div onclick="openBot()"><svg class="i"><use href="#bolt"/></svg>Assistant</div>');
+})();
+</script>
+<script>
+var PROMO={};
+function promoFor(g,c,n){var best=null,now=NOW();Object.keys(PROMO).forEach(function(k){var p=PROMO[k];if(!p||!(p.pct>0&&p.pct<100)||(p.end&&p.end<=now))return;var pg=p.game||k;if(pg!='ALL'&&pg!=g)return;if(p.cat&&p.cat!=c)return;if(p.packs&&p.packs.length&&p.packs.indexOf(n)<0)return;if(!best||p.pct>best.pct)best=p});return best}
+function applyPromo(){Object.keys(DATA).forEach(function(g){Object.keys(DATA[g]).forEach(function(c){DATA[g][c]=DATA[g][c].map(function(a){var b=a[2]||a[1],p=promoFor(g,c,a[0]);return p?[a[0],Math.round(b*(100-p.pct)/100/50)*50,b,p.end||0,p.pct]:[a[0],b]})})})}
+function promoBar(){var bar=$('promoBar');if(!bar){bar=document.createElement('div');bar.id='promoBar';var sr=document.querySelector('#pageHome .search');if(!sr)return;sr.insertAdjacentElement('afterend',bar)}
+var now=NOW(),h='';Object.keys(PROMO).forEach(function(k){var p=PROMO[k];if(!p||!(p.pct>0)||(p.end&&p.end<=now))return;var g=p.game||k,tg=p.label||(p.packs&&p.packs.length?(g=='ALL'?'':g+' : ')+p.packs.join(', '):p.cat?g+' - '+p.cat:(g=='ALL'?'Tous les jeux':g)),fin=p.end?'<small class="cd" data-end="'+p.end+'">'+fmtCd(p.end)+'</small>':'';h+='<div><b>-'+Number(p.pct)+'%</b><span>'+esc(tg)+'</span>'+fin+'</div>'});bar.innerHTML=h}
+function loadPromo(){fetch(DB+'/promo.json').then(function(r){var dh=r.headers.get('Date');if(dh){var t=Date.parse(dh);if(t)TOFF=t-Date.now()}return r.json()}).then(function(v){var sg=JSON.stringify(v||{}),ch=sg!==PSIG;PSIG=sg;PROMO=v||{};applyPromo();promoBar();if(ch&&$('pageGame').style.display=='block'){renderPacks()}}).catch(function(){})}
+loadPromo();setInterval(loadPromo,15000);
+</script>
+<script>
+var CARSIG='';
+function renderCar(arr){var t=$('trackHome'),d=$('dotsHome');if(!t||!d||!arr||!arr.length)return;var sig=JSON.stringify(arr);if(sig===CARSIG)return;CARSIG=sig;
+t.innerHTML=arr.map(function(x){var g=x.jeu||'Free Fire';return '<div class="carouselSlide" data-g="'+esc(g)+'" onclick="go(this.dataset.g)"><img src="'+esc(x.img)+'" alt="'+esc(x.title||g)+'">'+((x.title||x.sub)?'<div class="cap"><div><b>'+esc(x.title)+'</b><span>'+esc(x.sub)+'</span></div></div>':'')+'</div>'}).join('');
+d.innerHTML=arr.map(function(_,i){return '<span'+(i==slideIdx?' class="on"':'')+' onclick="goSlide('+i+')"></span>'}).join('');
+slideN=arr.length;if(slideIdx>=slideN)slideIdx=0;updateCarousel();restartAuto()}
+function loadCar(){fetch(DB+'/carousel.json').then(function(r){return r.json()}).then(function(v){if(v&&!Array.isArray(v))v=Object.keys(v).map(function(k){return v[k]});if(v&&v.length)renderCar(v.filter(function(x){return x&&x.img}))}).catch(function(){})}
+loadCar();setInterval(loadCar,5000);
+</script>
+<script>
+setInterval(function(){var now=NOW(),exp=false;document.querySelectorAll('.cd').forEach(function(e){var end=+e.dataset.end;if(end-now<=0){exp=true;return}var t=fmtCd(end);if(e.textContent!==t)e.textContent=t});
+if(exp){applyPromo();promoBar();if($('pageGame').style.display=='block')renderPacks()}},1000);
+</script>
+<script>
+var PUSH_URL='';/* Apetaho eto ny URL an'ny Cloudflare Worker, ohatra https://mg-notify.anarana.workers.dev */
+(function(){var of=window.fetch;window.fetch=function(u,o){var p=of.apply(this,arguments);try{if(u===DB+'/commandes.json'&&o&&o.method==='POST'){p.then(function(r){return r.clone().json()}).then(function(j){if(j&&j.name&&PUSH_URL)of(PUSH_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:j.name})}).catch(function(){})}).catch(function(){})}}catch(e){}return p}})();
+</script>
+<script>
+/* Alerte admin (ntfy.sh) : notification + sonnerie sur le téléphone de l'admin, même app fermée */
+(function(){var T='mgstore-62d2e19b3bed',of=window.fetch;
+function ping(t,m,tg){try{of('https://ntfy.sh/',{method:'POST',body:JSON.stringify({topic:T,title:t,message:m,priority:5,tags:[tg||'bell'],click:location.href.replace(/[^\/]*$/,'')+'andriamalaza.html'})}).catch(function(){})}catch(e){}}
+window.fetch=function(u,o){var r=of.apply(this,arguments);
+try{if(o&&o.method&&typeof u==='string'&&u.indexOf('firebaseio.com')>-1){var m=o.method.toUpperCase(),b={};try{b=JSON.parse(o.body||'{}')}catch(e){}
+var kind=null;
+if(m==='POST'&&/\/commandes\.json$/.test(u))kind=b.achat?['💳 Achat par compte - paiement à vérifier',(b.jeu||'')+' - '+(b.pack||'')+' - '+(b.pr||0).toLocaleString()+' Ar','credit_card']:['🛒 NOUVELLE COMMANDE !',(b.jeu||'')+' - '+(b.pack||'')+' - '+(b.pr||0).toLocaleString()+' Ar','shopping_cart'];
+else if(m==='POST'&&/\/wallet_tx\.json$/.test(u))kind=[b.type==='retrait'?'💸 Demande de retrait':'💰 Demande de recharge',(b.nom||'Client')+' - '+(Number(b.amt)||0).toLocaleString()+' Ar','moneybag'];
+else if(m==='POST'&&/\/messages\.json$/.test(u))kind=['💬 Nouveau message MG STORE','Ouvrez le panneau admin pour lire le message.','speech_balloon'];
+else if(m==='PATCH'&&/\/commandes\/[^\/]+\.json$/.test(u)&&b.cadre)kind=['🔑 Identifiants reçus','Un client a envoyé son compte : à traiter.','key'];
+if(kind)r.then(function(x){if(x&&x.ok)ping(kind[0],kind[1],kind[2])}).catch(function(){})}}catch(e){}
+return r};
+window.mgPing=ping})();
+</script>
+<style>
+.cfm{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:cfmIn .18s ease}
+.cfm .cb{width:100%;max-width:340px;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:24px;padding:24px 20px 18px;text-align:center;box-shadow:0 24px 60px -12px rgba(0,0,0,.6);animation:cfmUp .22s ease}
+.cfm .ci{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;background:var(--accent-soft);color:var(--accent)}
+.cfm h4{margin:0 0 8px;font-size:17px;font-weight:800}
+.cfm p{margin:0 0 20px;font-size:13px;line-height:1.55;opacity:.8}
+.cfm .cr{display:flex;gap:10px}
+.cfm .cr div{flex:1;padding:13px 10px;border-radius:14px;font-weight:800;font-size:13.5px;cursor:pointer;border:1px solid var(--border);background:var(--box);color:var(--text);user-select:none}
+.cfm .cr div.ok{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cfm .cr div:active{transform:scale(.97)}
+@keyframes cfmIn{from{opacity:0}to{opacity:1}}
+@keyframes cfmUp{from{transform:translateY(14px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+
+.cfm p{white-space:pre-line}
+.cfm .ci{font-family:var(--fd)}
+.cfm h4{font-size:18px}
+.cfm .cr div.ok{box-shadow:0 8px 20px -8px var(--accent)}
+.bar>div{position:relative}
+.nb{display:none;position:absolute;top:0;left:50%;margin-left:8px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--err);color:#fff;font:800 10.5px/18px var(--fb,inherit);align-items:center;justify-content:center;font-style:normal;box-shadow:0 0 0 2px var(--card)}
+.supH{margin:18px 0 8px;font-size:15px}
+.thr{display:flex;flex-direction:column;gap:6px;background:var(--box);border:1px solid var(--border);border-radius:18px;padding:12px;max-height:340px;min-height:120px;overflow:auto;overscroll-behavior:contain}
+.sb{max-width:84%;padding:9px 12px 7px;border-radius:16px;font-size:13px;line-height:1.5;white-space:pre-line;word-break:break-word}
+.sb .st{display:block;white-space:normal;font-size:10.5px;font-weight:600;opacity:.65;margin-top:3px;text-align:right}
+.sb.me{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.sb.ad{align-self:flex-start;background:var(--card);border:1px solid var(--border);border-bottom-left-radius:4px;margin-bottom:6px}
+.sb.ad b{display:block;font-size:11px;color:var(--accent);margin-bottom:2px}
+.sw{align-self:flex-end;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--warn);margin:2px 4px 4px}
+.sw .i{width:13px;height:13px}
+.cmp{display:flex;align-items:flex-end;gap:8px;margin-top:10px}
+.cmp textarea{flex:1;margin:0;min-height:46px;max-height:110px;resize:none;border-radius:16px;padding:12px 14px}
+.snd{width:46px;height:46px;flex:none;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.snd:active{transform:scale(.94)}.snd.busy{opacity:.5;pointer-events:none}
+.ord.sv{margin-top:12px}
+
+.logo{align-items:center}
+.lt{display:flex;flex-direction:column;line-height:1.1}
+.adm{display:flex;align-items:center;gap:6px;margin-top:3px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0;color:var(--sub)}
+.adm{color:var(--err)}
+.adm i{width:8px;height:8px;border-radius:50%;background:var(--err);flex:none}
+.adm em{font-style:normal}
+.adm.on{color:var(--ok)}.adm.on i{background:var(--ok);box-shadow:0 0 0 3px var(--ok-soft);animation:bl2 1.6s infinite}
+@keyframes bl2{50%{box-shadow:0 0 0 5px transparent}}
+.help{text-align:center;margin-top:22px;padding:26px 16px 18px;background:var(--box);border:1px solid var(--border);border-radius:22px}
+.help h3{font-family:var(--fd);font-size:20px;font-weight:800;letter-spacing:-.3px;margin:0 0 6px}
+.help p{margin:0 0 16px;color:var(--sub);font-size:12.5px}
+.hb{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 8px;border-radius:14px;color:#fff;font-weight:800;font-size:13.5px;text-decoration:none;white-space:nowrap}
+.hb:active{transform:scale(.97)}
+.hb.fbk{background:#1877F2}.hb.wak{background:#25D366}
+.i.f{fill:currentColor;stroke:none}
+
+/* Header une ligne */
+header{flex-wrap:wrap;gap:8px 6px}
+.logo{flex:0 1 auto;min-width:0;white-space:nowrap;gap:8px;font-size:17px}
+.logo img{width:36px;height:36px;flex:none}
+.lt,.lt *{white-space:nowrap}
+.adm{font-size:11px;gap:5px;white-space:nowrap}
+.hact{flex:none;gap:5px;margin-left:auto}
+.hact .ic{width:34px;height:34px;border-radius:12px;flex:none}
+.hact .ic .i{width:18px;height:18px}
+.hBal{height:34px;padding:2px 10px 2px 2px;gap:5px}
+.hBal .pl{width:28px;height:28px}
+.hBal b{font-size:13px}
+
+.hact .ic.av{padding:0;overflow:hidden;position:relative}
+.hact .ic.av img{width:100%;height:100%;object-fit:cover;display:block}
+.hact .ic.av b{font-size:15px;font-weight:800;color:#fff;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--accent)}
+#cartBtn{position:relative}
+.cbd{display:none;position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--accent);color:#fff;font-size:10.5px;font-weight:800;align-items:center;justify-content:center;line-height:1}
+.cbd.on{display:flex}
+
+.ci{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ci img{width:40px;height:40px;object-fit:contain;border-radius:8px;flex:none}
+.ci .cm{flex:1;min-width:0}.ci .cm b{display:block;font-size:13.5px;line-height:1.25}.ci .cm small{color:var(--sub);font-size:11.5px}
+.ci .cp{font-weight:800;font-size:13.5px;margin-top:2px}
+.ci .cq{display:flex;align-items:center;gap:6px;flex:none}
+.ci .cq .ic{width:28px;height:28px;border-radius:9px}.ci .cq .ic .i{width:14px;height:14px}
+.ci .cq b{min-width:16px;text-align:center;font-size:13.5px}
+
+.lt .nm{white-space:nowrap;font-size:17px;line-height:1.1}
+.logo{gap:7px}.logo img{width:34px;height:34px}
+.adm{font-size:10.5px;margin-top:2px}
+.hact{gap:4px}
+.hact .ic{width:31px;height:31px;border-radius:10px}
+.hact .ic .i{width:17px;height:17px}
+.hBal{height:31px;padding:2px 8px 2px 2px;gap:4px}
+.hBal .pl{width:25px;height:25px}
+.hBal b{font-size:12.5px}.hBal small{font-size:11px}
+
+header{margin:0 -9px}
+.logo{gap:6px}.logo img{width:32px;height:32px;border-radius:10px}
+.lt .nm{font-size:16px}.adm{font-size:10px}
+.hact{gap:3px}
+.hact .ic{width:30px;height:30px;border-radius:10px}
+.hBal{height:30px;padding:2px 7px 2px 2px}.hBal .pl{width:24px;height:24px}
+
+#logoImg,#imgFFHome,#imgPUBGHome{transition:opacity .25s}
+.iw #logoImg,.iw #imgFFHome,.iw #imgPUBGHome{opacity:0}
+.accAv{overflow:hidden}.accAv img{width:100%;height:100%;object-fit:cover;display:block}
+#instBtn.hid{display:none}
+#instBox{position:fixed;left:16px;right:16px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:99998;max-width:440px;margin:auto;background:#000;color:#fff;border:1px solid #2A3350;border-radius:18px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.6);display:none}
+#instBox b{display:block;font-size:14.5px;margin-bottom:10px}
+#instBox .pb{height:8px;border-radius:6px;background:#222;overflow:hidden}
+#instBox .pb i{display:block;height:100%;width:0;background:#16A34A;border-radius:6px;transition:width .4s}
+</style>
+<script>
+function mgConfirm(ic,t,m,okT,noT,cb){var d=document.createElement("div");d.className="cfm";
+d.innerHTML='<div class="cb"><div class="ci"></div><h4></h4><p></p><div class="cr"><div class="no"></div><div class="ok"></div></div></div>';
+d.querySelector(".ci").textContent=ic;d.querySelector("h4").textContent=t;d.querySelector("p").textContent=m;
+d.querySelector(".no").textContent=noT;d.querySelector(".ok").textContent=okT;
+var x=function(){d.remove()};d.querySelector(".no").onclick=x;d.querySelector(".ok").onclick=function(){x();cb()};
+d.onclick=function(e){if(e.target===d)x()};document.body.appendChild(d)}
+</script>
+<script>
+function mgSpeak(){try{if(!('speechSynthesis' in window))return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance('Bon travail !');u.lang='fr-FR';u.rate=.95;var v=(speechSynthesis.getVoices()||[]).filter(function(x){return /^fr/i.test(x.lang)})[0];if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+/* Sonnerie : ilay mp3 omen'ny tompony (tsy novaina). Raha tsy mandeha ihany dia ilay feo taloha no fallback. */
+var MG_SND='XRecorder_Edited_20261115_01.mp3';
+function mgVoice(fb){var d=false,f=function(){if(d)return;d=true;(fb||mgSpeak)()};try{var a=new Audio(MG_SND);a.addEventListener('error',f);var p=a.play();if(p&&p.catch)p.catch(f)}catch(e){f()}}
+function mgChimeSynth(){try{var C=window.AudioContext||window.webkitAudioContext,c=new C();if(c.resume)c.resume();[[784,0],[1047,.16],[1319,.32]].forEach(function(n){var o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=n[0];o.connect(g);g.connect(c.destination);var t=c.currentTime+n[1];g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.25,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.3);o.start(t);o.stop(t+.32)})}catch(e){}}
+function mgChime(){mgVoice(mgChimeSynth)}
+(function(){
+var MSG={done:'Commande terminée !',annule:'Commande annulée',payok:'Paiement accepté',refus:'Paiement refusé'};
+function refs(){try{return JSON.parse(localStorage.getItem('mg_my_refs')||'[]')}catch(e){return[]}}
+function stMap(){try{return JSON.parse(localStorage.getItem('mg_st')||'{}')}catch(e){return{}}}
+function stOf(o){return o.annule?'annule':o.done?'done':o.paiement=='ok'?'payok':o.paiement=='refus'?'refus':'wait'}
+function chk(){var R=refs();if(!R.length)return;
+fetch(DB+'/commandes.json?orderBy=%22%24key%22&limitToLast=150').then(function(r){return r.json()}).then(function(v){if(!v)return;var m=stMap(),ch=null;
+Object.keys(v).forEach(function(k){var o=v[k];if(!o||R.indexOf(o.r)<0)return;var s=stOf(o),old=m[k];
+var changed=old===undefined?(s!=='wait'&&o.ts&&Date.now()-o.ts<1200000):old!==s;if(changed&&MSG[s])ch=s;m[k]=s});
+try{localStorage.setItem('mg_st',JSON.stringify(m))}catch(e){}
+if(ch){if(ch=='done'||ch=='payok'){mgVoice(function(){mgChime();setTimeout(mgSpeak,700)})}else{mgChime()}try{toast(MSG[ch],'ok')}catch(e){}}}).catch(function(){})}
+setTimeout(chk,3000);setInterval(chk,6000);
+})();
+</script>
+<script>
+(function(){
+var L='fr';try{L=localStorage.getItem('mg_lang')||'fr'}catch(e){}
+window.mgLang=L;
+window.setLang=function(l){try{localStorage.setItem('mg_lang',l)}catch(e){}location.reload()};
+document.querySelectorAll('.langRow div,.alang span').forEach(function(d){d.classList.toggle('on',d.getAttribute('data-l')===L)});
+if(L!=='mg')return;
+document.documentElement.lang='mg';
+var D={"Bon retour": "Tonga soa", "Connectez-vous avec votre email pour accéder à votre boutique MG STORE.": "Midira amin'ny mailakanao mba hidirana amin'ny fivarotana MG STORE.", "Se connecter": "Hiditra", "ou": "na", "Continuer avec Google": "Hiditra amin'ny Google", "Pas encore de compte ?": "Mbola tsy manana kaonty ?", "S'inscrire": "Hisoratra anarana", "Continuer sans compte": "Hanohy tsy misy kaonty", "Créer un compte": "Hamorona kaonty", "Inscrivez-vous pour suivre vos commandes et vos avantages MG STORE.": "Soraty anarana mba hanaraka ny commande-nao sy ny tombontsoa MG STORE.", "Créer le compte": "Hamorona ny kaonty", "Déjà un compte ?": "Efa manana kaonty ?", "Admin en ligne": "Admin an-tserasera", "Admin hors ligne": "Admin tsy an-tserasera", "Diamants, abonnements et plus": "Diamants, abonnement sy maro hafa", "UC, Prime, Pass et packs": "UC, Prime, Pass sy pack", "Jeux populaires": "Lalao malaza", "Tarifs MG STORE. Rechargez en quelques secondes.": "Vidin'ny MG STORE. Famenoana ao anatin'ny segondra vitsy.", "Livraison rapide": "Fandefasana haingana", "Paiement Yas ou Orange Money": "Fandoavana amin'ny Yas na Orange Money", "Installer l'application": "Hametraka ny application", "Ajoutez MG STORE à votre écran d'accueil.": "Ampidiro ao amin'ny efijery fandraisanao ny MG STORE.", "Installer MG STORE": "Hametraka ny MG STORE", "Android : menu, puis Installer l'application. iPhone : Partager, puis Sur l'écran d'accueil.": "Android : menu, dia Hametraka ny application. iPhone : Partager, dia Sur l'écran d'accueil.", "Clair": "Mazava", "Sombre": "Maizina", "Auto": "Automatique", "Besoin d'aide ?": "Mila fanampiana ve ?", "Contactez-nous directement pour obtenir de l'aide": "Mifandraisa mivantana aminay raha mila fanampiana", "Support MG STORE": "Fanampiana MG STORE", "Nous répondons de 7h à 22h, 7j/7, en général en moins de 10 minutes.": "Mamaly izahay manomboka amin'ny 7 ora ka hatramin'ny 22 ora, isan'andro, matetika ao anatin'ny 10 minitra.", "MG STORE est hors ligne. Laissez votre message : la réponse apparaîtra ici dès son retour.": "MG STORE dia tsy an-tserasera. Avelao ny hafatrao : hiseho eto ny valiny rehefa miverina.", "Appeler": "Antsoy", "Messages avec MG STORE": "Hafatra miaraka amin'ny MG STORE", "Chargement...": "Mandeha...", "Questions fréquentes": "Fanontaniana matetika", "Ma commande est en attente, que faire ?": "Mbola miandry ny commande-ko, inona no atao ?", "Ouvrez Commandes : le statut de votre commande s'affiche dans l'Historique.": "Sokafy ny Commandes : miseho ao amin'ny Historique ny satan'ny commande-nao.", "Combien de temps pour recevoir mes diamants ?": "Hafiriana vao tonga ny diamants-ko ?", "Une fois le paiement vérifié, l'admin envoie les diamants en 5 à 10 minutes.": "Rehefa voamarina ny fandoavana, alefan'ny admin ao anatin'ny 5 ka hatramin'ny 10 minitra ny diamants.", "Je n'ai pas reçu mes diamants ou UC": "Tsy mbola tonga ny diamants na UC-ko", "Vérifiez que votre UID et votre pseudo sont exacts.": "Hamarino fa marina ny UID sy ny pseudo-nao.", "Où trouver ma référence ?": "Aiza no hahitako ny référence ?", "Dans le SMS Yas ou Orange Money reçu après le paiement.": "Ao amin'ny SMS Yas na Orange Money voaray aorian'ny fandoavana.", "Comment payer ?": "Ahoana ny fandoavana ?", "1. Choisissez votre pack. 2. Payez par Yas ou Orange Money. 3. Copiez la référence. 4. Confirmez.": "1. Safidio ny pack. 2. Mandoa amin'ny Yas na Orange Money. 3. Adikao ny référence. 4. Ankatoavo.", "Appel / Yas": "Antso / Yas", "Votre panier": "Ny paniera-nao", "1. Identifiant du jeu (UID)": "1. Identifiant an'ny lalao (UID)", "Pseudo dans le jeu": "Pseudo ao amin'ny lalao", "Vérifiez bien l'orthographe exacte de votre pseudo.": "Hamarino tsara ny tsipelina marina ny pseudo-nao.", "2. Votre commande": "2. Ny commande-nao", "3. Paiement": "3. Fandoavana", "Mode de paiement": "Fomba fandoavana", "Total à payer": "Total ho aloa", "Continuer le paiement": "Hanohy ny fandoavana", "Récapitulatif": "Famintinana", "Vérifiez vos informations avant de payer.": "Hamarino ny mombamomba anao alohan'ny handoavana.", "ID joueur (UID)": "ID mpilalao (UID)", "Téléphone": "Telefaona", "Paiement": "Fandoavana", "Annuler": "Foana", "Confirmer": "Ankatoavina", "Paiement requis": "Mila fandoavana", "Commande en attente de paiement": "Commande miandry fandoavana", "Bénéficiaire": "Mpandray", "Montant à payer": "Vola ho aloa", "Via": "Amin'ny", "Joueur": "Mpilalao", "1. Effectuer le paiement": "1. Manao ny fandoavana", "Envoyer le code USSD": "Alefaso ny code USSD", "2. Référence de transaction": "2. Référence an'ny transaction", "3. Message pour MG STORE (optionnel)": "3. Hafatra ho an'ny MG STORE (tsy voatery)", "Confirmer le paiement": "Ankatoavy ny fandoavana", "Retour": "Hiverina", "Commande reçue": "Voaray ny commande", "Suivez votre commande avec votre référence.": "Araho ny commande-nao amin'ny référence-nao.", "Voir le statut de ma commande": "Jereo ny satan'ny commande-ko", "Mes commandes": "Ny commande-ko", "Vos commandes s'affichent automatiquement sur cet appareil.": "Miseho ho azy eto amin'ity finday ity ny commande-nao.", "Historique": "Tantara", "Actualiser le statut": "Havaozina ny sata", "Accueil": "Fandraisana", "Commandes": "Commande", "Support": "Fanampiana", "Thème": "Endrika", "Assistant MG STORE": "Mpanampy MG STORE", "Mon compte": "Ny kaonty-ko", "Total livré": "Total voaray", "Paramètres": "Fikirakirana", "Langue": "Fiteny", "Se déconnecter": "Hiala", "Voulez-vous vous déconnecter ?": "Hiala amin'ny kaonty ve ianao ?", "6 caractères minimum": "Litera 6 farafahakeliny", "Adresse email": "Adiresy mailaka", "Aide": "Fanampiana", "Compte": "Kaonty", "Envoyer": "Alefa", "Fermer": "Akatona", "Mot de passe": "Teny miafina", "Nom": "Anarana", "Prénom": "Fanampin'anarana", "Ex : Merci de livrer rapidement": "Ex : Misaotra, alefaso haingana azafady", "Filtrer par référence ou pseudo": "Sivano araka ny référence na pseudo", "Moins": "Latsaka", "Plus": "Hanampy", "Numéro de téléphone, ex : 034 XX XX XX": "Laharan'ny finday, ohatra : 034 XX XX XX", "Rechercher un jeu": "Hikaroka lalao", "Téléphone (0341234567)": "Finday (0341234567)", "Écrivez votre message": "Soraty ny hafatrao", "Recommencer": "Averina", "Annulée": "Foana", "En attente": "Miandry", "Validée": "Voamarina", "En attente de réponse": "Miandry valiny", "Aucune commande pour le moment": "Tsy mbola misy commande", "Passez votre première commande.": "Manaova ny commande voalohany.", "Aucune commande sur cet appareil": "Tsy misy commande amin'ity finday ity", "Elle s'affichera ici automatiquement après votre commande.": "Hiseho eto ho azy aorian'ny commande-nao.", "Aucune commande trouvée": "Tsy nahitana commande", "Aucun message pour le moment.": "Mbola tsy misy hafatra.", "Écrivez-nous, la réponse apparaîtra ici.": "Soraty aminay, hiseho eto ny valiny.", "Contactez le support": "Mifandraisa amin'ny fanampiana", "Message envoyé": "Lasa ny hafatra", "Erreur de connexion": "Tsy nahomby ny fifandraisana", "Connexion Google impossible": "Tsy afaka niditra tamin'ny Google", "Entrez la référence du SMS": "Ampidiro ny référence ao amin'ny SMS", "Entrez votre ID joueur (UID)": "Ampidiro ny ID mpilalao-nao (UID)", "Entrez votre numéro de téléphone": "Ampidiro ny laharan'ny finday-nao", "Entrez votre pseudo": "Ampidiro ny pseudo-nao", "Entrez votre pseudo exact dans le jeu": "Ampidiro ny pseudo marina ao amin'ny lalao", "Entrez votre référence": "Ampidiro ny référence-nao", "Nouvelle réponse de MG STORE": "Valiny vaovao avy amin'ny MG STORE", "Adresse email invalide": "Adiresy mailaka tsy mety", "Entrez votre mot de passe": "Ampidiro ny teny miafina", "Email ou mot de passe incorrect": "Diso ny mailaka na ny teny miafina", "Entrez votre nom et prénom": "Ampidiro ny anaranao sy ny fanampin'anarana", "Numéro de téléphone invalide": "Laharana finday tsy mety", "Cet email a déjà un compte": "Efa misy kaonty io mailaka io", "Commande terminée !": "Vita ny commande !", "Commande annulée": "Foana ny commande", "Paiement accepté": "Neken'ny fandoavana", "Paiement refusé": "Nolavina ny fandoavana"},P=[["Quantité : x", "Isa : x"], ["Numéro copié : ", "Voadika ny laharana : "], ["Vos références : ", "Ny référence-nao : "], ["Bienvenue ", "Tonga soa "], ["Joueur : ", "Mpilalao : "], ["Prix : ", "Vidiny : "], ["Montant : ", "Vola : "], ["Raison : ", "Antony : "], ["Réf : ", "Réf : "], ["Nouvelle réponse", "Valiny vaovao"]];
+var X={"Mon solde": "Ny volako", "Recharger": "Mameno", "Retrait": "Alaina", "Activité": "Hetsika", "Ar · en attente de validation": "Ar · miandry fanamarinana", "Recharger mon solde": "Hameno ny volako", "Montant (Ar)": "Vola (Ar)", "Numéro de paiement": "Laharana fandoavana", "Envoyez le montant au numéro ci-dessus, puis saisissez la référence reçue par SMS.": "Alefaso any amin'ny laharana etsy ambony ny vola, avy eo ampidiro ny référence voaray ao amin'ny SMS.", "Référence de transaction": "Référence an'ny transaction", "Envoyer la demande": "Alefa ny fangatahana", "Demande envoyée. Votre solde sera mis à jour dès que MG STORE aura vérifié le paiement.": "Lasa ny fangatahana. Havaozina ny volanao rehefa voamarin'ny MG STORE ny fandoavana.", "Solde disponible": "Vola azo ampiasaina", "Numéro pour recevoir l'argent": "Laharana handraisana ny vola", "Montant supérieur au solde disponible": "Vola mihoatra ny azo ampiasaina", "Demande de retrait envoyée": "Lasa ny fangatahana fanalana", "Recharge": "Famenoana", "Aucune activité": "Tsy mbola misy hetsika", "Refusée": "Nolavina", "Retrait validé": "Voamarina ny fanalana", "Demande refusée": "Nolavina ny fangatahana", "Référence déjà utilisée": "Efa nampiasaina io référence io"},PX=[["Montant minimum : ", "Vola faran'ny ambany : "], ["Solde ajouté : ", "Vola nampidirina : "]];for(var xk in X)D[xk]=X[xk];PX.forEach(function(q){P.push(q)});
+function tr(s){var m=s.match(/^(\s*)([\s\S]*?)(\s*)$/),c=m[2];if(!c)return s;var r=D[c];
+if(r===undefined){for(var i=0;i<P.length;i++){if(c.indexOf(P[i][0])===0){r=P[i][1]+tr(c.slice(P[i][0].length));break}}}
+return r===undefined?s:m[1]+r+m[3]}
+var AT=['placeholder','aria-label','title'];
+function walk(root){if(!root)return;if(root.nodeType===3){var v=tr(root.nodeValue);if(v!==root.nodeValue)root.nodeValue=v;return}
+if(root.nodeType!==1||/^(SCRIPT|STYLE)$/.test(root.tagName))return;
+var els=[root].concat([].slice.call(root.querySelectorAll('*')));
+els.forEach(function(e){AT.forEach(function(a){var x=e.getAttribute&&e.getAttribute(a);if(x){var y=tr(x);if(y!==x)e.setAttribute(a,y)}})});
+var w=document.createTreeWalker(root,4,null),n,list=[];while(n=w.nextNode()){if(n.parentNode&&!/^(SCRIPT|STYLE)$/.test(n.parentNode.tagName))list.push(n)}
+list.forEach(function(t){var v=tr(t.nodeValue);if(v!==t.nodeValue)t.nodeValue=v})}
+walk(document.body);
+new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==='characterData'){var v=tr(m.target.nodeValue);if(v!==m.target.nodeValue)m.target.nodeValue=v}else{m.addedNodes.forEach(walk)}})}).observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
+</body></html>
