@@ -181,6 +181,21 @@ header b{font-size:26px}
 @media (min-width:1500px){#ordersList,#msgsList,#cliList{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .cvi{overflow:hidden}.cvi img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
+
+<style id="mgPatchA">
+.bb,.gb,.yb{display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;background:var(--s1)!important;border:1.5px solid var(--bd);box-shadow:none!important;font-weight:800;min-height:48px;transition:.15s;position:relative}
+.gb{color:#4ADE80;border-color:rgba(34,197,94,.55);background:linear-gradient(180deg,rgba(34,197,94,.16),rgba(34,197,94,.05))!important}
+.yb{color:#FBBF24;border-color:rgba(245,158,11,.55);background:linear-gradient(180deg,rgba(245,158,11,.18),rgba(245,158,11,.05))!important}
+.bb{color:#FF6B78;border-color:rgba(239,68,68,.6);background:linear-gradient(180deg,rgba(225,29,46,.2),rgba(225,29,46,.06))!important}
+.gb.sel{background:linear-gradient(180deg,#1DB955,#15913F)!important;color:#fff;box-shadow:0 8px 18px -8px #16A34A!important}
+.yb.sel{background:linear-gradient(180deg,#F2BC1B,#DA9E0A)!important;color:#111;box-shadow:0 8px 18px -8px #EAB308!important}
+.bb.sel{background:linear-gradient(180deg,#EC2C3D,#C81626)!important;color:#fff;box-shadow:0 8px 18px -8px #E11D2E!important}
+.bb:active,.gb:active,.yb:active{transform:scale(.96)}
+.tabs div{position:relative}
+.tabs .tnb{display:none;position:absolute;top:-6px;right:-4px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#E11D2E;color:#fff;font:800 11px/20px system-ui,sans-serif;text-align:center;font-style:normal;box-shadow:0 0 0 2px #090C13}
+.tabs div.on .tnb{background:#fff;color:#E11D2E}
+.tabs{padding-top:8px}
+</style>
 </head><body>
 <div id=loginScreen>
 <div class=loginBox>
@@ -795,5 +810,21 @@ l.innerHTML=a.length?a.map(function(n){return '<div class=ord><b>'+nfEsc(n.title
 function sendNotif(){var t=document.getElementById('nfT').value.trim(),b=document.getElementById('nfB').value.trim(),y=nfType;if(!t){alert('Titre requis');return}
 fetch(DB+'/notifs.json',{method:'POST',body:JSON.stringify({title:t,body:b,type:y,ts:Date.now()})}).then(function(r){if(!r.ok)throw 0;document.getElementById('nfT').value='';document.getElementById('nfB').value='';loadNotifs();alert('Notification envoyée ✅')}).catch(function(){alert('Erreur: notification non envoyée')})}
 function delNotif(k){if(!confirm('Supprimer cette notification ?'))return;fetch(DB+'/notifs/'+k+'.json',{method:'DELETE'}).then(loadNotifs)}
+</script>
+
+<script>
+(function(){
+function tabs(){return document.querySelectorAll('.tabs>div')}
+function setB(i,n){var t=tabs()[i];if(!t)return;var b=t.querySelector('.tnb');if(!b){b=document.createElement('i');b.className='tnb';t.appendChild(b)}b.textContent=n>9?'9+':n;b.style.display=n>0?'block':'none'}
+/* Commandes = nombre en attente */
+function ordB(){var e=document.getElementById('stWait');if(e)setB(0,parseInt(e.textContent)||0)}
+var w=document.getElementById('stWait');if(w)new MutationObserver(ordB).observe(w,{childList:true,characterData:true,subtree:true});ordB();
+/* Messages = conversations sans réponse */
+function msgB(){fetch(DB+'/messages.json').then(function(r){return r.json()}).then(function(v){var g={};Object.keys(v||{}).forEach(function(k){var m=v[k];if(!m||m.adminOnly)return;var id=m.dev||('t:'+m.tel+'|'+(m.pseudo||''));var o=g[id];if(!o||(m.ts||0)>=(o.ts||0))g[id]=m});var n=0;Object.keys(g).forEach(function(id){if(!g[id].reply)n++});setB(1,n)}).catch(function(){})}
+setInterval(function(){var c=document.getElementById('adminContent');if(c&&c.style.display==='block'){msgB();ordB()}},4000);setTimeout(msgB,2500);
+/* bouton filtre actif */
+var row=document.querySelectorAll('#tab-commandes>.flex')[1];
+if(row)[].forEach.call(row.children,function(b,i){if(i==0)b.classList.add('sel');b.addEventListener('click',function(){[].forEach.call(row.children,function(x){x.classList.remove('sel')});b.classList.add('sel')})});
+})();
 </script>
 </body></html>

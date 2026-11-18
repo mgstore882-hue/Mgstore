@@ -295,7 +295,66 @@ input,textarea{border-radius:14px;padding:14px 15px}
 .histBanner{display:flex;gap:12px;align-items:flex-start;margin:12px 0;padding:14px;border-radius:18px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.35);color:#10b981;font-size:14px;line-height:1.45}
 .iw .carouselWrap{opacity:0}.carouselWrap{transition:opacity .25s}
 </style>
-</head><body>
+
+<style id="mgPatch">
+#mgSplash{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 40%,#2a0b10,#07090f 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .45s,visibility .45s}
+#mgSplash.out{opacity:0;visibility:hidden}
+.sp-w{position:relative;width:112px;height:112px;display:flex;align-items:center;justify-content:center}
+.sp-w img{width:86px;height:86px;border-radius:50%;object-fit:cover;box-shadow:0 0 30px rgba(225,29,46,.45)}
+.sp-ring{position:absolute;inset:0;border-radius:50%;border:4px solid rgba(255,255,255,.08);border-top-color:#E11D2E;border-right-color:#E11D2E;animation:spRot 1s linear infinite}
+.sp-t{font:800 26px/1 system-ui,sans-serif;color:#fff;letter-spacing:.5px}.sp-t span{color:#E11D2E}
+.sp-d{display:flex;gap:7px}.sp-d i{width:8px;height:8px;border-radius:50%;background:#E11D2E;animation:spDot 1s infinite ease-in-out}.sp-d i:nth-child(2){animation-delay:.15s}.sp-d i:nth-child(3){animation-delay:.3s}
+@keyframes spRot{to{transform:rotate(360deg)}}@keyframes spDot{0%,80%,100%{opacity:.25;transform:scale(.7)}40%{opacity:1;transform:scale(1.15)}}
+/* badges bien placés sur les icônes */
+.hact .ic{position:relative;overflow:visible}.hact .ic.av{overflow:hidden}
+.hact .cbd{top:-5px;right:-5px;box-shadow:0 0 0 2px var(--bg)}
+/* assistant */
+#botModal .sh{background:linear-gradient(180deg,#0d0d16,#08080d);border:1px solid #232336;border-radius:28px 28px 0 0;padding:0;overflow:hidden}
+#botModal .botHd{margin:0;padding:16px 14px;background:linear-gradient(120deg,#2b2a8f,#4a1f8f 55%,#1d2f8a);border-bottom:1px solid #2c2c4a;color:#fff}
+#botModal .bhL{display:flex;align-items:center;gap:12px}
+#botModal .bhAv{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.35);overflow:hidden;display:flex;align-items:center;justify-content:center;background:#1a1a22}
+#botModal .botHd b{display:block;font-size:17px;letter-spacing:3px;font-weight:800;color:#fff}
+#botModal .botHd em{display:flex;align-items:center;gap:6px;font-style:normal;font-size:13px;font-weight:700;color:#fff}
+#botModal .botHd em i{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
+#botModal .botHd .ic{background:rgba(255,255,255,.14);border-color:transparent;color:#fff;border-radius:50%;width:38px;height:38px}
+#botModal #botLog{padding:14px 12px;background:radial-gradient(circle at 80% 0,#1a1030,#07070d 60%)}
+#botModal .bm{background:#1b1b22;border:1px solid #2a2a36;color:#e8e8f0;border-radius:22px 22px 22px 6px;font-size:14px;padding:14px 16px;margin-left:44px;position:relative}
+#botModal .bm.me{margin-left:0;margin-right:0;background:linear-gradient(135deg,#2f4fe0,#5b34d6);border-color:transparent;border-radius:22px 22px 6px 22px;color:#fff}
+#botModal .bm .bav{position:absolute;left:-44px;bottom:0;width:34px;height:34px;border-radius:50%;overflow:hidden;border:1px solid #333}
+#botModal .bm .bav svg{width:100%;height:100%}
+#botModal .bm.frm{margin-left:0}
+#botModal #botOpts{padding:12px;background:#0b0b11;border-top:1px solid #1d1d28;justify-content:center;gap:10px}
+#botModal #botOpts button{border-radius:999px;padding:11px 18px;font-weight:700;background:#101a38;color:#7fb2ff;border:2px solid #243a78}
+#botModal #botOpts button:nth-child(3n+2){background:#2a0f1d;color:#ff7a9a;border-color:#6b1f3a}
+#botModal #botOpts button:nth-child(3n){background:#2a1b0a;color:#ffc24a;border-color:#6b4a14}
+#botModal #botOpts button:active{filter:brightness(1.4)}
+#botModal #botIn{padding:10px 12px 14px;background:#0b0b11;gap:10px}
+#botModal #botIn input{flex:1;background:#101016;border:1px solid #26262f;color:#fff;border-radius:999px;padding:0 18px;height:50px}
+#botModal #botIn .bImg{flex:0 0 50px;height:50px;border-radius:50%;background:#26262c;border-color:transparent;color:#cfd0da}
+#botModal #botIn .bImg .i{fill:none;stroke:currentColor;stroke-width:2}
+#botModal #botIn .ic[onclick^=botSend]{border-radius:50%!important;background:linear-gradient(135deg,#2f4fe0,#5b34d6)!important;border-color:transparent!important;flex:0 0 50px!important;height:50px!important}
+</style>
+<style id="mgPatch2">
+#botModal .bhR{display:flex;gap:8px}
+#botModal .bhR .ic{width:40px;height:40px;border-radius:50%}
+#botModal .bhR .ic .i{width:20px;height:20px}
+#botModal .sh.big{height:100vh!important;border-radius:0}
+#histModal .histHd{margin:-18px -18px 14px;padding:calc(18px + env(safe-area-inset-top,0px)) 16px 16px;background:linear-gradient(120deg,#0f1c52,#1a2a78);border-bottom:1px solid #2a3a8a;color:#fff;justify-content:flex-start;gap:14px;border-radius:inherit}
+#histModal .histHd b{font-size:19px;letter-spacing:3px;font-weight:800;flex:1}
+#histModal .histHd .ic{background:transparent;border-color:transparent;color:#fff;width:36px;height:36px}
+#hFil{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px;scrollbar-width:none}
+#hFil span{flex:none;padding:9px 15px;border-radius:999px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:800;cursor:pointer;color:var(--sub)}
+#hFil span[data-f=wait].on,#hFil span[data-f=wait]:hover{border-color:#f59e0b;color:#f59e0b;background:rgba(245,158,11,.12)}
+#hFil span[data-f=done].on{border-color:#22c55e;color:#22c55e;background:rgba(34,197,94,.12)}
+#hFil span[data-f=cancelled].on{border-color:#ef4444;color:#ef4444;background:rgba(239,68,68,.12)}
+#hFil span[data-f=all].on{border-color:var(--accent);color:#fff;background:var(--accent)}
+.cfm.del .cb{background:linear-gradient(180deg,#171724,#0e0e16);border:1px solid #2c2c44;border-radius:28px;color:#fff;box-shadow:0 30px 70px -10px rgba(0,0,0,.8),0 0 0 1px rgba(239,68,68,.15)}
+.cfm.del .ci{width:68px;height:68px;font-size:30px;background:radial-gradient(circle,rgba(239,68,68,.3),rgba(239,68,68,.08));box-shadow:0 0 0 8px rgba(239,68,68,.07)}
+.cfm.del h4{font-size:19px}.cfm.del p{opacity:.7;font-size:14px}
+.cfm.del .cr div{border-radius:999px;padding:14px 10px;background:#232331;color:#e8e8f0;border-color:#33334a}
+.cfm.del .cr div.ok{background:linear-gradient(135deg,#ef4444,#b91c1c);border-color:transparent;color:#fff;box-shadow:0 10px 22px -8px #ef4444}
+</style>
+</head><body><div id="mgSplash"><div class="sp-w"><div class="sp-ring"></div><img src="https://i.postimg.cc/pTdFhgfL/FB-IMG-17941202917422900.jpg" alt=""></div><div class="sp-t">MG <span>STORE</span></div><div class="sp-d"><i></i><i></i><i></i></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
 <symbol id="moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
@@ -486,9 +545,9 @@ input,textarea{border-radius:14px;padding:14px 15px}
 <div class="btn" onclick="closeModal('okModal');back();autoSuivi()">Voir le statut de ma commande<svg class="i s"><use href="#arrow"/></svg></div></div></div>
 
 <div class="mo" id="histModal"><div class="sh">
-<div class="sht"><b>Mes commandes</b><div class="ic" onclick="closeModal('histModal')"><svg class="i"><use href="#x"/></svg></div></div>
+<div class="sht histHd"><div class="ic" role="button" aria-label="Retour" onclick="closeModal('histModal')"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></div><b>MES COMMANDES</b><span style="width:34px"></span></div>
 <div class="histBanner"><svg class="i" style="flex:none;width:24px;height:24px"><use href="#shield"/></svg><span>Par sécurité, votre identifiant et votre mot de passe ne sont jamais réaffichés ici — seul le statut de votre commande est visible.</span></div>
-<h2 style="margin-top:18px">Historique</h2>
+<h2 style="margin-top:18px">Historique</h2><div id="hFil"><span class="on" data-f="all">Toutes</span><span data-f="wait">⏳ En attente</span><span data-f="done">✅ Terminée</span><span data-f="cancelled">❌ Annulée</span></div>
 <div style="display:flex;gap:8px"><input id="histSearch" placeholder="Filtrer par référence ou pseudo" style="flex:1"><div class="ic" style="width:48px;height:auto;background:var(--accent);color:#fff;border-color:var(--accent)" onclick="loadHistory()"><svg class="i"><use href="#search"/></svg></div></div>
 <div id="histList" style="margin-top:12px;color:var(--sub);font-size:13px">Chargement...</div>
 <div class="btn gr" onclick="loadHistory()">Actualiser le statut</div></div></div>
@@ -821,7 +880,7 @@ else if(isPrimePassPack)fill('https://i.postimg.cc/ZRdczLyQ/file-00000000b41c820
 else if(isStandardUC)fill('https://i.postimg.cc/PJ12YMXn/file-000000006de88208a16374225db5cc9f.jpg','PJ12YMXn','cover');
 })}fixIcon();new MutationObserver(fixIcon).observe(document.body,{childList:true,subtree:true});
  </script>
-<div class="mo" id="botModal"><div class="sh" style="height:88vh;display:flex;flex-direction:column"><div class="sht"><b>Assistant MG STORE</b><div style="display:flex;gap:8px;align-items:center"><div class="ic" role="button" aria-label="Recommencer" onclick="botRestart()" style="font-size:22px;font-weight:800">↺</div><div class="ic" role="button" aria-label="Fermer" onclick="closeModal('botModal')"><svg class="i"><use href="#x"/></svg></div></div></div><div id="botLog"></div><div id="botOpts"></div><input type="file" id="botFile" accept="image/*" style="display:none"><div id="botIn" style="display:none"><input id="botTxt" placeholder="Soraty eto..."><div class="ic" role="button" aria-label="Envoyer" onclick="botSend()" style="flex:0 0 46px;height:46px;background:var(--accent);color:#fff;border-color:var(--accent)"><svg class="i"><use href="#send"/></svg></div></div></div></div>
+<div class="mo" id="botModal"><div class="sh" style="height:88vh;display:flex;flex-direction:column"><div class="sht botHd"><div class="bhL"><span class="bhAv"><svg viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="24" fill="#2a1a14"/><rect x="11" y="12" width="26" height="24" rx="9" fill="#c2552d"/><rect x="15" y="18" width="18" height="12" rx="5" fill="#15151c"/><circle cx="20" cy="24" r="2.4" fill="#fff"/><circle cx="28" cy="24" r="2.4" fill="#fff"/><rect x="21" y="27" width="6" height="1.8" rx=".9" fill="#fff"/><rect x="22.5" y="6" width="3" height="6" rx="1.5" fill="#c2552d"/></svg></span><div><b>ASSISTANT</b><em><i></i><span>En ligne</span></em></div></div><div class="bhR"><div class="ic" role="button" aria-label="Mes commandes" onclick="showHist()"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8l-9-5-9 5v8l9 5 2-1.1"/><path d="M3 8l9 5 9-5M12 13v8"/><circle cx="18" cy="18" r="2.6"/><path d="M20 20l1.8 1.8"/></svg></div><div class="ic" role="button" aria-label="Effacer" onclick="botAskDelete()"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div><div class="ic" role="button" aria-label="Agrandir" onclick="botExpand()"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><div class="ic" role="button" aria-label="Fermer" onclick="closeModal('botModal')"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div></div></div><div id="botLog"></div><div id="botOpts"></div><input type="file" id="botFile" accept="image/*" style="display:none"><div id="botIn" style="display:none"><div class="ic bImg" role="button" aria-label="Image" onclick="document.getElementById('botFile').click()"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 9"/></svg></div><input id="botTxt" placeholder="Soraty eto..."><div class="ic" role="button" aria-label="Envoyer" onclick="botSend()" style="flex:0 0 46px;height:46px;background:var(--accent);color:#fff;border-color:var(--accent)"><svg class="i"><use href="#send"/></svg></div></div></div></div>
 <script>
 (function(){
 var S={},log=$('botLog'),opts=$('botOpts'),inp=$('botIn'),txt=$('botTxt'),want=null;
@@ -1125,5 +1184,45 @@ if(/MGStoreApp/.test(navigator.userAgent)){var _ib=document.getElementById('inst
 try{var _rc0=renderCar;renderCar=function(arr){_rc0(arr);try{if(arr&&arr.length)localStorage.setItem('mgCar',JSON.stringify(arr))}catch(e){}window._carOk=1};
 var _cc=JSON.parse(localStorage.getItem('mgCar')||'null');if(_cc&&_cc.length){_rc0(_cc);window._carOk=1}}catch(e){window._carOk=1}
 setTimeout(function(){window._carOk=1},6000);
+</script>
+
+<script>
+(function(){
+var sp=document.getElementById('mgSplash'),t0=Date.now();
+function hide(){var w=Math.max(0,1300-(Date.now()-t0));setTimeout(function(){if(sp)sp.classList.add('out');setTimeout(function(){if(sp&&sp.parentNode)sp.parentNode.removeChild(sp)},600)},w)}
+if(document.readyState==='complete')hide();else window.addEventListener('load',hide);setTimeout(hide,4000);
+/* avatar robot sur les bulles de l'assistant */
+var R='<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#2a1a14"/><rect x="11" y="12" width="26" height="24" rx="9" fill="#c2552d"/><rect x="15" y="18" width="18" height="12" rx="5" fill="#15151c"/><circle cx="20" cy="24" r="2.4" fill="#fff"/><circle cx="28" cy="24" r="2.4" fill="#fff"/><rect x="21" y="27" width="6" height="1.8" rx=".9" fill="#fff"/></svg>';
+var L=document.getElementById('botLog');
+function av(){if(!L)return;[].forEach.call(L.querySelectorAll('.bm:not(.me):not(.frm):not([data-av])'),function(b){b.setAttribute('data-av',1);var a=document.createElement('span');a.className='bav';a.innerHTML=R;b.appendChild(a)})}
+if(L){new MutationObserver(av).observe(L,{childList:true});av()}
+/* notification boutique en ligne / hors ligne (comme TOP UP MADA) */
+var last=null;
+function pushN(on){
+ var title=on?'Boutique en ligne':'Boutique hors ligne',body=on?'MG STORE est ouverte : passez votre commande, livraison en 5 à 10 minutes.':'MG STORE est fermée pour le moment : vos commandes seront livrées à la réouverture.';
+ try{if(typeof toast==='function')toast((on?'🟢 ':'🔴 ')+title,on?'ok':'err')}catch(e){}
+ try{if('Notification' in window&&Notification.permission==='granted'){var o={body:body,icon:'icon-192.png',badge:'icon-192.png',tag:'mg-shop',renotify:true};
+  if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(function(r){r.showNotification(title,o)}).catch(function(){new Notification(title,o)});else new Notification(title,o)}}catch(e){}
+}
+function chk(){var e=document.getElementById('admSt');if(!e)return;var on=e.classList.contains('on');if(last===null){last=on;return}if(on!==last){last=on;pushN(on)}}
+setInterval(chk,2000);
+/* demande de permission au premier toucher */
+document.addEventListener('click',function f(){document.removeEventListener('click',f);try{if('Notification' in window&&Notification.permission==='default')Notification.requestPermission()}catch(e){}},{once:true});
+})();
+</script>
+<script>
+(function(){
+window.botExpand=function(){var m=document.querySelector('#botModal .sh');if(m)m.classList.toggle('big')};
+window.botAskDelete=function(){
+ mgConfirm('🗑️','Effacer la conversation ?',"Demander à un administrateur d'effacer cette conversation ?",'Demander','Annuler',function(){
+  var msg={tel:devLabel(),dev:devId(),pseudo:supUser(),id:'',jeu:'SUPPORT',message:"[SUPPORT] 🗑️ Demande d'effacement de la conversation (assistant)",d:new Date().toLocaleString(),replied:false,ts:Date.now()};
+  fetch(DB+'/messages.json',{method:'POST',body:JSON.stringify(msg)}).then(function(r){if(!r.ok)throw 0;toast("Demande envoyée à l'administrateur",'ok')}).catch(function(){toast('Erreur de connexion','err')})});
+ var c=document.querySelectorAll('.cfm');if(c.length)c[c.length-1].classList.add('del')};
+/* filtres historique */
+var F='all',bar=document.getElementById('hFil'),L=document.getElementById('histList');
+function apply(){if(!L)return;[].forEach.call(L.querySelectorAll('.histCard'),function(c){var t=c.classList.contains('done')?'done':c.classList.contains('cancelled')?'cancelled':'wait';c.style.display=(F=='all'||F==t)?'':'none'})}
+if(bar)bar.addEventListener('click',function(e){var t=e.target.closest('span[data-f]');if(!t)return;F=t.dataset.f;[].forEach.call(bar.children,function(x){x.classList.toggle('on',x===t)});apply()});
+if(L)new MutationObserver(apply).observe(L,{childList:true});
+})();
 </script>
 </body></html>
