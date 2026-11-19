@@ -299,7 +299,9 @@ header b{font-size:26px}
 <label>Yas / MVOLA</label><input id=img_yas value="https://i.postimg.cc/P5gpy2gH/FB-IMG-17944664593454604.jpg" oninput="document.getElementById('p_yas').src=this.value"><img id=p_yas class=prevContain src="https://i.postimg.cc/P5gpy2gH/FB-IMG-17944664593454604.jpg">
 <label>Orange Money</label><input id=img_orange value="https://i.postimg.cc/sD1MRkyD/FB-IMG-17944664844108804.jpg" oninput="document.getElementById('p_orange').src=this.value"><img id=p_orange class=prevContain src="https://i.postimg.cc/sD1MRkyD/FB-IMG-17944664844108804.jpg">
 <label>Sary Support</label><input id=img_support value="https://i.postimg.cc/hj7DfByP/FB-IMG-17944707606484175.jpg" oninput="document.getElementById('p_support').src=this.value"><img id=p_support class=prev src="https://i.postimg.cc/hj7DfByP/FB-IMG-17944707606484175.jpg">
-<div class=bb style="margin-top:10px" onclick="saveImages()">💾 Sauvegarder Logo / Yas / Orange / Support</div>
+<label>🖼️ Grande bannière page Free Fire (sary lehibe eo ambonin'ny pack)</label><input id=img_banff placeholder="https://..." oninput="document.getElementById('p_banff').src=this.value"><img id=p_banff class=prev src="">
+<label>🖼️ Grande bannière page PUBG Mobile</label><input id=img_banpubg placeholder="https://..." oninput="document.getElementById('p_banpubg').src=this.value"><img id=p_banpubg class=prev src="">
+<div class=bb style="margin-top:10px" onclick="saveImages()">💾 Sauvegarder Logo / Yas / Orange / Support / Bannières</div>
 </div>
 </div>
 <div id=tab-wallet style="display:none">
@@ -451,9 +453,12 @@ cc.appendChild(d);
 });
 renderTarifEditor();
 }
+var SOLD={};function soKey(j,c,n){return (j+'|'+c+'|'+n).replace(/[.#$\[\]\/]/g,'_')}
+function loadSoldAdmin(){fetch(DB+'/soldout.json').then(r=>r.json()).then(v=>{SOLD=v||{};renderTarifEditor()}).catch(()=>{})}
+function togSold(i){collectTarifEditor();var p=(DATA[tarifJeuSel][tarifCatSel]||[])[i];if(!p)return;var k=soKey(tarifJeuSel,tarifCatSel,p[0]);if(SOLD[k])delete SOLD[k];else SOLD[k]=1;renderTarifEditor();fetch(DB+'/soldout.json',{method:'PUT',body:JSON.stringify(SOLD)}).then(function(r){if(!r.ok)throw 0;toast(SOLD[k]?'⛔ '+p[0]+' : ÉPUISÉ (client tsy afaka mividy)':'✅ '+p[0]+' : disponible indray')}).catch(function(){toast('Erreur de connexion',true)})}
 function renderTarifEditor(){
 var h='';(DATA[tarifJeuSel][tarifCatSel]||[]).forEach((p,i)=>{
-h+='<div class=flex style="margin-bottom:6px"><input value="'+p[0].replace(/"/g,'')+'" id="pn_'+i+'" placeholder="Nom"><input type=number value="'+p[1]+'" id="pp_'+i+'" placeholder="Prix" style="flex:0 0 110px"><div class=bb style="flex:0 0 40px" onclick="delPack('+i+')">✕</div></div>';
+h+='<div class=flex style="margin-bottom:6px"><input value="'+p[0].replace(/"/g,'')+'" id="pn_'+i+'" placeholder="Nom"><input type=number value="'+p[1]+'" id="pp_'+i+'" placeholder="Prix" style="flex:0 0 110px"><div class=bb style="flex:0 0 78px;'+(SOLD[soKey(tarifJeuSel,tarifCatSel,p[0])]?'background:#64748b':'')+'" onclick="togSold('+i+')">'+(SOLD[soKey(tarifJeuSel,tarifCatSel,p[0])]?'⛔ Épuisé':'✅ Dispo')+'</div><div class=bb style="flex:0 0 40px" onclick="delPack('+i+')">✕</div></div>';
 });
 var ed=document.getElementById('tarifEditor');if(ed){ed.innerHTML=h;ed.dataset.jeu=tarifJeuSel;ed.dataset.cat=tarifCatSel;}
 }
@@ -626,7 +631,7 @@ box.innerHTML=rows.map(function(x){var u=x.u,nm=((u.prenom||'')+' '+(u.nom||''))
 return'<div class="cvc"><div class="cvh">'+admAv(u.photo||'',(nm.charAt(0)||'C').toUpperCase())+'<div class="cvn"><b>'+escH(nm)+'</b><small>'+escH(u.email||'')+(u.tel?' · '+escH(u.tel):'')+'</small></div></div>'
 +'<div class="cls"><div><b>'+x.cmd+'</b><span>Commandes</span></div><div><b>'+x.total.toLocaleString()+' Ar</b><span>Total livré</span></div><div><b>'+walAmt(walBal(x.id))+'</b><span>Solde</span></div></div>'
 +'<div class="clm">'+(u.ts?'Inscrit le '+escH(new Date(u.ts).toLocaleDateString()):'')+(x.wait?' · ⏳ '+x.wait+' en attente':'')+(x.last?' · dernière commande '+escH(fmtT(x.last)):'')+'</div></div>'}).join('')}
-function doDeleteConv(id){var g=msgGroups.filter(function(x){return x.id===id})[0];if(!g)return;Promise.all(g.items.map(function(it){return fetch(DB+'/messages/'+it.k+'.json',{method:'DELETE'})})).then(function(){toast('🗑️ Conversation supprimée');lastMsgsSig='';loadMsgs()}).catch(function(){toast('Erreur de connexion',true)})}
+function doDeleteConv(id){var g=msgGroups.filter(function(x){return x.id===id})[0];if(!g)return;try{var dv=g.items[0].m.dev;if(dv)fetch(DB+'/botReset/'+encodeURIComponent(dv)+'.json',{method:'PUT',body:String(Date.now())})}catch(e){}Promise.all(g.items.map(function(it){return fetch(DB+'/messages/'+it.k+'.json',{method:'DELETE'})})).then(function(){toast('🗑️ Conversation supprimée');lastMsgsSig='';loadMsgs()}).catch(function(){toast('Erreur de connexion',true)})}
   // FIX V2: Sakano NY refresh REHETRA raha manoratra
 let _si = window.setInterval;
 window.setInterval = function(fn, t){
@@ -636,9 +641,9 @@ window.setInterval = function(fn, t){
     try{ fn(); }catch(e){}
   }, t);
 };
-function loadImagesAdmin(){fetch(DB+'/images.json').then(r=>r.json()).then(v=>{if(!v)return;if(v.logo){document.getElementById('img_logo').value=v.logo;document.getElementById('p_logo').src=v.logo}if(v.yas){document.getElementById('img_yas').value=v.yas;document.getElementById('p_yas').src=v.yas}if(v.orange){document.getElementById('img_orange').value=v.orange;document.getElementById('p_orange').src=v.orange}if(v.support){document.getElementById('img_support').value=v.support;document.getElementById('p_support').src=v.support}}).catch(()=>{})}
-function saveImages(){var data={logo:document.getElementById('img_logo').value.trim(),yas:document.getElementById('img_yas').value.trim(),orange:document.getElementById('img_orange').value.trim(),support:document.getElementById('img_support').value.trim()};fetch(DB+'/images.json',{method:'PATCH',body:JSON.stringify(data)}).then(()=>toast('✅ Logo / Yas / Orange / Support sauvegardés!')).catch(()=>toast('Erreur!',true))}
-function loadTarifsAdmin(){fetch(DB+'/tarifs.json').then(r=>r.json()).then(v=>{if(v&&Object.keys(v).length){DATA=v;if(!DATA[tarifJeuSel])tarifJeuSel='Free Fire';if(!DATA[tarifJeuSel][tarifCatSel])tarifCatSel=Object.keys(DATA[tarifJeuSel])[0];renderTarifChips();}}).catch(()=>{})}
+function loadImagesAdmin(){fetch(DB+'/images.json').then(r=>r.json()).then(v=>{if(!v)return;if(v.logo){document.getElementById('img_logo').value=v.logo;document.getElementById('p_logo').src=v.logo}if(v.yas){document.getElementById('img_yas').value=v.yas;document.getElementById('p_yas').src=v.yas}if(v.orange){document.getElementById('img_orange').value=v.orange;document.getElementById('p_orange').src=v.orange}if(v.banFF){document.getElementById('img_banff').value=v.banFF;document.getElementById('p_banff').src=v.banFF}if(v.banPUBG){document.getElementById('img_banpubg').value=v.banPUBG;document.getElementById('p_banpubg').src=v.banPUBG}if(v.support){document.getElementById('img_support').value=v.support;document.getElementById('p_support').src=v.support}}).catch(()=>{})}
+function saveImages(){var data={logo:document.getElementById('img_logo').value.trim(),yas:document.getElementById('img_yas').value.trim(),orange:document.getElementById('img_orange').value.trim(),support:document.getElementById('img_support').value.trim(),banFF:document.getElementById('img_banff').value.trim(),banPUBG:document.getElementById('img_banpubg').value.trim()};fetch(DB+'/images.json',{method:'PATCH',body:JSON.stringify(data)}).then(()=>toast('✅ Logo / Yas / Orange / Support sauvegardés!')).catch(()=>toast('Erreur!',true))}
+function loadTarifsAdmin(){loadSoldAdmin();fetch(DB+'/tarifs.json').then(r=>r.json()).then(v=>{if(v&&Object.keys(v).length){DATA=v;if(!DATA[tarifJeuSel])tarifJeuSel='Free Fire';if(!DATA[tarifJeuSel][tarifCatSel])tarifCatSel=Object.keys(DATA[tarifJeuSel])[0];renderTarifChips();}}).catch(()=>{})}
 function loadStats(){fetch(DB+'/commandes.json').then(r=>r.json()).then(val=>{var all=val?Object.values(val):[];var totalCA=all.filter(o=>o.done).reduce((s,o)=>s+(o.pr||0),0);var waitCA=all.filter(o=>!o.done&&!o.annule).reduce((s,o)=>s+(o.pr||0),0);document.getElementById('statsBox').innerHTML='📦 Total: <b>'+all.length+'</b><br>✅ Validées: <b>'+all.filter(o=>o.done).length+'</b><br>⏳ En Attente: <b>'+all.filter(o=>!o.done&&!o.annule).length+'</b><br>❌ Annulées: <b>'+all.filter(o=>o.annule).length+'</b><br><br>💰 CA Validé: <b style="color:#16A34A">'+totalCA.toLocaleString()+' Ar</b><br>⏳ CA en Attente: <b style="color:#EAB308">'+waitCA.toLocaleString()+' Ar</b>';}).catch(()=>document.getElementById('statsBox').innerHTML='Erreur')}
 setInterval(function(){try{if(document.getElementById('adminContent').style.display==='block'){loadOrders();}}catch(e){}},3000);
 setInterval(function(){try{if(document.getElementById('adminContent').style.display==='block'){loadMsgs();}}catch(e){}},5000);
@@ -727,7 +732,7 @@ window.prLbl=function(v){st.label=v};
 function desc(p,k){var g=p.game||k;return (g=='ALL'?'Tous les jeux':g)+(p.cat?' › '+p.cat:'')+(p.packs&&p.packs.length?' › '+p.packs.join(', '):'')}
 window.loadPromoAdmin=function(){fetch(DB+'/promo.json').then(function(r){var dh=r.headers.get('Date');if(dh){var t=Date.parse(dh);if(t)AOFF=t-Date.now()}return r.json()}).then(function(v){var b=document.getElementById('prList');if(!v||!Object.keys(v).length){b.innerHTML='<p>Aucune réduction active.</p>';return}var h='<label>Réductions enregistrées</label>';Object.keys(v).forEach(function(k){var p=v[k];if(!p)return;if(p.end&&p.end<SN()){fetch(DB+'/promo/'+k+'.json',{method:'DELETE'});return}var fin=p.end?(p.end<SN()?'⏹ terminée':'jusqu\'au '+new Date(p.end).toLocaleString()):'sans date de fin';h+='<div class=ord style="border-left-color:#E11D2E"><b>-'+p.pct+'%</b> - '+E(desc(p,k))+'<br><small style="color:#8B96AD">'+E(p.label||'')+' '+fin+'</small><div class=bb style="margin-top:8px;padding:10px" onclick="delPromo(\''+encodeURIComponent(k)+'\')">🗑️ Supprimer</div></div>'});b.innerHTML=h}).catch(function(){})};
 window.savePromo=function(){if(!(st.pct>=1&&st.pct<=90)){toast('Pourcentage entre 1 et 90',true);return}
-var o={game:st.game,pct:st.pct,label:st.label.trim(),end:st.dur?SN()+st.dur*3600000:0};if(st.cat)o.cat=st.cat;if(st.packs.length)o.packs=st.packs.slice();
+var o={game:st.game,pct:st.pct,label:st.label.trim(),end:st.dur?SN()+st.dur*3600000:0,ts:Date.now()};if(st.cat)o.cat=st.cat;if(st.packs.length)o.packs=st.packs.slice();
 fetch(DB+'/promo/p'+Date.now().toString(36)+'.json',{method:'PUT',body:JSON.stringify(o)}).then(function(){toast('✅ Réduction -'+st.pct+'% appliquée - le client la voit');loadPromoAdmin()}).catch(function(){toast('Erreur',true)})};
 window.delPromo=function(k){fetch(DB+'/promo/'+k+'.json',{method:'DELETE'}).then(function(){toast('Réduction supprimée');loadPromoAdmin()}).catch(function(){toast('Erreur',true)})};
 var t=document.getElementById('tab-tarifs');if(t){t.insertAdjacentHTML('afterbegin','<div class=card><h3>🏷️ Réductions de prix</h3><p>Choisissez le jeu, la catégorie et les packs. Le client voit le prix barré, le nouveau prix et un badge -%.</p><div id=prUI></div><div id=prList style="margin-top:14px"></div></div>');render();loadPromoAdmin();
@@ -825,6 +830,36 @@ setInterval(function(){var c=document.getElementById('adminContent');if(c&&c.sty
 /* bouton filtre actif */
 var row=document.querySelectorAll('#tab-commandes>.flex')[1];
 if(row)[].forEach.call(row.children,function(b,i){if(i==0)b.classList.add('sel');b.addEventListener('click',function(){[].forEach.call(row.children,function(x){x.classList.remove('sel')});b.classList.add('sel')})});
+})();
+</script>
+
+<style>
+#updBn{position:fixed;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;bottom:90px;z-index:9998;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:22px;background:#0f1424;border:1px solid #2a3350;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+#updBn img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none}
+#updBn div{flex:1;min-width:0}#updBn b{display:block;font-size:15px}#updBn span{display:block;font-size:12px;opacity:.75}
+#updBn button{border:0;background:linear-gradient(135deg,#2f6bff,#5b34d6);color:#fff;font-weight:800;border-radius:999px;padding:11px 16px;font-size:13px}
+#updBn i{position:absolute;top:4px;right:10px;font-style:normal;opacity:.5;font-size:16px}
+</style>
+<script>
+(function(){
+var K='mgadm_ver';
+function card(){var t=document.getElementById('tab-notifs');if(!t||document.getElementById('updCard'))return;
+t.insertAdjacentHTML('afterbegin','<div class=card id=updCard><h3>📲 Mise à jour application</h3><p>Rehefa vita ny fanovana vaovao dia tsindrio eto: hiseho ny « Mise à jour disponible » any amin\'ny client sy admin. Tsy ho voafafa ny application taloha, mahazo update fotsiny izy ireo.</p><label>Hafatra (tsy voatery)</label><input id=upMsg placeholder="Une nouvelle version de MG STORE est prête."><label>Lien APK client</label><input id=upUrl placeholder="https://github.com/.../MG_STORE.apk"><label>Lien APK admin</label><input id=upUrlA placeholder="https://github.com/.../MG_ADMIN.apk"><div class=bb style="margin-top:10px" onclick="publishUpdate()">🚀 Publier la mise à jour</div></div>');
+fetch(DB+'/appupdate.json').then(function(r){return r.json()}).then(function(u){if(!u)return;if(u.msg)document.getElementById('upMsg').value=u.msg;if(u.url)document.getElementById('upUrl').value=u.url;if(u.urlAdmin)document.getElementById('upUrlA').value=u.urlAdmin}).catch(function(){})}
+window.publishUpdate=function(){var o={v:Date.now(),msg:document.getElementById('upMsg').value.trim(),url:document.getElementById('upUrl').value.trim(),urlAdmin:document.getElementById('upUrlA').value.trim()};
+fetch(DB+'/appupdate.json',{method:'PUT',body:JSON.stringify(o)}).then(function(r){if(!r.ok)throw 0;try{localStorage.setItem(K,String(o.v))}catch(e){}toast('✅ Mise à jour publiée : le client la voit')}).catch(function(){toast('Erreur de connexion',true)})};
+setInterval(card,1500);
+function isApp(){return /MGStoreApp/.test(navigator.userAgent)}
+function show(u){if(document.getElementById('updBn'))return;var d=document.createElement('div');d.id='updBn';
+d.innerHTML='<img src="admin-icon-192.png" alt=""><div><b>Mise à jour disponible</b><span>'+(u.msg?String(u.msg).replace(/[<>&]/g,''):'Une nouvelle version de MG ADMIN est prête.')+'</span></div><button type="button">Mettre à jour</button><i>×</i>';
+d.querySelector('i').onclick=function(){d.remove()};
+d.querySelector('button').onclick=function(){try{localStorage.setItem(K,String(u.v))}catch(e){}
+ var url=u.urlAdmin||u.url;
+ if(isApp()&&url){try{if(window.AndroidBridge&&AndroidBridge.openUrl){AndroidBridge.openUrl(url);return}}catch(e){}window.open(url,'_blank')}
+ else{try{if(window.caches)caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k)})})}catch(e){}setTimeout(function(){location.reload()},300)}};
+document.body.appendChild(d)}
+function chk(){fetch(DB+'/appupdate.json').then(function(r){return r.json()}).then(function(u){if(!u||!u.v)return;var cur=null;try{cur=localStorage.getItem(K)}catch(e){}if(cur===null){try{localStorage.setItem(K,String(u.v))}catch(e){}return}if(String(u.v)!==cur)show(u)}).catch(function(){})}
+setTimeout(chk,4000);setInterval(chk,60000);
 })();
 </script>
 </body></html>
