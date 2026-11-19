@@ -1276,4 +1276,25 @@ function updChk(){fetch(DB+'/appupdate.json').then(function(r){return r.json()})
 setTimeout(updChk,4000);setInterval(updChk,60000);
 })();
 </script>
+
+<script>
+/* ===== Hors-ligne : l'animation de chargement tourne tant qu'il n'y a pas d'internet réel ===== */
+(function(){
+var el=null,fails=0,busy=false;
+function build(){if(el)return el;el=document.createElement('div');el.id='offWall';
+el.style.cssText='position:fixed;inset:0;z-index:2147483647;background:radial-gradient(circle at 50% 40%,#2a0b10,#07090f 70%);display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px';
+el.innerHTML='<div class="sp-w"><div class="sp-ring"></div><img src="https://i.postimg.cc/pTdFhgfL/FB-IMG-17941202917422900.jpg" alt=""></div><div class="sp-t">MG <span>STORE</span></div><div class="sp-d"><i></i><i></i><i></i></div>';
+document.body.appendChild(el);return el}
+function show(on){var w=build();w.style.display=on?'flex':'none';try{document.documentElement.style.overflow=on?'hidden':''}catch(e){}}
+function chk(force){if(busy)return;busy=true;
+if(navigator.onLine===false){fails=2;busy=false;show(true);return}
+var ctl=window.AbortController?new AbortController():null,t=setTimeout(function(){if(ctl)ctl.abort()},7000);
+fetch(DB+'/status.json?shallow=true&_='+Date.now(),{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(){fails=0;show(false)}).catch(function(){fails++;if(fails>=2||force)show(true)}).then(function(){clearTimeout(t);busy=false})}
+window.addEventListener('offline',function(){fails=2;show(true)});
+window.addEventListener('online',function(){chk(true)});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)chk(true)});
+setInterval(chk,5000);
+if(document.body)chk();else document.addEventListener('DOMContentLoaded',function(){chk()});
+})();
+</script>
 </body></html>

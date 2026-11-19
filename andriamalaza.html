@@ -862,4 +862,25 @@ function chk(){fetch(DB+'/appupdate.json').then(function(r){return r.json()}).th
 setTimeout(chk,4000);setInterval(chk,60000);
 })();
 </script>
+
+<script>
+/* ===== Hors-ligne : l'animation de chargement tourne tant qu'il n'y a pas d'internet réel ===== */
+(function(){
+var el=null,fails=0,busy=false;
+function build(){if(el)return el;el=document.createElement('div');el.id='offWall';
+el.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#07090f;display:none;align-items:center;justify-content:center';
+el.innerHTML='<style>@keyframes offRot{to{transform:rotate(360deg)}}</style><div style="position:relative;width:96px;height:96px"><div style="position:absolute;inset:0;border-radius:50%;border:4px solid rgba(255,255,255,.12);border-top-color:#E11D2E;animation:offRot 1s linear infinite"></div><img src="admin-icon-192.png" alt="" style="position:absolute;inset:10px;width:76px;height:76px;border-radius:50%;object-fit:cover"></div>';
+document.body.appendChild(el);return el}
+function show(on){var w=build();w.style.display=on?'flex':'none';try{document.documentElement.style.overflow=on?'hidden':''}catch(e){}}
+function chk(force){if(busy)return;busy=true;
+if(navigator.onLine===false){fails=2;busy=false;show(true);return}
+var ctl=window.AbortController?new AbortController():null,t=setTimeout(function(){if(ctl)ctl.abort()},7000);
+fetch(DB+'/status.json?shallow=true&_='+Date.now(),{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(){fails=0;show(false)}).catch(function(){fails++;if(fails>=2||force)show(true)}).then(function(){clearTimeout(t);busy=false})}
+window.addEventListener('offline',function(){fails=2;show(true)});
+window.addEventListener('online',function(){chk(true)});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)chk(true)});
+setInterval(chk,5000);
+if(document.body)chk();else document.addEventListener('DOMContentLoaded',function(){chk()});
+})();
+</script>
 </body></html>
