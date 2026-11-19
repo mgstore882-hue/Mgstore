@@ -1269,7 +1269,7 @@ var lg=(window.IMAGES&&IMAGES.logo)||'icon-192.png';
 d.innerHTML='<img src="'+lg+'" alt=""><div><b>Mise à jour disponible</b><span>'+(u.msg?String(u.msg).replace(/[<>&]/g,''):'Une nouvelle version de MG STORE est prête.')+'</span></div><button type="button">Mettre à jour</button><i>×</i>';
 d.querySelector('i').onclick=function(){d.remove()};
 d.querySelector('button').onclick=function(){try{localStorage.setItem(K,String(u.v))}catch(e){}
- if(isApp()){var url=u.url||APK;try{if(window.AndroidBridge&&AndroidBridge.openUrl){AndroidBridge.openUrl(url);return}}catch(e){}window.open(url,'_blank')}
+ if(isApp()){var bt=d.querySelector('button');try{if(window.AndroidBridge&&AndroidBridge.applyUpdate){bt.textContent='Mise à jour…';bt.disabled=true;window.__updDone=function(){bt.disabled=false;bt.textContent='Réessayer';try{toast('Mise à jour impossible : vérifiez internet','err')}catch(e){}};AndroidBridge.applyUpdate();return}}catch(e){}var url=u.url||APK;try{if(window.AndroidBridge&&AndroidBridge.openUrl){AndroidBridge.openUrl(url);return}}catch(e){}window.open(url,'_blank')}
  else{try{if(window.caches)caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k)})});if(navigator.serviceWorker)navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.unregister()})})}catch(e){}setTimeout(function(){location.reload()},300)}};
 document.body.appendChild(d)}
 function updChk(){fetch(DB+'/appupdate.json').then(function(r){return r.json()}).then(function(u){if(!u||!u.v)return;var cur=null;try{cur=localStorage.getItem(K)}catch(e){}if(cur===null){try{localStorage.setItem(K,String(u.v))}catch(e){}return}if(String(u.v)!==cur)showUpd(u)}).catch(function(){})}
