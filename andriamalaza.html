@@ -412,7 +412,7 @@ function showNotif(title,body){try{if('Notification' in window && Notification.p
 function triggerNewOrderAlert(order){if(!soundOn)return;playAlertSound();vibrateAlert();flashTitle();var bar=document.getElementById('newOrderBar');bar.style.display='block';bar.textContent='🔔 NOUVELLE COMMANDE ! '+(order?order.jeu+' - '+order.pack+' - '+order.pr.toLocaleString()+' Ar - '+order.pseudo:'')+' → Cliquez pour voir';showNotif('🔔 NOUVELLE COMMANDE MG STORE!',(order?order.jeu+' - '+order.pack+' - '+order.pseudo+' ('+order.id+') - '+order.pr.toLocaleString()+' Ar - Ref: '+order.r:'Nouvelle commande reçue !'));toast('🔔 NOUVELLE COMMANDE ! '+(order?order.jeu+' - '+order.pack:''),'ok');}
 function triggerNewMsgAlert(m){if(!soundOn)return;mgRing(function(){playBeep(660,0.3,0)});vibrateAlert();showNotif('💬 Nouveau Message MG STORE!',(m?m.pseudo+' - '+m.message:''));}
 function testAlert(){playAlertSound();vibrateAlert();flashTitle();showNotif('🔔 Test MG STORE','Sonnerie + Vibration + Notification - Miasa tsara !');toast('🔔 Test - Sonnerie + Vibration !','ok');}
-var DATA={'Free Fire':{'TOP-UP':[['100 + 10',4900],['210 + 21',9800],['310 + 31',14700],['530 + 53',25500],['1080 + 108',48000],['2200 + 220',94000]],'LEVEL UP':[['Level Up Niv 6 - 120',3500],['Level Up Niv 10 - 200',4500],['Level Up Niv 15 - 200',4500],['Level Up Niv 20 - 200',4500],['Level Up Niv 25 - 200',4500],['Level Up Niv 30 - 350',6500],['Total Level Up - 1270',28000]],'ABONNEMENT':[['WEEKLY',11500],['WEEKLY (Par compte)',10500],['MONTHLY',50000],['MONTHLY (Par compte)',43000]],'BOOYAH PASS':[['Gifte BOOYAH PASS',7000]],'LARGAGE':[['Largage 0,99$',6500],['Largage 1,99$',12000]]},'PUBG Mobile':{'STANDARD UC':[['30 UC',3000],['60 UC',5000],['180 UC',14000],['240 UC',18000],['325 UC',21500],['445 UC',31500],['505 UC',35000],['660 UC',45000],['840 UC',55000],['1320 UC',85000],['1800 UC',110000],['40500 UC',2070000]],'PRIME':[['Prime (1 Month)',5000],['Prime (3 Month)',15000],['Prime (6 Month)',28500],['Prime Plus (1 Month)',45000],['Prime (12 Month)',55000],['Prime Plus (3 Month)',125000],['Prime Plus (6 Month)',250000],['Prime Plus (12 Month)',530000]],'PASS':[['Elite Pass Lv 1-50',28500],['Elite Pass Lv 1-100',55500],['Elite Pass Plus Lv 1-100',130000]],'PACK':[['First Purchase Pack',5000],['Weekly Deal Pack 1',5100],['Upgradable Firearm',15000],['Weekly Mythic Emblem',18000],['Mythic Emblem Pack',23800]]}};
+var DATA={'Free Fire':{'TOP-UP':[['100 + 10',4900],['210 + 21',9800],['310 + 31',14700],['420 + 42',21500],['530 + 53',25500],['630 + 63',30000],['740 + 74',35000],['840 + 84',40000],['1080 + 108',48000],['1290 + 129',50000],['1500 + 150',66000],['2200 + 220',94000],['2730 + 273',119000],['3810 + 381',165000],['4930 + 493',210000],['5480 + 548',230000],['9220 + 922',386000],['22000 + 2200',890000],['92400 + 9240',3622000]],'LEVEL UP':[['Level Up Niv 6 - 120',3500],['Level Up Niv 10 - 200',4500],['Level Up Niv 15 - 200',4500],['Level Up Niv 20 - 200',4500],['Level Up Niv 25 - 200',4500],['Level Up Niv 30 - 350',6500],['Total Level Up - 1270',28000]],'ABONNEMENT':[['WEEKLY',11500],['WEEKLY (Par compte)',10500],['MONTHLY',50000],['MONTHLY (Par compte)',43000]],'BOOYAH PASS':[['Gifte BOOYAH PASS',7000]],'LARGAGE':[['Largage 0,99$',6500],['Largage 1,99$',12000]]},'PUBG Mobile':{'STANDARD UC':[['30 UC',3000],['60 UC',5000],['180 UC',14000],['240 UC',18000],['325 UC',21500],['445 UC',31500],['505 UC',35000],['660 UC',45000],['840 UC',55000],['1320 UC',85000],['1800 UC',110000],['40500 UC',2070000]],'PRIME':[['Prime (1 Month)',5000],['Prime (3 Month)',15000],['Prime (6 Month)',28500],['Prime Plus (1 Month)',45000],['Prime (12 Month)',55000],['Prime Plus (3 Month)',125000],['Prime Plus (6 Month)',250000],['Prime Plus (12 Month)',530000]],'PASS':[['Elite Pass Lv 1-50',28500],['Elite Pass Lv 1-100',55500],['Elite Pass Plus Lv 1-100',130000]],'PACK':[['First Purchase Pack',5000],['Weekly Deal Pack 1',5100],['Upgradable Firearm',15000],['Weekly Mythic Emblem',18000],['Mythic Emblem Pack',23800]]}};
   var ADMIN_CAR=[];
 function renderAdminCar(){
   var d=document.getElementById('listCarousel'); if(!d) return;
@@ -882,6 +882,25 @@ window.addEventListener('online',function(){chk(true)});
 document.addEventListener('visibilitychange',function(){if(!document.hidden)chk(true)});
 setInterval(chk,5000);
 if(document.body)chk();else document.addEventListener('DOMContentLoaded',function(){chk()});
+})();
+</script>
+
+
+<script>
+(function(){
+var NEWP=[['630 + 63',30000],['740 + 74',35000],['840 + 84',40000],['1290 + 129',50000],['1500 + 150',66000],['2730 + 273',119000],['3810 + 381',165000],['4930 + 493',210000],['5480 + 548',230000],['9220 + 922',386000],['22000 + 2200',890000],['92400 + 9240',3622000]];
+function tot(n){var m=String(n).match(/^\s*(\d+)\s*\+\s*(\d+)\s*$/);return m?(+m[1])+(+m[2]):0}
+function card(){var t=document.getElementById('tab-notifs');if(!t||document.getElementById('ffCard'))return;
+t.insertAdjacentHTML('afterbegin','<div class=card id=ffCard><h3>💎 Tarifs Free Fire TOP-UP</h3><p>Manampy ny pack tsy mbola ao (630+63 ... 92400+9240) ary mandamina ny lisitra araka ny vidiny. Tsy mamafa na manova ny pack efa ao.</p><div class=bb onclick="importFF()">➕ Ampiana + alamina ny TOP-UP Free Fire</div></div>')}
+setInterval(card,1500);
+window.importFF=function(){fetch(DB+'/tarifs.json').then(function(r){return r.json()}).then(function(v){
+if(!v||!Object.keys(v).length)v=JSON.parse(JSON.stringify(DATA));
+if(!v['Free Fire'])v['Free Fire']={};var L=(v['Free Fire']['TOP-UP']||[]).slice(),have={};
+L.forEach(function(p){have[String(p[0]).replace(/\s+/g,'')]=1});var add=0;
+NEWP.forEach(function(p){if(!have[p[0].replace(/\s+/g,'')]){L.push([p[0],p[1]]);add++}});
+L.sort(function(x,y){return (x[1]-y[1])||(tot(x[0])-tot(y[0]))});
+v['Free Fire']['TOP-UP']=L;
+return fetch(DB+'/tarifs.json',{method:'PUT',body:JSON.stringify(v)}).then(function(r){if(!r.ok)throw 0;DATA=v;try{renderTarifChips()}catch(e){}toast('✅ '+add+' pack vaovao nampiana. Alamina araka ny vidiny.')})}).catch(function(){toast('Erreur de connexion',true)})};
 })();
 </script>
 </body></html>

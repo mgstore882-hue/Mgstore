@@ -252,6 +252,10 @@ input,textarea{border-radius:14px;padding:14px 15px}
 #updBn div{flex:1;min-width:0}#updBn b{display:block;font-size:15px}#updBn span{display:block;font-size:12px;opacity:.75;line-height:1.3}
 #updBn button{border:0;background:linear-gradient(135deg,#2f6bff,#5b34d6);color:#fff;font-weight:800;border-radius:999px;padding:11px 16px;font-size:13px;cursor:pointer}
 #updBn i{position:absolute;top:4px;right:10px;font-style:normal;opacity:.5;font-size:16px;cursor:pointer}
+.pk .pt{display:flex;align-items:center;gap:8px}
+.pk .pg{width:24px;height:24px;flex:none;filter:drop-shadow(0 0 8px rgba(59,130,246,.65))}
+.pk .pn{font-family:var(--fd);font-size:32px;font-weight:800;line-height:1;color:var(--text);letter-spacing:-.5px}
+.pk .pb{align-self:flex-start;color:#22e07a;border:1px solid rgba(34,224,122,.5);background:rgba(34,224,122,.1);border-radius:999px;padding:4px 14px;font-weight:800;font-size:13.5px}
 </style><style>
 .accTop{display:flex;align-items:center;gap:14px;margin:6px 0 16px}
 .accAv{width:54px;height:54px;flex:0 0 54px;border-radius:18px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
@@ -681,7 +685,8 @@ function renderCats(){var h='';var list=ORDER[sel]||Object.keys(DATA[sel]);list.
 var SOLD={};function soK(a){return (sel+'|'+cat+'|'+a).replace(/[.#$\[\]\/]/g,'_')}
 function loadSold(){fetch(DB+'/soldout.json').then(function(r){return r.json()}).then(function(v){var sg=JSON.stringify(v||{});if(sg===window._soSig)return;window._soSig=sg;SOLD=v||{};if($('pageGame').style.display=='block')renderPacks()}).catch(function(){})}
 loadSold();setInterval(loadSold,5000);
-function renderPacks(){var box=$('packs');if(!DATA[sel]||!DATA[sel][cat]){box.innerHTML='<div class="empty" style="grid-column:1/-1">'+ic('box','l')+'<br>Aucun pack disponible.</div>';return}curList=DATA[sel][cat];var h='';curList.forEach(function(a,i){var so=!!SOLD[soK(a[0])];h+='<div class="pk'+(so?' so':'')+'">'+(so?'<span class="pct" style="background:#64748b">ÉPUISÉ</span>':(a[2]?'<span class="pct">-'+(a[4]||Math.round((1-a[1]/a[2])*100))+'%</span>':''))+'<div class="pi">'+ic('gem','')+'</div><b>'+esc(a[0])+'</b><div class="pr">'+a[1].toLocaleString()+' Ar'+(a[2]?'<s class="old">'+a[2].toLocaleString()+' Ar</s>':'')+'</div>'+(a[3]?'<div class="cd" data-end="'+a[3]+'">'+fmtCd(a[3])+'</div>':'')+''+(so?'<div class="btn dis">Épuisé</div>':'<div class="btn" onclick="addIdx('+i+',this)">Ajouter</div>')+'</div>'});box.innerHTML=h}
+function packTitle(n){var m=String(n).match(/^\s*(\d+)\s*\+\s*(\d+)\s*$/);if(!m)return '<b>'+esc(n)+'</b>';var t=(+m[1])+(+m[2]);return '<b style="display:none">'+esc(n)+'</b><div class="pt"><span class="pn">'+t.toLocaleString()+'</span></div><div class="pb">('+m[1]+' + '+m[2]+')</div>'}
+function renderPacks(){var box=$('packs');if(!DATA[sel]||!DATA[sel][cat]){box.innerHTML='<div class="empty" style="grid-column:1/-1">'+ic('box','l')+'<br>Aucun pack disponible.</div>';return}curList=DATA[sel][cat];if(curList.length&&curList.every(function(p){return /^\s*\d+\s*\+\s*\d+\s*$/.test(String(p[0]))})){curList=curList.slice().sort(function(x,y){return (x[1]-y[1])})}var h='';curList.forEach(function(a,i){var so=!!SOLD[soK(a[0])];h+='<div class="pk'+(so?' so':'')+'">'+(so?'<span class="pct" style="background:#64748b">ÉPUISÉ</span>':(a[2]?'<span class="pct">-'+(a[4]||Math.round((1-a[1]/a[2])*100))+'%</span>':''))+'<div class="pi">'+ic('gem','')+'</div>'+packTitle(a[0])+'<div class="pr">'+a[1].toLocaleString()+' Ar'+(a[2]?'<s class="old">'+a[2].toLocaleString()+' Ar</s>':'')+'</div>'+(a[3]?'<div class="cd" data-end="'+a[3]+'">'+fmtCd(a[3])+'</div>':'')+''+(so?'<div class="btn dis">Épuisé</div>':'<div class="btn" onclick="addIdx('+i+',this)">Ajouter</div>')+'</div>'});box.innerHTML=h}
 function addIdx(i,el){var a=curList[i];if(SOLD[soK(a[0])]){toast('Pack épuisé','err');return}var c=el&&el.closest?el.closest('.pk'):null,im=c&&c.querySelector('img');pkImg=im?im.src:'';add(a[0],a[1])}
 function add(n,pr){n=String(n).replace(/💎/g,'').trim();var go=function(){var x=null;CART.forEach(function(y){if(y.g===sel&&y.c===cat&&y.n===n&&y.pr===pr)x=y});if(x){x.q++;toast('Quantité : x'+x.q,'ok')}else CART.push({g:sel,c:cat,n:n,pr:pr,q:1,img:pkImg||''});pkImg='';cartSave();refreshOrder();openModal('panierModal')};
 if(CART.length&&CART[0].g!==sel){mgConfirm('!','Autre jeu','Le panier est pour un seul jeu. Vider le panier et commencer avec '+sel+' ?','Oui','Non',function(){CART=[];go()});return}go()}
@@ -1297,4 +1302,5 @@ setInterval(chk,5000);
 if(document.body)chk();else document.addEventListener('DOMContentLoaded',function(){chk()});
 })();
 </script>
+
 </body></html>
